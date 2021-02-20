@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Diagnostic Medical Center</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!--Custome CSS-->
+   <link rel="stylesheet" href="./Stylesheets/style.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-sm ">
+  <!-- Brand/logo -->
+  <span class="navbar-brand"><i class = "fa fa-heartbeat"></i>   Diagnostic Medical Center</span>
+  <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navI" aria-controls="navI" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navI">
+    <ul class="navbar-nav ml-auto"> 
+        <li class="nav-item"> 
+          <a class="nav-link" href="doctorLogin.html"> <i class = "fa fa-user-md"></i> Doctor </a> 
+        </li> 
+        <li class="nav-item"> 
+            <a class="nav-link" href="adminLogin.html"><i class = "fa fa-lock"></i>  Admin</a> 
+        </li> 
+    </ul>
+</div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col" id="bg1"></div>
+    <div class="col" id="b2">
+      <div class="wrapper bg-white">
+          <div class="h2 text-center">Diagnostic Medical Center</div>
+          <div class="h4 text-muted text-center pt-2">Patient Login</div>
+          <form class="pt-3">
+            <div class="form-group py-2">
+                <div class="input-field"><input type="text" placeholder="Username" required class=""> </div>
+            </div>
+            <div class="form-group py-1 pb-2">
+                <div class="input-field"><input type="text" placeholder="Enter your Password" required class=""> 
+            </div>
+            <div class="d-flex align-items-start">
+                <div class="ml-auto"> <a href="#" id="forgot">Forgot Password?</a> </div>
+            </div> <button class="btn btn-block text-center my-3">Log in</button>
+            <div class="text-center pt-3 text-muted">New User? <a href="#">Register Here</a></div>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Footer Starts Here-->
+<footer class = "container-fluid" style="position: fixed;">
+  <div class="container text-center">© 2021 Copyright:Diagnostic Medical Center</div>
+</footer>
+<!--Footer Ends Here-->
+
+</body>
+</html>
