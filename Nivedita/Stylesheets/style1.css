@@ -1,0 +1,36 @@
+
+.navbar-expand-sm{
+    background-color: #23487a;
+}
+.navbar-brand{
+    color: white;
+}
+
+#bg1{
+    background: url(../images/b4.jpg) no-repeat center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    min-height: 85vh;
+}
+
+
+
+
+
+
+
+
+footer{  
+    position: relative;
+    left: 0;
+    bottom: 0;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    width: 100%;
+    background-color: #23487a ;
+    color:white;
+    text-align: left;
+  }
