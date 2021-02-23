@@ -20,13 +20,13 @@ import lombok.Setter;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "patient_table")
-public class Patient {
+@Table(name = "agent_table")
+public class Agent {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NotNull
-	private int pId;
+	private int agentId;
 	@NotNull
 	private String fName;
 	@NotNull
@@ -42,6 +42,10 @@ public class Patient {
 	@Size(min = 6, max = 15)
 	private String password;
 	@NotNull
-	private String address;
+	private String email;
+	@NotNull
+	private long bankAccNo;
+	@NotNull
+	private String ifsc;
 	
 }

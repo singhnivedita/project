@@ -1,7 +1,5 @@
 package com.project.dmcapp.entities;
 
-import java.sql.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,28 +18,20 @@ import lombok.Setter;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "patient_table")
-public class Patient {
+@Table(name = "admin_table")
+public class Admin {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NotNull
-	private int pId;
+	private int adminId;
 	@NotNull
 	private String fName;
 	@NotNull
 	private String lName;
 	@NotNull
-	private Date dob;
-	@NotNull
-	private String gender;
-	@NotNull
-	@Size(min = 10, max = 10)
-	private long contactNumber;
-	@NotNull
 	@Size(min = 6, max = 15)
 	private String password;
-	@NotNull
-	private String address;
+	
 	
 }

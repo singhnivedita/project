@@ -20,13 +20,13 @@ import lombok.Setter;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "patient_table")
-public class Patient {
+@Table(name = "doctor_table")
+public class Doctor {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NotNull
-	private int pId;
+	private int docId;
 	@NotNull
 	private String fName;
 	@NotNull
@@ -43,5 +43,9 @@ public class Patient {
 	private String password;
 	@NotNull
 	private String address;
+	@NotNull
+	private String qualification;
+	@NotNull
+	private String speciality;
 	
 }
