@@ -1,10 +1,9 @@
 package com.project.dmcapp.repo;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.project.dmcapp.entities.Admin;
 import com.project.dmcapp.entities.Agent;
 
-public interface AgentRepo extends CrudRepository<Agent, String> {
+public interface AgentRepo extends JpaRepository<Agent, Integer> {
 
 }

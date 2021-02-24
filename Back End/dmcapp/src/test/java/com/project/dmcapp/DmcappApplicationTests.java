@@ -1,14 +1,18 @@
 package com.project.dmcapp;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.sql.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import com.project.dmcapp.entities.Agent;
 import com.project.dmcapp.entities.Doctor;
 import com.project.dmcapp.entities.Patient;
+import com.project.dmcapp.entities.Role;
 import com.project.dmcapp.repo.AgentRepo;
 import com.project.dmcapp.repo.DoctorRepo;
 import com.project.dmcapp.repo.PatientRepo;
@@ -39,7 +43,9 @@ class DmcappApplicationTests {
 		patient.setContactNumber("9963854425");
 		patient.setAddress("Bhopal, India");
 		patient.setPassword("patientpwd");
-		patient.setRole("Patient");
+		Role role = new Role();
+		role.setRoleId(3);
+		patient.setRole(role);
 		patientRepo.save(patient);
 
 	}
@@ -59,7 +65,9 @@ class DmcappApplicationTests {
 		doctor.setPassword("doctorpwd");
 		doctor.setQualification("MBBBS, MD");
 		doctor.setSpeciality("General Physician");
-		doctor.setRole("Doctor");
+		Role role = new Role();
+		role.setRoleId(1);
+		doctor.setRole(role);
 		doctorRepo.save(doctor);
 
 	}
@@ -68,7 +76,7 @@ class DmcappApplicationTests {
 	public void testCreateAgent() {
 
 		Agent agent = new Agent();
-		agent.setAgentId("AG101");
+		agent.setAgentId(101);
 		agent.setFName("Aryan");
 		agent.setLName("Singh");
 		Date date = null;
@@ -81,10 +89,24 @@ class DmcappApplicationTests {
 		agent.setBankAccNo("7845236987899");
 		agent.setBankName("SBI Bank");
 		agent.setIfsc("SBIN00761");
-		agent.setRole("Agent");
+		Role role = new Role();
+		role.setRoleId(4);
+		agent.setRole(role);
 		agentRepo.save(agent);
 
 	}
 	
+	@Test
+	public void testPatientRoleAgent() {
+		List<Patient> patients = patientRepo.findPatientByRoleName("Doctor");
+		assertThat(patients).size().isGreaterThanOrEqualTo(0);
+		
+	}
 
+	@Test
+	public void testDoctorRole() {
+		List<Patient> patients = patientRepo.findAll().stream().filter(pt->pt.getRole().getRoleName().equals("Doctor")).collect(Collectors.toList());
+		assertThat(patients).size().isGreaterThanOrEqualTo(0);
+	}
+	
 }

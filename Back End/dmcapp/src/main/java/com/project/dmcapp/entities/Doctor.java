@@ -51,14 +51,8 @@ public class Doctor {
 	private String qualification;
 	@NotNull
 	private String speciality;
-	@NotNull
-	private String role;
-	
-	
-	
-	
-	//foreign key of role(id) table to specify role
+
 	@ManyToOne
 	@JoinColumn(name = "roleId", referencedColumnName = "roleId")
-	private Role roleId;
+	private Role role;
 }

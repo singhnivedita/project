@@ -26,27 +26,18 @@ public class BookAppointment {
 	@Id
 	@NotNull
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int requestId;
+    private Integer requestId;
 	
 	@NotNull
 	private Date date;
 	@NotNull
-	private int time;
+	private Integer time;
 	@NotNull
 	private String remark;
 	@NotNull
 	private String status; 
-<<<<<<< Updated upstream
 
-	@NotNull
-	private int pId;
-	@NotNull
-	private int docId;
-	@NotNull
-	private int serviceId;
-	
-=======
-	
+	//change all primitive type to wrapper
 	//foreign keys
 	
 	@ManyToOne
@@ -58,18 +49,8 @@ public class BookAppointment {
 	private Doctor doctorId;
 	
 	@ManyToOne
-	@JoinColumn(name = "dgserviceId", referencedColumnName = "dgsId")
+	@JoinColumn(name = "dgserviceId", referencedColumnName = "serviceId")
 	private DiagnosticService diagnosticService;
 	
-	
-	
-//	@NotNull
-//	private int pId;
-	
-//	@NotNull
-//	private int docId;
-	
-//	@NotNull
-//	private int serviceId;
->>>>>>> Stashed changes
+
 }

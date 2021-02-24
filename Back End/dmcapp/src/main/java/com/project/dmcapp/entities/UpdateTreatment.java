@@ -24,9 +24,10 @@ import lombok.Setter;
 @Table(name = "UpdateTreatment_table")
 public class UpdateTreatment {
 	
-	
-	
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@NotNull
+	private Integer treatmentId;
 	
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "patientId", referencedColumnName = "pId")
@@ -37,10 +38,9 @@ public class UpdateTreatment {
     private Doctor doctorId;
 		
 	@ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "diagnosticServiceId", referencedColumnName = "dgsId")
+    @JoinColumn(name = "diagnosticServiceId", referencedColumnName = "serviceId")
     private DiagnosticService diagnosticService;
 	
-
 	@NotNull
 	private String symptoms;
 	@NotNull
@@ -52,9 +52,7 @@ public class UpdateTreatment {
 
 	@NotNull
 	private String prescription;
-	
-	//	@NotNull
-	//	private String referal;
+
 	
 
 }

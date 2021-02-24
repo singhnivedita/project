@@ -38,20 +38,6 @@ public class Admin {
 	//foreign key of role(id) table to specify role
 	@ManyToOne
 	@JoinColumn(name = "roleId", referencedColumnName = "roleId")
-	private Role roleId;
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	private Role role;
+
 }

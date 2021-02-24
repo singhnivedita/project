@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -25,10 +27,13 @@ import lombok.Setter;
 @Entity
 @Table(name = "agent_table")
 public class Agent {
-	
+	//separate pk
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NotNull
-	private String agentId;
+	private int agentPk;
+	@NotNull
+	private int agentId;
 	@NotNull
 	private String fName;
 	@NotNull
@@ -54,7 +59,7 @@ public class Agent {
 	private String bankName;
 	@NotNull
 	private String ifsc;
-	@NotNull
-	private String role;
-	
+	@ManyToOne
+	@JoinColumn(name = "roleId", referencedColumnName = "roleId")
+	private Role role;
 }

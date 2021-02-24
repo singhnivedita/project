@@ -34,7 +34,7 @@ public class DiagnosticCentre {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NotNull
-	private int centreId ;
+	private Integer centreId ;
 	@NotNull
 	private String brief;
 	@NotNull
@@ -51,14 +51,12 @@ public class DiagnosticCentre {
 	private int contactno;
 	@NotNull
 	private int zip;
-<<<<<<< Updated upstream
 	@NotNull
 	private int serviceId;
-=======
 
 	@ManyToMany(cascade = CascadeType.ALL, mappedBy="diagnosticCentre")
     //@JoinColumn(name = "diagnosticServiceId", referencedColumnName = "dgsId")
     private List<DiagnosticService> diagnosticServiceList;
->>>>>>> Stashed changes
+
 	
 }

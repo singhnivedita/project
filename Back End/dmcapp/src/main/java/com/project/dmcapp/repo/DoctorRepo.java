@@ -1,9 +1,9 @@
 package com.project.dmcapp.repo;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.project.dmcapp.entities.Doctor;
 
-public interface DoctorRepo extends CrudRepository<Doctor, Integer> {
+public interface DoctorRepo extends JpaRepository<Doctor, Integer> {
 
 }

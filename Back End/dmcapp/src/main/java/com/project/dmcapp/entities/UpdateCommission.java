@@ -27,15 +27,14 @@ public class UpdateCommission {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NotNull
-	private int commissionId;
+	private Integer commissionId;
 	@NotNull
-	private int baselineValue;
-<<<<<<< Updated upstream
-=======
+	private Integer baselineValue;
+
 	
 	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "diagnosticServiceId", referencedColumnName = "dgsId")
+    @JoinColumn(name = "diagnosticServiceId", referencedColumnName = "serviceId")
     private DiagnosticService diagnosticService;
->>>>>>> Stashed changes
+
 		
 }

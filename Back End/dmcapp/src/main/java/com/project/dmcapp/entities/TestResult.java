@@ -26,7 +26,7 @@ public class TestResult {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NotNull
-	private int testId;
+	private Integer testId;
 	
 	@NotNull
 	private String testName;
@@ -42,6 +42,6 @@ public class TestResult {
 	
 	//foreign key of service(id) table to specify tests of diagnostic service
 	@ManyToOne
-	@JoinColumn(name = "diagnosticServiceId", referencedColumnName = "dgsId")
+	@JoinColumn(name = "diagnosticServiceId", referencedColumnName = "serviceId")
 	private DiagnosticService diagnosticServiceId;
 }
