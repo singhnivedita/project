@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.project.dmcapp.entities.Agent;
 import com.project.dmcapp.entities.Doctor;
 import com.project.dmcapp.entities.Patient;
 import com.project.dmcapp.repo.AgentRepo;
@@ -24,8 +25,6 @@ class DmcappApplicationTests {
 	@Autowired
 	private AgentRepo agentRepo;
 	
-	@Autowired
-	private DoctorRepo doctorRepo;
 	
 	@Test
 	public void testRegisterPateint() {
@@ -55,13 +54,35 @@ class DmcappApplicationTests {
 		date = Date.valueOf("1984-01-01");
 		doctor.setDob(date);
 		doctor.setGender("Male");
-		doctor.setContactNumber("9963854425");
-		doctor.setAddress("Bhopal, India");
+		doctor.setContactNumber("6663854425");
+		doctor.setAddress("Indore, India");
 		doctor.setPassword("doctorpwd");
 		doctor.setQualification("MBBBS, MD");
 		doctor.setSpeciality("General Physician");
 		doctor.setRole("Doctor");
 		doctorRepo.save(doctor);
+
+	}
+	
+	@Test
+	public void testCreateAgent() {
+
+		Agent agent = new Agent();
+		agent.setAgentId("AG101");
+		agent.setFName("Aryan");
+		agent.setLName("Singh");
+		Date date = null;
+		date = Date.valueOf("1984-01-01");
+		agent.setDob(date);
+		agent.setGender("Male");
+		agent.setContactNumber("7763854425");
+		agent.setEmail("aryansingh@gmail.com");
+		agent.setPassword("agentpwd");
+		agent.setBankAccNo("7845236987899");
+		agent.setBankName("SBI Bank");
+		agent.setIfsc("SBIN00761");
+		agent.setRole("Agent");
+		agentRepo.save(agent);
 
 	}
 	

@@ -2,17 +2,20 @@ package com.project.dmcapp.entities;
 
 import java.sql.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 
 @Getter
 @Setter 
@@ -25,7 +28,7 @@ public class Agent {
 	
 	@Id
 	@NotNull
-	private int agentId;
+	private String agentId;
 	@NotNull
 	private String fName;
 	@NotNull
@@ -35,18 +38,23 @@ public class Agent {
 	@NotNull
 	private String gender;
 	@NotNull
-	@Size(min = 10, max = 10)
-	private long contactNumber;
+	@Column(length = 10)
+	@Pattern(regexp = "^[0-9]+$")
+	private String contactNumber;
 	@NotNull
 	@Size(min = 6, max = 15)
 	private String password;
 	@NotNull
 	private String email;
 	@NotNull
-	private long bankAccNo;
+	@Column(length = 15)
+	@Pattern(regexp = "^[0-9]+$")
+	private String bankAccNo;
 	@NotNull
 	private String bankName;
 	@NotNull
 	private String ifsc;
+	@NotNull
+	private String role;
 	
 }
