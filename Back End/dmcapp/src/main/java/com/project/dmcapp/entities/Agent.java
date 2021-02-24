@@ -24,7 +24,6 @@ import lombok.Setter;
 public class Agent {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NotNull
 	private int agentId;
 	@NotNull

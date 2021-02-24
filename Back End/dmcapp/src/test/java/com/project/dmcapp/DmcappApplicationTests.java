@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.project.dmcapp.entities.Doctor;
 import com.project.dmcapp.entities.Patient;
+import com.project.dmcapp.repo.AgentRepo;
 import com.project.dmcapp.repo.DoctorRepo;
 import com.project.dmcapp.repo.PatientRepo;
 
@@ -16,6 +17,12 @@ class DmcappApplicationTests {
 
 	@Autowired
 	private PatientRepo patientRepo;
+	
+	@Autowired
+	private DoctorRepo doctorRepo;
+	
+	@Autowired
+	private AgentRepo agentRepo;
 	
 	@Autowired
 	private DoctorRepo doctorRepo;

@@ -35,9 +35,6 @@ public class BookAppointment {
 	@NotNull
 	private String status; 
 
-	//foreign keys
-	
-
 	@NotNull
 	private int pId;
 	@NotNull
