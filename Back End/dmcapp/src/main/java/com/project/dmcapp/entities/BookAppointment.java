@@ -1,5 +1,6 @@
 package com.project.dmcapp.entities;
 
+import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,14 +17,26 @@ import lombok.Setter;
 @Setter 
 @NoArgsConstructor 
 @AllArgsConstructor
+
 @Entity
-@Table(name = "secretQuestion_table")
-public class SecretQuestion {
+@Table(name = "BookAppointment_table")
+public class BookAppointment {
 	@Id
 	@NotNull
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int secretid;
+    private int requestId;
 	@NotNull
-	private String question;
-
+	private int patientId;
+	@NotNull
+	private int doctorId;
+	@NotNull
+	private int serviceId;
+	@NotNull
+	private Date date;
+	@NotNull
+	private int time;
+	@NotNull
+	private String remark;
+	@NotNull
+	private String Status;                                                                              
 }

@@ -17,13 +17,29 @@ import lombok.Setter;
 @NoArgsConstructor 
 @AllArgsConstructor
 @Entity
-@Table(name = "secretQuestion_table")
-public class SecretQuestion {
+@Table(name = "UpdateTreatment_table")
+public class UpdateTreatment {
 	@Id
 	@NotNull
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int secretid;
+    private int testId;
 	@NotNull
-	private String question;
+	private int patientId;
+	@NotNull
+	private int doctorId;
+	@NotNull
+	private int serviceId;
+	@NotNull
+	private String symptoms;
+	@NotNull
+	private String diagnosis;
+	@NotNull
+	private String recommendation;
+	@NotNull
+	private String diet;
+	@NotNull
+	private String referal;
+	@NotNull
+	private String prescription;
 
 }
