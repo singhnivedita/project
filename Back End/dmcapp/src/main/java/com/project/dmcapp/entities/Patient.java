@@ -43,4 +43,6 @@ public class Patient {
 	@NotNull
 	private String address;
 	
+	
+	//private Set<BookingApgtt> roleList;
 }
