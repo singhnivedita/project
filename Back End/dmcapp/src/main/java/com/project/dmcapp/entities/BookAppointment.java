@@ -34,15 +34,15 @@ public class BookAppointment {
 	private String remark;
 	@NotNull
 	private String status; 
-	
+
 	//foreign keys
 	
+
 	@NotNull
 	private int pId;
-	
 	@NotNull
 	private int docId;
-	
 	@NotNull
 	private int serviceId;
+	
 }

@@ -28,7 +28,5 @@ public class UpdateCommission {
 	private int commissionId;
 	@NotNull
 	private int baselineValue;
-	@OneToOne(mappedBy="UpdateCommission")
-    private DiagnosticService diagosticService;
 		
 }

@@ -46,8 +46,7 @@ public class DiagnosticCentre {
 	private int contactno;
 	@NotNull
 	private int zip;
-
-	@ManyToMany
+	@NotNull
 	private int serviceId;
 	
 }
