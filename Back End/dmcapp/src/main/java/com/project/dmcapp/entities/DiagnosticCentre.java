@@ -21,11 +21,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Entity
-<<<<<<< HEAD:Back End/dmcapp/src/main/java/com/project/dmcapp/entities/DiagnosticCentre.java
+
 @Table(name = "centre_table")
-=======
-@Table(name = "diagnosticcentre_table")
->>>>>>> 30c9b67a438523f75d14b5e0945f81cd6bcf1148:Back End/dmcapp/src/main/java/com/project/dmcapp/entities/Diagnosticcentre.java
+
 public class DiagnosticCentre {
 	
 	@Id
