@@ -2,11 +2,16 @@ package com.project.dmcapp.entities;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -36,6 +41,9 @@ public class DiagnosticService {
 	@NotNull
 	@Size(min = 10, max = 100)
 	private String instructions;
-
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+   // @JoinColumn(name = "diagnosticCenterId", referencedColumnName = "dgcId")
+    private List<DiagnosticCentre> diagnosticCentre;
 	
 }

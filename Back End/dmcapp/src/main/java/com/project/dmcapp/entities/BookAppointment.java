@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -34,6 +36,7 @@ public class BookAppointment {
 	private String remark;
 	@NotNull
 	private String status; 
+<<<<<<< Updated upstream
 
 	@NotNull
 	private int pId;
@@ -42,4 +45,31 @@ public class BookAppointment {
 	@NotNull
 	private int serviceId;
 	
+=======
+	
+	//foreign keys
+	
+	@ManyToOne
+	@JoinColumn(name = "patientId", referencedColumnName = "pId")
+	private Patient patientId;
+	
+	@ManyToOne
+	@JoinColumn(name = "docId", referencedColumnName = "docId")
+	private Doctor doctorId;
+	
+	@ManyToOne
+	@JoinColumn(name = "dgserviceId", referencedColumnName = "dgsId")
+	private DiagnosticService diagnosticService;
+	
+	
+	
+//	@NotNull
+//	private int pId;
+	
+//	@NotNull
+//	private int docId;
+	
+//	@NotNull
+//	private int serviceId;
+>>>>>>> Stashed changes
 }

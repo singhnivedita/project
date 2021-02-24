@@ -1,10 +1,12 @@
 package com.project.dmcapp.entities;
 
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -28,5 +30,12 @@ public class UpdateCommission {
 	private int commissionId;
 	@NotNull
 	private int baselineValue;
+<<<<<<< Updated upstream
+=======
+	
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "diagnosticServiceId", referencedColumnName = "dgsId")
+    private DiagnosticService diagnosticService;
+>>>>>>> Stashed changes
 		
 }

@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -33,9 +35,13 @@ public class TestResult {
 	
 	//FK
 	
-	@NotNull
-	private int pId;
+	//foreign key of patient(id) table to specify tests of particular patient
+	@ManyToOne
+	@JoinColumn(name = "patientId", referencedColumnName = "pId")
+	private Patient patientId;
 	
-	@NotNull
-	private int serviceId;
+	//foreign key of service(id) table to specify tests of diagnostic service
+	@ManyToOne
+	@JoinColumn(name = "diagnosticServiceId", referencedColumnName = "dgsId")
+	private DiagnosticService diagnosticServiceId;
 }

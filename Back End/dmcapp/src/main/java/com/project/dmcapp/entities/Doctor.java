@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -52,4 +54,11 @@ public class Doctor {
 	@NotNull
 	private String role;
 	
+	
+	
+	
+	//foreign key of role(id) table to specify role
+	@ManyToOne
+	@JoinColumn(name = "roleId", referencedColumnName = "roleId")
+	private Role roleId;
 }
