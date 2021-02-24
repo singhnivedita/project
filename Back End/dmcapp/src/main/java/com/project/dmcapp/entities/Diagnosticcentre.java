@@ -1,7 +1,6 @@
 package com.project.dmcapp.entities;
 
-import java.sql.Date;
-import java.sql.Time;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,7 +21,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @Table(name = "diagnosticcentre_table")
-public class Diagnosticcentre {
+public class DiagnosticCentre {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
