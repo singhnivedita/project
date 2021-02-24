@@ -16,9 +16,8 @@ import lombok.Setter;
 
 @Getter
 @Setter 
-@NoArgsConstructor 
+@NoArgsConstructor                                                              
 @AllArgsConstructor
-
 @Entity
 @Table(name = "patient_table")
 public class Patient {
