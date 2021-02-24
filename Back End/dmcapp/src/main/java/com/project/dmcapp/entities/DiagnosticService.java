@@ -16,36 +16,26 @@ import lombok.NoArgsConstructor;
 
 
 
-
 @NoArgsConstructor 
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name = "diagnosticcentre_table")
-public class Diagnosticcentre {
+@Table(name = "service_table")
+public class DiagnosticService {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NotNull
-	private int dcId ;
+	private int serviceId ;
 	@NotNull
-	private String brief;
+	private String serviceName;
 	@NotNull
-	private String address;
+	private int cost;
 	@NotNull
-	private String city;
+	private Time time;
 	@NotNull
-	private String state;
-	@NotNull
-	private String email;
-	@NotNull
-	private String website;
-	@NotNull
-	private int contactno;
-	@NotNull
-	private int zip;
-
-
+	@Size(min = 10, max = 100)
+	private String instructions;
 
 	
 }

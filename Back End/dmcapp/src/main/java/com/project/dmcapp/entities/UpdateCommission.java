@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -19,18 +20,15 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "commission_table")
-public class Commission {
+public class UpdateCommission {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NotNull
-	private int pId;
+	private int commissionId;
 	@NotNull
-	private int ageId;
-	@NotNull
-	private long serviceId;
-	@NotNull
-	private long commissionValue;
-	
-	
+	private int baselineValue;
+	@OneToOne(mappedBy="UpdateCommission")
+    private DiagnosticService diagosticService;
+		
 }

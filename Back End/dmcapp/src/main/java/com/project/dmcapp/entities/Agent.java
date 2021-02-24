@@ -46,6 +46,8 @@ public class Agent {
 	@NotNull
 	private long bankAccNo;
 	@NotNull
+	private String bankName;
+	@NotNull
 	private String ifsc;
 	
 }

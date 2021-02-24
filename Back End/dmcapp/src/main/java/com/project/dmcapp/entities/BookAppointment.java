@@ -19,18 +19,13 @@ import lombok.Setter;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "BookAppointment_table")
+@Table(name = "Request_table")
 public class BookAppointment {
 	@Id
 	@NotNull
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private int requestId;
-	@NotNull
-	private int patientId;
-	@NotNull
-	private int doctorId;
-	@NotNull
-	private int serviceId;
+	
 	@NotNull
 	private Date date;
 	@NotNull
@@ -38,5 +33,14 @@ public class BookAppointment {
 	@NotNull
 	private String remark;
 	@NotNull
-	private String Status;                                                                              
+	private String status; 
+	
+	@NotNull
+	private int pId;
+	
+	@NotNull
+	private int docId;
+	
+	@NotNull
+	private int serviceId;
 }

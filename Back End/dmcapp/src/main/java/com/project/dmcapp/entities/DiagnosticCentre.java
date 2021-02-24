@@ -7,11 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 
 
 
@@ -19,22 +22,31 @@ import lombok.Data;
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name = "diagnosisService_table")
-public class DiagnosisService {
+@Table(name = "centre_table")
+public class DiagnosticCentre {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NotNull
-	private int dgId ;
+	private int centreId ;
 	@NotNull
-	private String dgName;
+	private String brief;
 	@NotNull
-	private int cost;
+	private String address;
 	@NotNull
-	private Time time;
+	private String city;
 	@NotNull
-	@Size(min = 10, max = 100)
-	private String instructions;
+	private String state;
+	@NotNull
+	private String email;
+	@NotNull
+	private String website;
+	@NotNull
+	private int contactno;
+	@NotNull
+	private int zip;
 
+	@ManyToMany
+	private int serviceId;
 	
 }

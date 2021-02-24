@@ -24,12 +24,18 @@ public class TestResult {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NotNull
-	private int pId;
-	@NotNull
-	private int dgId;
+	private int testId;
+	
 	@NotNull
 	private String testName;
 	@NotNull
 	private String testResult;
 	
+	//FK
+	
+	@NotNull
+	private int pId;
+	
+	@NotNull
+	private int serviceId;
 }

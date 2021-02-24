@@ -24,7 +24,7 @@ public class UpdateTreatment {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private int testId;
 	@NotNull
-	private int patientId;
+	private int pId;
 	@NotNull
 	private int doctorId;
 	@NotNull
