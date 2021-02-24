@@ -14,9 +14,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 
-[18:37, 2/23/2021] Nishant: Diagnosis Servic centre
-[18:37, 2/23/2021] Nishant: Test info
-[18:37, 2/23/2021] Nishant: Diagnosis services
 
 @NoArgsConstructor 
 @AllArgsConstructor
