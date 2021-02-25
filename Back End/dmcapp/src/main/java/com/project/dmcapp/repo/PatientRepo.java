@@ -19,13 +19,13 @@ public interface PatientRepo extends JpaRepository<Patient, Integer> {
 	public List<Patient> findPatientByRoleName(String roleName);
 	
 	//view diagnostic services
-	public List<DiagnosticService> getDiagnosticService();
+	//public List<DiagnosticService> getDiagnosticService();
 	
 	//view appointment status
-	@Query("SELECT p FROM patient_table p WHERE p.status = 1")
-	public List<BookAppointment> getAppointmentStatus();
+	
 	
 	//view test results
+
 	
 	
 	// view treatment history
