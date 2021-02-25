@@ -16,10 +16,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.dmcapp.exception.BookingNotFoundException;
+import com.project.dmcapp.exception.TestResultNotFoundException;
+import com.project.dmcapp.exception.TreatmentHistoryNotFoundException;
 import com.project.dmcapp.model.BookAppointment;
 import com.project.dmcapp.model.DiagnosticService;
 import com.project.dmcapp.model.Msg;
 import com.project.dmcapp.model.Patient;
+import com.project.dmcapp.model.TestResult;
+import com.project.dmcapp.model.UpdateTreatment;
 import com.project.dmcapp.service.PatientService;
 
 @RestController
@@ -63,11 +67,27 @@ public class PatientController {
 		return new ResponseEntity<>(patientService.getDiagnosticService(), HttpStatus.OK);
 	}
 
-	
+
 	//view treatment history
-	
+	@GetMapping("/treatment-history/{id}")
+	public ResponseEntity<List <UpdateTreatment>> getTreatmentHistory(@PathVariable int pId) {
+		List<UpdateTreatment> updateTreatment = patientService.getTreatmentHistory(pId);
+		
+		if(updateTreatment == null)
+			throw new TreatmentHistoryNotFoundException();
+		
+		return new ResponseEntity<>(updateTreatment, HttpStatus.OK);
+	}
 	
 	//view test result
-	
+	@GetMapping("/test-result/{id}")
+	public ResponseEntity<List <TestResult>> getallTestPatient(@PathVariable int pId) {
+		List<TestResult> testResult = patientService.getallTestPatient(pId);
+		
+		if(testResult == null)
+			throw new TestResultNotFoundException();
+		
+		return new ResponseEntity<>(testResult, HttpStatus.OK);
+	}
 
 }

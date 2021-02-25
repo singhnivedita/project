@@ -57,6 +57,4 @@ public class UpdateTreatment {
 	@NotNull
 	private String prescription;
 
-	
-
 }

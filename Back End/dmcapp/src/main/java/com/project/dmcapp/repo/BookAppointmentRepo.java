@@ -17,8 +17,8 @@ public interface BookAppointmentRepo extends JpaRepository<BookAppointment, Inte
 
 	@Query("Select patientId FROM BookAppointment b WHERE b.patientId : patientId ")
 	//@Query(value="select* from Request_table Inner Join patient_table on patient_table.pId = Request_table.patientId AND Request_table.status ='Yes' ", nativeQuery = true)
-	public List<BookAppointment> getAppointmentStatus(int patientId);
-	
+	public List<BookAppointment> getAppointmentStatusPatient(int patientId);
+
 
 	
 	@Query("SELECT b FROM BookAppointment b Inner Join Patient p on p.pId = b.patientId AND b.docId=:doctorId")

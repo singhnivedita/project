@@ -31,7 +31,7 @@ public class DoctorService {
 	public boolean updateTestResult(TestResult testResult) {
 		//log.info("START");
 		
-		TestResult testResultOld = testResultRepo.getallTestDoctor(testResult.getPatientId()).orElse(null);
+		TestResult testResultOld = testResultRepo.getallTestPatient((testResult.getPatientId()).orElse(null));
 		if(testResultOld == null)
 			return false;
 		

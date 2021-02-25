@@ -7,9 +7,13 @@ import org.springframework.stereotype.Service;
 
 import com.project.dmcapp.model.BookAppointment;
 import com.project.dmcapp.model.DiagnosticService;
+import com.project.dmcapp.model.TestResult;
+import com.project.dmcapp.model.UpdateTreatment;
 import com.project.dmcapp.repo.BookAppointmentRepo;
 import com.project.dmcapp.repo.DiagnosticServiceRepo;
 import com.project.dmcapp.repo.PatientRepo;
+import com.project.dmcapp.repo.TestResultRepo;
+import com.project.dmcapp.repo.UpdateTreatmentRepo;
 
 @Service 
 public class PatientService {
@@ -23,6 +27,12 @@ public class PatientService {
 	@Autowired
 	BookAppointmentRepo bookAppointmentRepo;
 	
+	@Autowired
+	UpdateTreatmentRepo updateTreatmentRepo;
+	
+	@Autowired
+	TestResultRepo testResultRepo;
+	
 	
 //	//to get all the service list/ details for patient
 	public List<DiagnosticService> getDiagnosticService(){
@@ -31,7 +41,7 @@ public class PatientService {
 	
 	//to get appointment status of patient all the appointment
 	public List<BookAppointment> getAppointmentStatusPatient(int id){
-		return bookAppointmentRepo.getAppointmentStatus(id);
+		return bookAppointmentRepo.getAppointmentStatusPatient(id);
 	}
 	
 	
@@ -43,6 +53,17 @@ public class PatientService {
 		
 	}
 	
+	//view treatment history
+	public List<UpdateTreatment> getTreatmentHistory(int id){
+		return updateTreatmentRepo.getTreatmentHistory(id);
+		
+	}
+	
+	//view test result
+	public List<TestResult> getallTestPatient(int pId) {
+		// TODO Auto-generated method stub
+		return testResultRepo.getallTestPatient(pId);
+	}
 	
 	
 	
