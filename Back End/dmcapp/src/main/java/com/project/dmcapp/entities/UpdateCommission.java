@@ -31,10 +31,11 @@ public class UpdateCommission {
 	@NotNull
 	private Integer baselineValue;
 
-	
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "diagnosticServiceId", referencedColumnName = "serviceId")
     private DiagnosticService diagnosticService;
-
-		
+	
+	
+	
+	
 }
