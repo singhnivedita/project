@@ -41,7 +41,7 @@ public class PatientController {
 	
 	//for new booking
 	@PostMapping("/booking")
-	public ResponseEntity<Msg> appointmentBooking(@RequestBody @Valid BookAppointment bookAppointment) {
+	public ResponseEntity<Msg> appointmentBooking(@RequestBody BookAppointment bookAppointment) {
 		
 		patientService.bookAppointment(bookAppointment);
 		

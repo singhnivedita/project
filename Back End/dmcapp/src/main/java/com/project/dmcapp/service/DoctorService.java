@@ -3,6 +3,7 @@ package com.project.dmcapp.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.project.dmcapp.model.BookAppointment;
 import com.project.dmcapp.model.TestResult;
@@ -13,6 +14,7 @@ import com.project.dmcapp.repo.PatientRepo;
 import com.project.dmcapp.repo.TestResultRepo;
 import com.project.dmcapp.repo.UpdateTreatmentRepo;
 
+@Service
 public class DoctorService {
 	@Autowired
 	PatientRepo pateintRepo;
