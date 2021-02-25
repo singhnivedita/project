@@ -69,9 +69,9 @@ public class PatientController {
 
 
 	//view treatment history
-	@GetMapping("/treatment-history/{id}")
-	public ResponseEntity<List <UpdateTreatment>> getTreatmentHistory(@PathVariable int pId) {
-		List<UpdateTreatment> updateTreatment = patientService.getTreatmentHistory(pId);
+	@GetMapping("/treatment-history/{id}") 
+	public ResponseEntity <UpdateTreatment> getTreatmentHistory(@PathVariable int pId) {
+		UpdateTreatment updateTreatment = patientService.getTreatmentHistory(pId);
 		
 		if(updateTreatment == null)
 			throw new TreatmentHistoryNotFoundException();

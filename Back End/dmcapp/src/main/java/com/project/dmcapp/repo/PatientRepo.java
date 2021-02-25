@@ -18,16 +18,4 @@ public interface PatientRepo extends JpaRepository<Patient, Integer> {
 	@Query(value = "select* from patient_table Inner Join role_table on patient_table.roleId = role_table.roleId AND role_table.roleName: roleName", nativeQuery = true)
 	public List<Patient> findPatientByRoleName(String roleName);
 	
-	//view diagnostic services
-	//public List<DiagnosticService> getDiagnosticService();
-	
-	//view appointment status
-	
-	
-	//view test results
-
-	
-	
-	// view treatment history
-	
-}
+}	

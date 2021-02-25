@@ -11,11 +11,8 @@ public interface UpdateTreatmentRepo extends JpaRepository<UpdateTreatment, Inte
 	
 	//display treatment history according to patient id 
 	//(view by doctor or patient itself on the basis of id of patient)
-<<<<<<< Updated upstream
-		@Query("Select * FROM UpdateTreatment u WHERE u.patientId :patientId")
-	    public List<UpdateTreatment> getTreatmentHistory(int patientId);
-=======
+
 		@Query("Select * FROM UpdateTreatment u WHERE u.patientId =:patientId")
 	    public UpdateTreatment getTreatmentHistory(int patientId);
->>>>>>> Stashed changes
+
 }

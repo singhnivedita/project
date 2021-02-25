@@ -30,7 +30,7 @@ public interface BookAppointmentRepo extends JpaRepository<BookAppointment, Inte
 		@Query("Select * FROM BookAppointment b WHERE b.docId : doctorId")
 	    public List<BookAppointment> getallpatientId(int doctorId);
 		
-		
+	//agent can see his commission based on the request he raised	
 		@Query("Select * FROM BookAppointment b WHERE b.agentId =: agentId ")
 		public  List<BookAppointment>getviewCommission(int agentId);
 		

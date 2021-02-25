@@ -52,9 +52,9 @@ public class PatientService {
 		return "Appointment Booked";
 		
 	}
-	
+	//agent will need to see commission
 	//view treatment history
-	public List<UpdateTreatment> getTreatmentHistory(int id){
+	public UpdateTreatment getTreatmentHistory(int id){
 		return updateTreatmentRepo.getTreatmentHistory(id);
 		
 	}
