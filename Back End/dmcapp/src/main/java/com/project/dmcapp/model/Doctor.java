@@ -1,4 +1,4 @@
-package com.project.dmcapp.entities;
+package com.project.dmcapp.model;
 
 import java.sql.Date;
 
@@ -14,27 +14,23 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 
 @Getter
 @Setter 
 @NoArgsConstructor 
 @AllArgsConstructor
-@Data
+
 @Entity
-@Table(name = "agent_table")
-public class Agent {
-	//separate pk
+@Table(name = "doctor_table")
+public class Doctor {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NotNull
-	private int agentPk;
-	@NotNull
-	private int agentId;
+	private int docId;
 	@NotNull
 	private String fName;
 	@NotNull
@@ -43,7 +39,6 @@ public class Agent {
 	private Date dob;
 	@NotNull
 	private String gender;
-	@NotNull
 	@Column(length = 10)
 	@Pattern(regexp = "^[0-9]+$")
 	private String contactNumber;
@@ -51,15 +46,12 @@ public class Agent {
 	@Size(min = 6, max = 15)
 	private String password;
 	@NotNull
-	private String email;
+	private String address;
 	@NotNull
-	@Column(length = 15)
-	@Pattern(regexp = "^[0-9]+$")
-	private String bankAccNo;
+	private String qualification;
 	@NotNull
-	private String bankName;
-	@NotNull
-	private String ifsc;
+	private String speciality;
+
 	@ManyToOne
 	@JoinColumn(name = "roleId", referencedColumnName = "roleId")
 	private Role role;

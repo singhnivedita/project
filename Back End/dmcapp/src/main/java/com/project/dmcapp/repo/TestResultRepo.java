@@ -1,11 +1,11 @@
 package com.project.dmcapp.repo;
 
-import com.project.dmcapp.entities.TestResult;
-
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+
+import com.project.dmcapp.model.TestResult;
 
 public interface TestResultRepo extends JpaRepository <TestResult, Integer>{
 	//display all test results according to patient id 

@@ -3,7 +3,8 @@ package com.project.dmcapp.repo;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import com.project.dmcapp.entities.UpdateTreatment;
+
+import com.project.dmcapp.model.UpdateTreatment;
 
 
 

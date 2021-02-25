@@ -1,10 +1,13 @@
-package com.project.dmcapp.entities;
+package com.project.dmcapp.model;
 
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -16,14 +19,23 @@ import lombok.Setter;
 @Setter 
 @NoArgsConstructor 
 @AllArgsConstructor
-@Entity
-@Table(name = "secretQuestion_table")
-public class SecretQuestion {
-	@Id
-	@NotNull
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int secretid;
-	@NotNull
-	private String question;
 
+@Entity
+@Table(name = "commission_table")
+public class UpdateCommission {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@NotNull
+	private Integer commissionId;
+	@NotNull
+	private Integer baselineValue;
+
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "diagnosticServiceId", referencedColumnName = "serviceId")
+    private DiagnosticService diagnosticService;
+	
+	
+	
+	
 }

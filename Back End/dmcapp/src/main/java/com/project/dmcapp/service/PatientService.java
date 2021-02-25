@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.project.dmcapp.entities.BookAppointment;
-import com.project.dmcapp.entities.DiagnosticService;
+import com.project.dmcapp.model.BookAppointment;
+import com.project.dmcapp.model.DiagnosticService;
 import com.project.dmcapp.repo.BookAppointmentRepo;
 import com.project.dmcapp.repo.DiagnosticServiceRepo;
 import com.project.dmcapp.repo.PatientRepo;
@@ -30,8 +30,8 @@ public class PatientService {
 	}
 	
 	//to get appointment status of patient all the appointment
-	public List<BookAppointment> getAppointmentStatusPatient(){
-		return bookAppointmentRepo.getAppointmentStatus();
+	public List<BookAppointment> getAppointmentStatusPatient(int id){
+		return bookAppointmentRepo.getAppointmentStatus(id);
 	}
 	
 	

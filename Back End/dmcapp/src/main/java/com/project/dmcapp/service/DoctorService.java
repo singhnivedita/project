@@ -2,8 +2,8 @@ package com.project.dmcapp.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.project.dmcapp.entities.TestResult;
-import com.project.dmcapp.entities.UpdateTreatment;
+import com.project.dmcapp.model.TestResult;
+import com.project.dmcapp.model.UpdateTreatment;
 import com.project.dmcapp.repo.BookAppointmentRepo;
 import com.project.dmcapp.repo.DiagnosticServiceRepo;
 import com.project.dmcapp.repo.PatientRepo;
@@ -12,7 +12,7 @@ import com.project.dmcapp.repo.UpdateTreatmentRepo;
 
 public class DoctorService {
 	@Autowired
-	PatientRepo pateintrepo;
+	PatientRepo pateintRepo;
 	
 	@Autowired
 	DiagnosticServiceRepo diagnosisServiceRepo;

@@ -4,7 +4,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.project.dmcapp.entities.BookAppointment;
+import com.project.dmcapp.model.BookAppointment;
 
 
 
@@ -14,9 +14,12 @@ public interface BookAppointmentRepo extends JpaRepository<BookAppointment, Inte
 	
 	
 	//view appointment status
-	@Query("SELECT b FROM BookAppointment b where b.patientId=:patientId ")
+
+	@Query("Select patientId FROM BookAppointment b WHERE b.patientId : patientId ")
 	//@Query(value="select* from Request_table Inner Join patient_table on patient_table.pId = Request_table.patientId AND Request_table.status ='Yes' ", nativeQuery = true)
-	public List<BookAppointment> getAppointmentStatus(int patientId );
+	public List<BookAppointment> getAppointmentStatus(int patientId);
+	
+
 	
 	@Query("SELECT b FROM BookAppointment b Inner Join Patient p on p.pId = b.patientId AND b.docId=:doctorId")
 	//@Query(value="select* from Request_table Inner Join patient_table on patient_table.pId = Request_table.patientId AND Request_table.status ='Yes' ", nativeQuery = true)

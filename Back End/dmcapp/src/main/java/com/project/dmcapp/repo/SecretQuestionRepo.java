@@ -2,7 +2,7 @@ package com.project.dmcapp.repo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.project.dmcapp.entities.SecretQuestion;
+import com.project.dmcapp.model.SecretQuestion;
 
 
 

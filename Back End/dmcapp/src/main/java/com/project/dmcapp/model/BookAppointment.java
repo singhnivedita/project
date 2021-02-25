@@ -1,4 +1,4 @@
-package com.project.dmcapp.entities;
+package com.project.dmcapp.model;
 
 import java.sql.Date;
 

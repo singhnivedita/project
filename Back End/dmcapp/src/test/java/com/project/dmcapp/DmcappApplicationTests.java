@@ -9,10 +9,11 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import com.project.dmcapp.entities.Agent;
-import com.project.dmcapp.entities.Doctor;
-import com.project.dmcapp.entities.Patient;
-import com.project.dmcapp.entities.Role;
+
+import com.project.dmcapp.model.Agent;
+import com.project.dmcapp.model.Doctor;
+import com.project.dmcapp.model.Patient;
+import com.project.dmcapp.model.Role;
 import com.project.dmcapp.repo.AgentRepo;
 import com.project.dmcapp.repo.DoctorRepo;
 import com.project.dmcapp.repo.PatientRepo;

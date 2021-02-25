@@ -1,4 +1,4 @@
-package com.project.dmcapp.entities;
+package com.project.dmcapp.model;
 
 
 import javax.persistence.Entity;
@@ -16,15 +16,14 @@ import lombok.Setter;
 @Setter 
 @NoArgsConstructor 
 @AllArgsConstructor
-
 @Entity
-@Table(name = "role_table")
-public class Role {
-	
+@Table(name = "secretQuestion_table")
+public class SecretQuestion {
 	@Id
+	@NotNull
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int secretid;
 	@NotNull
-	private Integer roleId;
-	@NotNull
-	private String roleName;
+	private String question;
+
 }
