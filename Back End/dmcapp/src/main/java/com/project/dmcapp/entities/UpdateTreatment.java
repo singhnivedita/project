@@ -41,6 +41,10 @@ public class UpdateTreatment {
     @JoinColumn(name = "diagnosticServiceId", referencedColumnName = "serviceId")
     private DiagnosticService diagnosticService;
 	
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "testresultId", referencedColumnName = "testId")
+    private TestResult testresultId;
+		
 	@NotNull
 	private String symptoms;
 	@NotNull

@@ -40,4 +40,6 @@ public class Admin {
 	@JoinColumn(name = "roleId", referencedColumnName = "roleId")
 	private Role role;
 
+	
+
 }

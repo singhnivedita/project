@@ -14,6 +14,7 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Value;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -56,6 +57,9 @@ public class BookAppointment {
 	@ManyToOne
 	@JoinColumn(name = "dgserviceId", referencedColumnName = "serviceId")
 	private DiagnosticService diagnosticService;
+	@ManyToOne
+    @JoinColumn(name = "agentId", referencedColumnName = "agentId")
+    private Agent agentId;
 	
 
 }

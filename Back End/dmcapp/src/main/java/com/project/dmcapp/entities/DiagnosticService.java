@@ -40,7 +40,7 @@ public class DiagnosticService {
 	private Time time;
 	
 	@Size(min = 10, max = 100)
-	private String instructions;
+	private String instruction;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
    // @JoinColumn(name = "diagnosticCenterId", referencedColumnName = "dgcId")

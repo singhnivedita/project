@@ -10,4 +10,6 @@ public interface UpadateCommissionRepo extends JpaRepository <UpdateCommission, 
 	
 //	@Query("SELECT u FROM User u WHERE u.status = 1")
 //	public int updateCommission(int serviceId,int commValue);
+	@Query("SELECT * FROM UpdateCommission u WHERE u.diagnosticServiceId =:serviceId")
+	public UpdateCommission findCommissionByService(int serviceId);
 }
