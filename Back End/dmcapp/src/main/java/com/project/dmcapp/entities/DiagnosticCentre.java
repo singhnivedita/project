@@ -51,8 +51,14 @@ public class DiagnosticCentre {
 	private int contactno;
 	@NotNull
 	private int zip;
+
 	@NotNull
 	private int serviceId;
+
+
+
+
+
 
 	@ManyToMany(cascade = CascadeType.ALL, mappedBy="diagnosticCentre")
     //@JoinColumn(name = "diagnosticServiceId", referencedColumnName = "dgsId")
