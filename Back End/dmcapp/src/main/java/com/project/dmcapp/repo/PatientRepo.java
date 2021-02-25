@@ -7,9 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.project.dmcapp.entities.BookAppointment;
-import com.project.dmcapp.entities.DiagnosticService;
-import com.project.dmcapp.entities.Patient;
+import com.project.dmcapp.model.BookAppointment;
+import com.project.dmcapp.model.DiagnosticService;
+import com.project.dmcapp.model.Patient;
 
 @Repository
 public interface PatientRepo extends JpaRepository<Patient, Integer> {

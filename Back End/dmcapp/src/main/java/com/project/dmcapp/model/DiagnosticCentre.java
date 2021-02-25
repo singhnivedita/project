@@ -1,7 +1,7 @@
-package com.project.dmcapp.entities;
+package com.project.dmcapp.model;
 
-import java.sql.Date;
-import java.sql.Time;
+
+
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -21,29 +21,48 @@ import lombok.NoArgsConstructor;
 
 
 
+
 @NoArgsConstructor 
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name = "service_table")
-public class DiagnosticService {
+
+@Table(name = "centre_table")
+
+public class DiagnosticCentre {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NotNull
-	private Integer serviceId ;
+	private Integer centreId ;
 	@NotNull
-	private String serviceName;
+	private String brief;
 	@NotNull
-	private int cost;
+	private String address;
 	@NotNull
-	private Time time;
-	
-	@Size(min = 10, max = 100)
-	private String instruction;
-	
-	@ManyToMany(cascade = CascadeType.ALL)
-   // @JoinColumn(name = "diagnosticCenterId", referencedColumnName = "dgcId")
-    private List<DiagnosticCentre> diagnosticCentre;
+	private String city;
+	@NotNull
+	private String state;
+	@NotNull
+	private String email;
+	@NotNull
+	private String website;
+	@NotNull
+	private int contactno;
+	@NotNull
+	private int zip;
+
+	@NotNull
+	private int serviceId;
+
+
+
+
+
+
+	@ManyToMany(cascade = CascadeType.ALL, mappedBy="diagnosticCentre")
+    //@JoinColumn(name = "diagnosticServiceId", referencedColumnName = "dgsId")
+    private List<DiagnosticService> diagnosticServiceList;
+
 	
 }

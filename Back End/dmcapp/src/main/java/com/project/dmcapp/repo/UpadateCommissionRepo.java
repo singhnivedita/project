@@ -1,9 +1,9 @@
 package com.project.dmcapp.repo;
 
-import com.project.dmcapp.entities.UpdateCommission;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+
+import com.project.dmcapp.model.UpdateCommission;
 
 public interface UpadateCommissionRepo extends JpaRepository <UpdateCommission, Integer> {
     
