@@ -21,7 +21,7 @@ import lombok.Setter;
 @NoArgsConstructor 
 @AllArgsConstructor
 @Entity
-@Table(name = "UpdateTreatment_table")
+@Table(name = "updatetreatment_table")
 public class UpdateTreatment {
 	
 	@Id

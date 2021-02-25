@@ -26,7 +26,7 @@ import lombok.Setter;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "Request_table")
+@Table(name = "request_table")
 public class BookAppointment {
 	@Id
 	@NotNull
