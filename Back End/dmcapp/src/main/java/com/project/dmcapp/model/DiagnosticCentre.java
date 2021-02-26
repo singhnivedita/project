@@ -42,6 +42,7 @@ public class DiagnosticCentre {
 	@NotNull
 	private String state;
 	@NotNull
+	@Pattern(regexp = "^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$")
 	private String email;
 	@NotNull
 	private String website;

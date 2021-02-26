@@ -51,6 +51,7 @@ public class Agent {
 	@Size(min = 6, max = 15)
 	private String password;
 	@NotNull
+	@Pattern(regexp = "^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$")
 	private String email;
 	@NotNull
 	@Column(length = 15)
