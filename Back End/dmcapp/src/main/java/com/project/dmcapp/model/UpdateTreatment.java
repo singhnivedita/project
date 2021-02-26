@@ -30,7 +30,7 @@ public class UpdateTreatment {
 	private Integer treatmentId;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "patientId", referencedColumnName = "pId")
+    @JoinColumn(name = "patientId", referencedColumnName = "patientId")
     private Patient patientId;
 		
 	@ManyToOne(cascade = CascadeType.ALL)
@@ -39,7 +39,7 @@ public class UpdateTreatment {
 		
 	@ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "diagnosticServiceId", referencedColumnName = "serviceId")
-    private DiagnosticService diagnosticService;
+    private DiagnosticService diagnosticServiceId;
 	
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "testresultId", referencedColumnName = "testId")

@@ -33,7 +33,7 @@ public class UpdateCommission {
 
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "diagnosticServiceId", referencedColumnName = "serviceId")
-    private DiagnosticService diagnosticService;
+    private DiagnosticService diagnosticServiceId;
 	
 	
 	

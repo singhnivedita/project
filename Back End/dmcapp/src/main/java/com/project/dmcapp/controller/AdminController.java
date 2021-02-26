@@ -14,12 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.dmcapp.exception.CommissionforServiceNotFoundException;
 
-import com.project.dmcapp.exception.ServiceAlreadyExistsException;
+import com.project.dmcapp.exception.ServiceNotFoundException;
 import com.project.dmcapp.exception.TestResultNotFoundException;
 import com.project.dmcapp.model.Agent;
 import com.project.dmcapp.model.DiagnosticService;
 import com.project.dmcapp.model.Msg;
 import com.project.dmcapp.model.TestResult;
+import com.project.dmcapp.model.UpdateCommission;
 import com.project.dmcapp.repo.AgentRepo;
 import com.project.dmcapp.service.AdminService;
 
@@ -27,10 +28,10 @@ import com.project.dmcapp.service.AdminService;
 @RequestMapping("/admin")
 public class AdminController {
 	@Autowired
-	AdminService adminService;
+	private AdminService adminService ;
 	
 	@Autowired
-	AgentRepo agentRepo;
+	private AgentRepo agentRepo;
 	
 	//add a service
 	@PutMapping("/{centreId}/{serviceId}")
@@ -38,7 +39,7 @@ public class AdminController {
 		boolean addStatus = adminService.addService(centreId,serviceId);
 		
 		if(!addStatus)
-			throw new ServiceAlreadyExistsException();
+			throw new ServiceNotFoundException();
 		
 		return ResponseEntity.ok().body(new Msg("Service added to your centre successfully.", HttpStatus.ACCEPTED));
 	}
@@ -63,9 +64,9 @@ public class AdminController {
       }
 	
 	//update commission table
-	@PutMapping("/{serviceId}/{baselinevalue}")
-	public ResponseEntity<Msg> modifyCommissionTable(@PathVariable("serviceId") int serviceId, @PathVariable("baselinevalue") int baselinevalue) {
-		boolean updateStatus = adminService.modifyCommissionTable(serviceId,baselinevalue);
+	@PutMapping("/{serviceId}")
+	public ResponseEntity<Msg> modifyCommissionTable(@PathVariable("serviceId") int serviceId,@RequestBody UpdateCommission updateCommission) {
+		boolean updateStatus = adminService.modifyCommissionTable(serviceId,updateCommission );
 	
 		if(updateStatus == false)
 			throw new CommissionforServiceNotFoundException();
@@ -74,11 +75,11 @@ public class AdminController {
       }
 	
 	//add agent
-	@PutMapping("/create-agent")
+	@PostMapping("/create-agent")
 	public ResponseEntity<Msg> addService(@RequestBody Agent agent) {
 		
 		agentRepo.save(agent);
-		return ResponseEntity.ok().body(new Msg("Service added to your centre successfully.", HttpStatus.ACCEPTED));
+		return ResponseEntity.ok().body(new Msg("Agent added to your centre successfully.", HttpStatus.ACCEPTED));
 	}
 
 }

@@ -37,7 +37,7 @@ public class TestResult {
 	
 	//foreign key of patient(id) table to specify tests of particular patient
 	@ManyToOne
-	@JoinColumn(name = "patientId", referencedColumnName = "pId")
+	@JoinColumn(name = "patientId", referencedColumnName = "patientId")
 	private Patient patientId;
 	
 	//foreign key of service(id) table to specify tests of diagnostic service

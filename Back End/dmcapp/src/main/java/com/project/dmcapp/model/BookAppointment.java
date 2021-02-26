@@ -20,8 +20,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter 
+//@Getter
+//@Setter 
 @NoArgsConstructor 
 @AllArgsConstructor
 
@@ -47,7 +47,7 @@ public class BookAppointment {
 	//foreign keys
 	
 	@ManyToOne
-	@JoinColumn(name = "patientId", referencedColumnName = "pId")
+	@JoinColumn(name = "patientId", referencedColumnName = "patientId")
 	private Patient patientId;
 	
 	@ManyToOne
@@ -57,9 +57,11 @@ public class BookAppointment {
 	@ManyToOne
 	@JoinColumn(name = "dgserviceId", referencedColumnName = "serviceId")
 	private DiagnosticService diagnosticService;
+	
 	@ManyToOne
-    @JoinColumn(name = "agentId", referencedColumnName = "agentId")
-    private Agent agentId;
+	@JoinColumn(name = "agentId", referencedColumnName = "agentId")
+	private Agent agentId;
+
 	
 
 }
