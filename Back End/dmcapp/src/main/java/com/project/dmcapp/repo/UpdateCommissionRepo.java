@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.project.dmcapp.model.UpdateCommission;
 
-public interface UpadateCommissionRepo extends JpaRepository <UpdateCommission, Integer> {
+public interface UpdateCommissionRepo extends JpaRepository <UpdateCommission, Integer> {
     
 	
 //	@Query("SELECT u FROM User u WHERE u.status = 1")

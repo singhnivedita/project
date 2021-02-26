@@ -2,11 +2,14 @@ use dmcdb;
 
 
 show tables;
+select * from testresult_table;
+
+select * from updatetreatment_table;
 select * from Request_table;
 select * from patient_table;
 select * from service_table;
 Insert into Request_table Values
-("1","2021-09-01", "cough","Yes","1330","1","1","2");
+("3","2021-09-01", "cough","Yes","1330","1","1","2");
 
 Insert into service_table Values
 ("1","2008", "Not any","Radiology","19:30:10");
@@ -16,7 +19,7 @@ Insert into doctor_table Values
 desc Request_table;
 desc service_table;
 desc doctor_table;
-
+Select patientId FROM Request_table  WHERE docId="1";
 
 
 
