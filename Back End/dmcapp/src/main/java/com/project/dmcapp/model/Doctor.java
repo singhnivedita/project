@@ -32,9 +32,9 @@ public class Doctor {
 	@NotNull
 	private int docId;
 	@NotNull
-	private String fName;
+	private String firstName;
 	@NotNull
-	private String lName;
+	private String lastName;
 	@NotNull
 	private Date dob;
 	@NotNull

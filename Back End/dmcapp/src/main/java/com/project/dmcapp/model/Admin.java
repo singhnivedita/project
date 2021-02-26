@@ -28,9 +28,9 @@ public class Admin {
 	@NotNull
 	private int adminId;
 	@NotNull
-	private String fName;
+	private String firstName;
 	@NotNull
-	private String lName;
+	private String lastName;
 	@NotNull
 	@Size(min = 6, max = 15)
 	private String password;

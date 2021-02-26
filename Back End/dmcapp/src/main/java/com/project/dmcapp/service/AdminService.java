@@ -1,5 +1,3 @@
-
-
 package com.project.dmcapp.service;
 
 import java.util.List;
@@ -70,7 +68,7 @@ public class AdminService {
 	public boolean updateTestResult(TestResult testResult) {
         //log.info("START");
       
-       List<TestResult> testResultOld1 = testResultRepo.getallTestPatient(testResult.getPatientId().getPId());
+       List<TestResult> testResultOld1 = testResultRepo.getallTestPatient(testResult.getPatientId().getPatientId());
         
         TestResult testResultOld2 = (TestResult) testResultOld1.stream().filter(p->p.getTestId().equals(testResult.getTestId()));
         if(testResultOld2 == null)
@@ -82,15 +80,15 @@ public class AdminService {
     }
 	
 	//update commission table
-	public boolean modifyCommissionTable(int serviceId,int baselinevalue) {
+	public boolean modifyCommissionTable(int serviceId,UpdateCommission updateCommission) {
 		
 		UpdateCommission updateCommissionold = updateCommissionRepo.findCommissionByService(serviceId);
 		
 		if(updateCommissionold == null)
 			return false;
 		
-		updateCommissionold.setBaselineValue(baselinevalue);
-		updateCommissionRepo.save(updateCommissionold);
+		
+		updateCommissionRepo.save(updateCommission);
 		return true;
 	}
 	
@@ -98,4 +96,3 @@ public class AdminService {
 	
 
 }
-

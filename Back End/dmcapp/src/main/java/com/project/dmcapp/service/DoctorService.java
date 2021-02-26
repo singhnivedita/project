@@ -36,10 +36,11 @@ public class DoctorService {
 	public boolean updateTestResult(TestResult testResult) {
         //log.info("START");
       
-       List<TestResult> testResultOld1 = testResultRepo.getallTestPatient(testResult.getPatientId().getPId());
-        if(testResultOld1 == null)
-            return false;
+       List<TestResult> testResultOld1 = testResultRepo.getallTestPatient(testResult.getPatientId().getPatientId());
+        
         TestResult testResultOld2 = (TestResult) testResultOld1.stream().filter(p->p.getTestId().equals(testResult.getTestId()));
+        if(testResultOld2 == null)
+            return false;
         testResultRepo.save(testResult);
       
         //log.info("END");
@@ -51,7 +52,7 @@ public class DoctorService {
 		public boolean updateTreatmentHistory(UpdateTreatment updateTreatment) {
 			//log.info("START");
 			
-			UpdateTreatment updateTreatmentOld = updateTreatmentRepo.getTreatmentHistory(updateTreatment.getPatientId().getPId());
+			UpdateTreatment updateTreatmentOld = updateTreatmentRepo.getTreatmentHistory(updateTreatment.getPatientId().getPatientId());
 			
 			if(updateTreatmentOld == null)
 				return false;

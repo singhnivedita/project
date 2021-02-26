@@ -35,8 +35,8 @@ class DmcappApplicationTests {
 	public void testRegisterPateint() {
 
 		Patient patient = new Patient();
-		patient.setFName("Ram");
-		patient.setLName("Singh");
+		patient.setFirstName("Ram");
+		patient.setLastName("Singh");
 		Date date = null;
 		date = Date.valueOf("1980-09-01");
 		patient.setDob(date);
@@ -55,8 +55,8 @@ class DmcappApplicationTests {
 	public void testRegisterDoctor() {
 
 		Doctor doctor = new Doctor();
-		doctor.setFName("Dr. MP");
-		doctor.setLName("Singh");
+		doctor.setFirstName("Dr. MP");
+		doctor.setLastName("Singh");
 		Date date = null;
 		date = Date.valueOf("1984-01-01");
 		doctor.setDob(date);
@@ -78,8 +78,8 @@ class DmcappApplicationTests {
 
 		Agent agent = new Agent();
 		agent.setAgentId(101);
-		agent.setFName("Aryan");
-		agent.setLName("Singh");
+		agent.setFirstName("Aryan");
+		agent.setLastName("Singh");
 		Date date = null;
 		date = Date.valueOf("1984-01-01");
 		agent.setDob(date);

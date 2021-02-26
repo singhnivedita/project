@@ -36,9 +36,9 @@ public class Agent {
 	@NotNull
 	private int agentId;
 	@NotNull
-	private String fName;
+	private String firstName;
 	@NotNull
-	private String lName;
+	private String lastName;
 	@NotNull
 	private Date dob;
 	@NotNull
@@ -51,7 +51,6 @@ public class Agent {
 	@Size(min = 6, max = 15)
 	private String password;
 	@NotNull
-	@Pattern(regexp = "^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$")
 	private String email;
 	@NotNull
 	@Column(length = 15)
