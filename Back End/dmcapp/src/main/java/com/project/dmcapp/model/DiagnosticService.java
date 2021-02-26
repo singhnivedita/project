@@ -31,13 +31,13 @@ public class DiagnosticService {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NotNull
-	private Integer serviceId ;
+	private int serviceId ;
 	@NotNull
 	private String serviceName;
 	@NotNull
 	private int cost;
 	@NotNull
-	private Time time;
+	private String time;
 	
 	@Size(min = 10, max = 100)
 	private String instruction;
