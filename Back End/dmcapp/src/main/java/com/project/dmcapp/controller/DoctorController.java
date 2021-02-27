@@ -70,4 +70,14 @@ public class DoctorController {
 			
 		
 		//updateAppointmentStatus
+			@GetMapping("/approve/{appointmentId}")
+			public ResponseEntity<String> approveAppointment(@PathVariable int appointmentId) {
+				return new ResponseEntity<>(doctorService.approveAppointment(appointmentId), HttpStatus.OK);
+			}
+
+			@GetMapping("/reject/{appointmentId}")
+			public ResponseEntity<String> rejectAppointment(@PathVariable int appointmentId) {
+				return new ResponseEntity<>(doctorService.rejectAppointment(appointmentId), HttpStatus.OK);
+
+			}
 }

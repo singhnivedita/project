@@ -69,7 +69,7 @@ public class DoctorService {
 		}
 		
 		
-		//updateAppointmentStatus
+		//update AppointmentStatus
 		@Transactional
 		public String approveAppointment(int appointmentId) {
 			BookAppointment bookappointment = bookAppointmentRepo.findById(appointmentId)
