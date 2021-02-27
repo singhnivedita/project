@@ -28,6 +28,10 @@ public class DoctorController {
 	@Autowired
 	DoctorService doctorService;
 	
+	//Doctor login
+	
+	//Docotr Registration
+	
 	
 	//view appointment details made by patient respect to doctor
 		@GetMapping("/appointment/{id}")

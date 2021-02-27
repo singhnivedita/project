@@ -33,10 +33,11 @@ public class PatientController {
 	@Autowired
 	PatientService patientService;
 	
-//	@GetMapping("/status")
-//    public List<BookAppointment> getAppointmentStatus1(@PathVariable int pId) {
-//        return patientService.getAppointmentStatusPatient(pId);
-//    }
+	//Patient Registration
+	
+	
+	
+	//Patient Login
 	
 	
 	//for new booking
