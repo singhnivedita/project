@@ -1,6 +1,7 @@
 package com.project.dmcapp.model;
 
 import java.sql.Date;
+import java.sql.Time;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,8 +21,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-//@Getter
-//@Setter 
+@Getter
+@Setter 
 @NoArgsConstructor 
 @AllArgsConstructor
 
@@ -36,7 +37,7 @@ public class BookAppointment {
 	@NotNull
 	private Date date;
 	@NotNull
-	private Integer time;
+	private Time  time;
 	@NotNull
 	private String remark;
 	@NotNull
