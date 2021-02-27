@@ -40,9 +40,13 @@ public class BookAppointment {
 	private Time  time;
 	@NotNull
 	private String remark;
-	@NotNull
-	@Value("Yes")
-	private String status; 
+
+	//	@NotNull
+//	@Value("Yes")
+//	private String status;
+	
+	@Column(columnDefinition = "boolean default false")
+	private boolean status;
 
 	//change all primitive type to wrapper
 	//foreign keys
