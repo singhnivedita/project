@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.project.dmcapp.dto.AuthRequestUser;
+import com.project.dmcapp.dto.AuthResponseUser;
 import com.project.dmcapp.model.BookAppointment;
 import com.project.dmcapp.model.DiagnosticService;
 import com.project.dmcapp.model.Msg;
@@ -29,6 +31,11 @@ public class AgentController {
 	
 	
 	//Agent Login
+	@PostMapping("/login")
+	public ResponseEntity<AuthResponseUser> agentLogin(@RequestBody AuthRequestUser user) {
+		// TODO Auto-generated method stub
+		return new ResponseEntity<AuthResponseUser>(agentService.agentLogin(user),HttpStatus.OK);
+	}
 	
 	
 	//view diagnostic services

@@ -8,15 +8,20 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.project.dmcapp.dto.AuthRequestUser;
+import com.project.dmcapp.dto.AuthResponseUser;
 import com.project.dmcapp.exception.DoctorAppointmentNotFoundException;
 import com.project.dmcapp.exception.TestResultNotFoundException;
 import com.project.dmcapp.model.BookAppointment;
+import com.project.dmcapp.model.Doctor;
 import com.project.dmcapp.model.Msg;
+import com.project.dmcapp.model.Patient;
 import com.project.dmcapp.model.TestResult;
 import com.project.dmcapp.model.UpdateTreatment;
 import com.project.dmcapp.service.DoctorService;
@@ -28,9 +33,25 @@ public class DoctorController {
 	@Autowired
 	DoctorService doctorService;
 	
-	//Doctor login
+	
 	
 	//Docotr Registration
+	
+		@PostMapping("/registration")
+		public ResponseEntity<Msg> doctorRegistration(@RequestBody Doctor doctorData) {
+			
+			doctorService.doctorRegistration(doctorData);
+			
+			return ResponseEntity.ok().body(new Msg(HttpStatus.ACCEPTED, LocalDateTime.now(), "Registration successfully"));
+		}
+		
+		
+		//Doctor login
+		@PostMapping("/login")
+		public ResponseEntity<AuthResponseUser> doctorLogin(@RequestBody AuthRequestUser user) {
+			// TODO Auto-generated method stub
+			return new ResponseEntity<AuthResponseUser>(doctorService.loginDoctor(user),HttpStatus.OK);
+		}
 	
 	
 	//view appointment details made by patient respect to doctor

@@ -1,15 +1,24 @@
 package com.project.dmcapp.service;
 
 import java.util.List;
+import java.util.Optional;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.dmcapp.dto.AuthRequestUser;
+import com.project.dmcapp.dto.AuthResponseUser;
+import com.project.dmcapp.exception.UnauthorisedException;
+import com.project.dmcapp.model.Admin;
 import com.project.dmcapp.model.DiagnosticCentre;
 import com.project.dmcapp.model.DiagnosticService;
-
+import com.project.dmcapp.model.Doctor;
+import com.project.dmcapp.model.Role;
 import com.project.dmcapp.model.TestResult;
 import com.project.dmcapp.model.UpdateCommission;
+import com.project.dmcapp.repo.AdminRepo;
 import com.project.dmcapp.repo.DiagnosticCentreRepo;
 import com.project.dmcapp.repo.DiagnosticServiceRepo;
 
@@ -32,6 +41,34 @@ public class AdminService {
 	
 	@Autowired
 	TestResultRepo testResultRepo;
+	
+	
+	@Autowired
+	AdminRepo adminRepo;
+	
+	
+	
+	
+	
+	
+	
+			///////login
+			@Transactional
+			public AuthResponseUser loginAdmin(AuthRequestUser user) {
+				
+				Optional<Admin> adminCheck = adminRepo.findByIdAndPassword(user.getUserId(),user.getPassword());
+				if (!adminCheck.isPresent()) {
+						
+					throw new UnauthorisedException();
+					
+				}
+					Admin admin = adminCheck.get();
+					Role userRole = adminCheck.get().getRole();
+					
+					AuthResponseUser  authResponseUser = new AuthResponseUser(admin.getAdminId(),admin.getFirstName(),admin.getLastName(), userRole.getRoleName(), "jwt-token");
+				
+				return authResponseUser;
+			}	
 	
 	//add diagnostic service to the centre
 	public boolean addService(int centreId, int serviceId) {
@@ -63,7 +100,10 @@ public class AdminService {
 	}
 	
 	//add an agent
-
+	//directly in the controller class
+	
+	
+	
 	//update test result
 	public boolean updateTestResult(TestResult testResult) {
         //log.info("START");

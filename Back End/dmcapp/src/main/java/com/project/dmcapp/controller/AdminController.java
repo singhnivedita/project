@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.project.dmcapp.dto.AuthRequestUser;
+import com.project.dmcapp.dto.AuthResponseUser;
 import com.project.dmcapp.exception.CommissionforServiceNotFoundException;
 
 import com.project.dmcapp.exception.ServiceNotFoundException;
@@ -36,6 +38,12 @@ public class AdminController {
 	
 	
 	//Admin Login
+	@PostMapping("/login")
+	public ResponseEntity<AuthResponseUser> adminLogin(@RequestBody AuthRequestUser user) {
+		// TODO Auto-generated method stub
+		return new ResponseEntity<AuthResponseUser>(adminService.loginAdmin(user),HttpStatus.OK);
+	}
+	
 	
 	
 	//add a service
@@ -79,7 +87,7 @@ public class AdminController {
 		return ResponseEntity.ok().body(new Msg(HttpStatus.ACCEPTED, LocalDateTime.now(), "Baseline value updated successfully"));
       }
 	
-	//add agent
+	//add agent / Register agent
 	@PostMapping("/create-agent")
 	public ResponseEntity<Msg> addService(@RequestBody Agent agent) {
 		

@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.project.dmcapp.dto.AuthRequestUser;
+import com.project.dmcapp.dto.AuthResponseUser;
 import com.project.dmcapp.exception.BookingNotFoundException;
 import com.project.dmcapp.exception.TestResultNotFoundException;
 import com.project.dmcapp.exception.TreatmentHistoryNotFoundException;
@@ -34,10 +36,21 @@ public class PatientController {
 	PatientService patientService;
 	
 	//Patient Registration
-	
+	@PostMapping("/registration")
+	public ResponseEntity<Msg> patientRegistration(@RequestBody Patient patientData) {
+		
+		patientService.patientregistration(patientData);
+		
+		return ResponseEntity.ok().body(new Msg(HttpStatus.ACCEPTED, LocalDateTime.now(), "Registration successfully"));
+	}
 	
 	
 	//Patient Login
+	@PostMapping("/login")
+	public ResponseEntity<AuthResponseUser> patientLogin(@RequestBody AuthRequestUser user) {
+		// TODO Auto-generated method stub
+		return new ResponseEntity<AuthResponseUser>(patientService.loginPatient(user),HttpStatus.OK);
+	}
 	
 	
 	//for new booking

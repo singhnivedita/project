@@ -1,10 +1,16 @@
 package com.project.dmcapp.service;
 
 import java.util.List;
+import java.util.Optional;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.dmcapp.dto.AuthRequestUser;
+import com.project.dmcapp.dto.AuthResponseUser;
+import com.project.dmcapp.exception.UnauthorisedException;
 import com.project.dmcapp.model.BookAppointment;
 import com.project.dmcapp.model.DiagnosticService;
 import com.project.dmcapp.model.TestResult;
@@ -14,12 +20,14 @@ import com.project.dmcapp.repo.DiagnosticServiceRepo;
 import com.project.dmcapp.repo.PatientRepo;
 import com.project.dmcapp.repo.TestResultRepo;
 import com.project.dmcapp.repo.UpdateTreatmentRepo;
+import com.project.dmcapp.model.Patient;
+import com.project.dmcapp.model.Role;
 
 @Service 
 public class PatientService {
 	
 	@Autowired
-	PatientRepo pateintRepo;
+	PatientRepo patientRepo;
 	
 	@Autowired
 	DiagnosticServiceRepo diagnosisServiceRepo;
@@ -33,6 +41,33 @@ public class PatientService {
 	@Autowired
 	TestResultRepo testResultRepo;
 	
+	
+	
+	//registration
+	public String patientregistration(Patient patient) {
+		patientRepo.save(patient);
+		
+		return "Patient Registration Successful";
+		
+	}
+	
+	//login
+	@Transactional
+	public AuthResponseUser loginPatient(AuthRequestUser user) {
+		
+		Optional<Patient> patientCheck = patientRepo.findByIdAndPassword(user.getUserId(),user.getPassword());
+		if (!patientCheck.isPresent()) {
+				
+			throw new UnauthorisedException();
+			
+		}
+			Patient patient = patientCheck.get();
+			Role userRole = patientCheck.get().getRole();
+			
+			AuthResponseUser  authResponseUser = new AuthResponseUser(patient.getPatientId(),patient.getFirstName(),patient.getLastName(), userRole.getRoleName(), "jwt-token");
+		
+		return authResponseUser;
+	}
 	
 //	//to get all the service list/ details for patient
 	public List<DiagnosticService> getDiagnosticService(){

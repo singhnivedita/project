@@ -1,17 +1,27 @@
 package com.project.dmcapp.service;
 
 import java.util.List;
+import java.util.Optional;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.dmcapp.dto.AuthRequestUser;
+import com.project.dmcapp.dto.AuthResponseUser;
+import com.project.dmcapp.exception.UnauthorisedException;
 import com.project.dmcapp.model.BookAppointment;
 import com.project.dmcapp.model.DiagnosticService;
+import com.project.dmcapp.model.Doctor;
+import com.project.dmcapp.model.Role;
+import com.project.dmcapp.repo.AgentRepo;
 import com.project.dmcapp.repo.BookAppointmentRepo;
 import com.project.dmcapp.repo.DiagnosticServiceRepo;
 import com.project.dmcapp.repo.PatientRepo;
 import com.project.dmcapp.repo.TestResultRepo;
 import com.project.dmcapp.repo.UpdateTreatmentRepo;
+import com.project.dmcapp.model.Agent;
 
 @Service
 public class AgentService {
@@ -32,6 +42,28 @@ public class AgentService {
 	TestResultRepo testResultRepo;
 	
 	
+	
+	@Autowired
+	AgentRepo agentRepo; 
+	
+	//login 
+	//login
+			@Transactional
+			public AuthResponseUser agentLogin(AuthRequestUser user) {
+				
+				Optional<Agent> agentCheck = agentRepo.findByIdAndPassword(user.getUserId(),user.getPassword());
+				if (!agentCheck.isPresent()) {
+						
+					throw new UnauthorisedException();
+					
+				}
+					Agent agent = agentCheck.get();
+					Role userRole = agentCheck.get().getRole();
+					
+					AuthResponseUser  authResponseUser = new AuthResponseUser(agent.getAgentId(),agent.getFirstName(),agent.getLastName(), userRole.getRoleName(), "jwt-token");
+				
+				return authResponseUser;
+			}	
 	//to get all the service list/ details for agents and patients
 	public List<DiagnosticService> getDiagnosticService(){
 		return diagnosisServiceRepo.findAll();

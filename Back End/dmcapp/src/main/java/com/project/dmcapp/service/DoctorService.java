@@ -1,18 +1,26 @@
 package com.project.dmcapp.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.dmcapp.dto.AuthRequestUser;
+import com.project.dmcapp.dto.AuthResponseUser;
 import com.project.dmcapp.exception.BookingNotFoundException;
+import com.project.dmcapp.exception.UnauthorisedException;
 import com.project.dmcapp.model.BookAppointment;
+import com.project.dmcapp.model.Doctor;
+import com.project.dmcapp.model.Patient;
+import com.project.dmcapp.model.Role;
 import com.project.dmcapp.model.TestResult;
 import com.project.dmcapp.model.UpdateTreatment;
 import com.project.dmcapp.repo.BookAppointmentRepo;
 import com.project.dmcapp.repo.DiagnosticServiceRepo;
+import com.project.dmcapp.repo.DoctorRepo;
 import com.project.dmcapp.repo.PatientRepo;
 import com.project.dmcapp.repo.TestResultRepo;
 import com.project.dmcapp.repo.UpdateTreatmentRepo;
@@ -21,6 +29,12 @@ import com.project.dmcapp.repo.UpdateTreatmentRepo;
 public class DoctorService {
 	@Autowired
 	PatientRepo pateintRepo;
+	
+	
+	
+
+	@Autowired
+	DoctorRepo doctorRepo;
 	
 	@Autowired
 	DiagnosticServiceRepo diagnosisServiceRepo;
@@ -35,6 +49,30 @@ public class DoctorService {
 	UpdateTreatmentRepo updateTreatmentRepo;
 	
 	
+	//registration
+		public String doctorRegistration(Doctor doctor) {
+			doctorRepo.save(doctor);
+			
+			return "Doctor Registration Successful";
+		}
+		
+		//login
+		@Transactional
+		public AuthResponseUser loginDoctor(AuthRequestUser user) {
+			
+			Optional<Doctor> doctorCheck = doctorRepo.findByIdAndPassword(user.getUserId(),user.getPassword());
+			if (!doctorCheck.isPresent()) {
+					
+				throw new UnauthorisedException();
+				
+			}
+				Doctor doctor = doctorCheck.get();
+				Role userRole = doctorCheck.get().getRole();
+				
+				AuthResponseUser  authResponseUser = new AuthResponseUser(doctor.getDocId(),doctor.getFirstName(),doctor.getLastName(), userRole.getRoleName(), "jwt-token");
+			
+			return authResponseUser;
+		}	
 	//Update Test Result by doctor based on the patient id of the patient
 	@Transactional
 	public boolean updateTestResult(TestResult testResult) {
