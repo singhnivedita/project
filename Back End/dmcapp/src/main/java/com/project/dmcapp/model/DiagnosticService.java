@@ -9,10 +9,12 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -45,9 +47,16 @@ public class DiagnosticService {
 	@Size(min = 10, max = 100)
 	private String instruction;
 	
-	@ManyToMany(mappedBy="diagnosticServiceList")
+	
+	
+	@ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY )
+    @JoinTable(
+     name = "Centre_Service", 
+     joinColumns =  {@JoinColumn(name = "serviceId")} , 
+     inverseJoinColumns =  {@JoinColumn(name = "centreId")} 
+  )
    // @JoinColumn(name = "diagnosticCenterId", referencedColumnName = "dgcId")
-    private List<DiagnosticCentre> diagnosticCentre =new ArrayList<>();
+    private List<DiagnosticCentre> diagnosticCentreList =new ArrayList<>();
 	//private Set<DiagnosticCentre> diagnosticCentre = new HashSet<>();
 	
 }

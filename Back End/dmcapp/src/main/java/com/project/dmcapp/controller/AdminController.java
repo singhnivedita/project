@@ -1,10 +1,12 @@
 package com.project.dmcapp.controller;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -19,11 +21,13 @@ import com.project.dmcapp.exception.CommissionforServiceNotFoundException;
 import com.project.dmcapp.exception.ServiceNotFoundException;
 import com.project.dmcapp.exception.TestResultNotFoundException;
 import com.project.dmcapp.model.Agent;
+import com.project.dmcapp.model.DiagnosticCentre;
 import com.project.dmcapp.model.DiagnosticService;
 import com.project.dmcapp.model.Msg;
 import com.project.dmcapp.model.TestResult;
 import com.project.dmcapp.model.UpdateCommission;
 import com.project.dmcapp.repo.AgentRepo;
+import com.project.dmcapp.repo.DiagnosticCentreRepo;
 import com.project.dmcapp.service.AdminService;
 
 @RestController
@@ -35,6 +39,9 @@ public class AdminController {
 	@Autowired
 	private AgentRepo agentRepo;
 	
+	@Autowired
+	DiagnosticCentreRepo diagnosticCentreRepo;
+	
 	//Admin Login
 		@PostMapping("/login")
 		public ResponseEntity<AuthResponseUser> adminLogin(@RequestBody AuthRequestUser user) {
@@ -42,8 +49,15 @@ public class AdminController {
 			return new ResponseEntity<AuthResponseUser>(adminService.loginAdmin(user),HttpStatus.OK);
 		}
 	
+		
+		//show centre
+		@GetMapping("/diagnostic-centre")
+		public ResponseEntity<List<DiagnosticCentre>> getAllDiagnosticService(){
+			
+			return new ResponseEntity<>(diagnosticCentreRepo.findAll(), HttpStatus.OK);
+		}
 	//add a service
-	@PutMapping("/{centreId}/{serviceId}")
+	@PutMapping("add-service/{centreId}/{serviceId}")
 	public ResponseEntity<Msg> addService(@PathVariable("centreId") int centreId, @PathVariable("serviceId") int serviceId) {
 		boolean addStatus = adminService.addService(centreId,serviceId);
 		
