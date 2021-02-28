@@ -2,7 +2,10 @@ package com.project.dmcapp.model;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -42,8 +45,9 @@ public class DiagnosticService {
 	@Size(min = 10, max = 100)
 	private String instruction;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(mappedBy="diagnosticServiceList")
    // @JoinColumn(name = "diagnosticCenterId", referencedColumnName = "dgcId")
-    private List<DiagnosticCentre> diagnosticCentre;
+    private List<DiagnosticCentre> diagnosticCentre =new ArrayList<>();
+	//private Set<DiagnosticCentre> diagnosticCentre = new HashSet<>();
 	
 }

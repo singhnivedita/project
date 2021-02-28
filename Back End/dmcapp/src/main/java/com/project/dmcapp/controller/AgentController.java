@@ -29,13 +29,13 @@ public class AgentController {
 	@Autowired
 	AgentService agentService;
 	
-	
 	//Agent Login
-	@PostMapping("/login")
-	public ResponseEntity<AuthResponseUser> agentLogin(@RequestBody AuthRequestUser user) {
-		// TODO Auto-generated method stub
-		return new ResponseEntity<AuthResponseUser>(agentService.agentLogin(user),HttpStatus.OK);
-	}
+		@PostMapping("/login")
+		public ResponseEntity<AuthResponseUser> agentLogin(@RequestBody AuthRequestUser user) {
+			// TODO Auto-generated method stub
+			return new ResponseEntity<AuthResponseUser>(agentService.agentLogin(user),HttpStatus.OK);
+		}
+	
 	
 	
 	//view diagnostic services

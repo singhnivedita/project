@@ -16,7 +16,7 @@ public interface BookAppointmentRepo extends JpaRepository<BookAppointment, Inte
 	
 	//view appointment status
 
-	@Query("Select patientId FROM BookAppointment b WHERE b.patientId=:patientId ")
+	@Query("Select b FROM BookAppointment b WHERE b.patientId.patientId=?1 ")
 	//@Query(value="select* from Request_table Inner Join patient_table on patient_table.pId = Request_table.patientId AND Request_table.status ='Yes' ", nativeQuery = true)
 	public List<BookAppointment> getAppointmentStatusPatient(int patientId);
 
@@ -28,11 +28,11 @@ public interface BookAppointmentRepo extends JpaRepository<BookAppointment, Inte
 	
 	
 	//view patient  details who has booked for appointment (display in doctor dashboard based on his id )
-		@Query("Select b FROM BookAppointment b WHERE b.doctorId =:doctorId")
+		@Query("Select b FROM BookAppointment b WHERE b.doctorId.docId =?1")
 	    public List<BookAppointment> getallpatientId(Integer doctorId);
 		
 	//agent can see his commission based on the request he raised	
-		@Query("Select b FROM BookAppointment b WHERE b.agentId =:agentId")
+		@Query("Select b FROM BookAppointment b WHERE b.agentId.agentId =?1")
 		public  List<BookAppointment>getviewCommission(int agentId);
 		
 		

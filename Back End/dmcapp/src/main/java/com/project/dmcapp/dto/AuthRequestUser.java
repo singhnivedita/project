@@ -16,4 +16,3 @@ public class AuthRequestUser {
 	private int userId;
 	private String password; 
 }
-

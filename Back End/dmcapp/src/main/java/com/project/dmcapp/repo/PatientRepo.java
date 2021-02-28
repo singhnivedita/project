@@ -18,8 +18,10 @@ public interface PatientRepo extends JpaRepository<Patient, Integer> {
 	
 	@Query(value = "select* from patient_table Inner Join role_table on patient_table.roleId = role_table.roleId AND role_table.roleName: roleName", nativeQuery = true)
 	public List<Patient> findPatientByRoleName(String roleName);
-
-	@Query("Select p from Patient Where patientId= ?1 AND password =?2")
+	
+	@Query("Select p from Patient p Where patientId= ?1 AND password =?2")
 	public Optional<Patient> findByIdAndPassword(int userId,String password);
+	
+
 	
 }	

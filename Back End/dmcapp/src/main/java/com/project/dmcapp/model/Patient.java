@@ -1,7 +1,7 @@
 package com.project.dmcapp.model;
 
 import java.sql.Date;
-
+import java.util.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -55,4 +56,7 @@ public class Patient {
 	@ManyToOne
 	@JoinColumn(name = "roleId", referencedColumnName = "roleId")
 	private Role role;
+	
+	@OneToMany(mappedBy="patientId")
+	private List<BookAppointment> appointments = new ArrayList<>();
 }

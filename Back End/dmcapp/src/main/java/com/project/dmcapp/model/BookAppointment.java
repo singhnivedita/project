@@ -15,6 +15,9 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Value;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,7 +28,7 @@ import lombok.Setter;
 @Setter 
 @NoArgsConstructor 
 @AllArgsConstructor
-
+@JsonInclude(Include.NON_NULL)
 @Entity
 @Table(name = "request_table")
 public class BookAppointment {
@@ -37,16 +40,12 @@ public class BookAppointment {
 	@NotNull
 	private Date date;
 	@NotNull
-	private Time  time;
+	private Time time;
 	@NotNull
 	private String remark;
-
-	//	@NotNull
-//	@Value("Yes")
-//	private String status;
-	
-	@Column(columnDefinition = "boolean default false")
-	private boolean status;
+	@NotNull
+	@Value("Yes")
+	private boolean status; 
 
 	//change all primitive type to wrapper
 	//foreign keys
@@ -64,7 +63,8 @@ public class BookAppointment {
 	private DiagnosticService diagnosticService;
 	
 	@ManyToOne
-	@JoinColumn(name = "agentId", referencedColumnName = "agentId")
+	@JoinColumn(name = "agentId", referencedColumnName = "agentPk")
+	
 	private Agent agentId;
 
 	

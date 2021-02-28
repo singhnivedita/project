@@ -14,7 +14,6 @@ import com.project.dmcapp.exception.UnauthorisedException;
 import com.project.dmcapp.model.Admin;
 import com.project.dmcapp.model.DiagnosticCentre;
 import com.project.dmcapp.model.DiagnosticService;
-import com.project.dmcapp.model.Doctor;
 import com.project.dmcapp.model.Role;
 import com.project.dmcapp.model.TestResult;
 import com.project.dmcapp.model.UpdateCommission;
@@ -42,17 +41,10 @@ public class AdminService {
 	@Autowired
 	TestResultRepo testResultRepo;
 	
-	
 	@Autowired
 	AdminRepo adminRepo;
 	
-	
-	
-	
-	
-	
-	
-			///////login
+///////login
 			@Transactional
 			public AuthResponseUser loginAdmin(AuthRequestUser user) {
 				
@@ -100,18 +92,15 @@ public class AdminService {
 	}
 	
 	//add an agent
-	//directly in the controller class
-	
-	
-	
+
 	//update test result
 	public boolean updateTestResult(TestResult testResult) {
         //log.info("START");
       
-       List<TestResult> testResultOld1 = testResultRepo.getallTestPatient(testResult.getPatientId().getPatientId());
+       TestResult testResultOld = testResultRepo.findById(testResult.getTestId()).orElse(null);
         
-        TestResult testResultOld2 = (TestResult) testResultOld1.stream().filter(p->p.getTestId().equals(testResult.getTestId()));
-        if(testResultOld2 == null)
+        //TestResult testResultOld2 = (TestResult) testResultOld1.stream().filter(p->p.getTestId().equals(testResult.getTestId()));
+        if(testResultOld == null)
             return false;
         testResultRepo.save(testResult);
       

@@ -1,6 +1,7 @@
 package com.project.dmcapp.model;
 
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -41,7 +42,7 @@ public class TestResult {
 	private Patient patientId;
 	
 	//foreign key of service(id) table to specify tests of diagnostic service
-	@ManyToOne
-	@JoinColumn(name = "diagnosticServiceId", referencedColumnName = "serviceId")
-	private DiagnosticService diagnosticServiceId;
+	@ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "diagnosticServiceId", referencedColumnName = "serviceId")
+    private DiagnosticService diagnosticServiceId;
 }

@@ -2,20 +2,22 @@ package com.project.dmcapp.model;
 
 
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -50,18 +52,26 @@ public class DiagnosticCentre {
 	@NotNull
 	private String website;
 	@NotNull
-	@Column(length = 10)
-	@Pattern(regexp = "^[0-9]+$")
 	private String contactno;
 	@NotNull
 	private int zip;
 
+	//I feel the below serviceId is not required as we are doing the many to many mapping between centre and service
+	
 	@NotNull
 	private int serviceId;
 
-	@ManyToMany(cascade = CascadeType.ALL, mappedBy="diagnosticCentre")
+	@ManyToMany(cascade = CascadeType.ALL )
+    @JoinTable(
+     name = "Centre_Service", 
+     joinColumns =  {@JoinColumn(name = "centreId")} , 
+     inverseJoinColumns =  {@JoinColumn(name = "serviceId")} 
+  )
+	
+	//@ManyToMany
     //@JoinColumn(name = "diagnosticServiceId", referencedColumnName = "dgsId")
-    private List<DiagnosticService> diagnosticServiceList;
+    private List<DiagnosticService> diagnosticServiceList = new ArrayList<>();
+	//Set<DiagnosticService> diagnosticServiceList = new HashSet<>();
 
 	
 }

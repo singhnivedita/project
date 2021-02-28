@@ -28,6 +28,8 @@ import com.project.dmcapp.model.TestResult;
 import com.project.dmcapp.model.UpdateTreatment;
 import com.project.dmcapp.service.PatientService;
 
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
 @RestController
 @RequestMapping("/patient")
 public class PatientController {
@@ -35,22 +37,10 @@ public class PatientController {
 	@Autowired
 	PatientService patientService;
 	
-	//Patient Registration
-	@PostMapping("/registration")
-	public ResponseEntity<Msg> patientRegistration(@RequestBody Patient patientData) {
-		
-		patientService.patientregistration(patientData);
-		
-		return ResponseEntity.ok().body(new Msg(HttpStatus.ACCEPTED, LocalDateTime.now(), "Registration successfully"));
-	}
-	
-	
-	//Patient Login
-	@PostMapping("/login")
-	public ResponseEntity<AuthResponseUser> patientLogin(@RequestBody AuthRequestUser user) {
-		// TODO Auto-generated method stub
-		return new ResponseEntity<AuthResponseUser>(patientService.loginPatient(user),HttpStatus.OK);
-	}
+//	@GetMapping("/status")
+//    public List<BookAppointment> getAppointmentStatus1(@PathVariable int pId) {
+//        return patientService.getAppointmentStatusPatient(pId);
+//    }
 	
 	
 	//for new booking
@@ -64,9 +54,9 @@ public class PatientController {
 	
 	//booking status of patient
 	@GetMapping("/status/{id}")
-	public ResponseEntity<List<BookAppointment>> getAppointmentStatus(@PathVariable int pId) {
+	public ResponseEntity<List<BookAppointment>> getAppointmentStatus(@PathVariable("id") int pId) {
 		List<BookAppointment> bookAppointments = patientService.getAppointmentStatusPatient(pId);
-		
+		log.info("appointments size"+bookAppointments.size());
 		if(bookAppointments == null)
 			throw new BookingNotFoundException();
 		
@@ -84,7 +74,7 @@ public class PatientController {
 
 	//view treatment history
 	@GetMapping("/treatment-history/{id}") 
-	public ResponseEntity <UpdateTreatment> getTreatmentHistory(@PathVariable int pId) {
+	public ResponseEntity <UpdateTreatment> getTreatmentHistory(@PathVariable("id") int pId) {
 		UpdateTreatment updateTreatment = patientService.getTreatmentHistory(pId);
 		
 		if(updateTreatment == null)
@@ -95,13 +85,27 @@ public class PatientController {
 	
 	//view test result
 	@GetMapping("/test-result/{id}")
-	public ResponseEntity<List <TestResult>> getallTestPatient(@PathVariable int pId) {
-		List<TestResult> testResult = patientService.getallTestPatient(pId);
+	public ResponseEntity<List <TestResult>> getallTestPatient(@PathVariable("id") int patientId) {
+		List<TestResult> testResult = patientService.getallTestPatient(patientId);
 		
 		if(testResult == null)
 			throw new TestResultNotFoundException();
 		
 		return new ResponseEntity<>(testResult, HttpStatus.OK);
 	}
+	
+	@PostMapping("/register")
+	public ResponseEntity<Msg> registerUser(@RequestBody Patient patient) {
+		
+		patientService.registerUser(patient);
+		
+		return ResponseEntity.ok().body(new Msg(HttpStatus.ACCEPTED, LocalDateTime.now(), "Registered successfully"));
+	}
+	//Patient Login
+	@PostMapping("/login")
+		public ResponseEntity<AuthResponseUser> patientLogin(@RequestBody AuthRequestUser user) {
+			// TODO Auto-generated method stub
+			return new ResponseEntity<AuthResponseUser>(patientService.loginPatient(user),HttpStatus.OK);
+		}
 
 }

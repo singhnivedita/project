@@ -35,16 +35,12 @@ public class AdminController {
 	@Autowired
 	private AgentRepo agentRepo;
 	
-	
-	
 	//Admin Login
-	@PostMapping("/login")
-	public ResponseEntity<AuthResponseUser> adminLogin(@RequestBody AuthRequestUser user) {
-		// TODO Auto-generated method stub
-		return new ResponseEntity<AuthResponseUser>(adminService.loginAdmin(user),HttpStatus.OK);
-	}
-	
-	
+		@PostMapping("/login")
+		public ResponseEntity<AuthResponseUser> adminLogin(@RequestBody AuthRequestUser user) {
+			// TODO Auto-generated method stub
+			return new ResponseEntity<AuthResponseUser>(adminService.loginAdmin(user),HttpStatus.OK);
+		}
 	
 	//add a service
 	@PutMapping("/{centreId}/{serviceId}")
@@ -87,7 +83,7 @@ public class AdminController {
 		return ResponseEntity.ok().body(new Msg(HttpStatus.ACCEPTED, LocalDateTime.now(), "Baseline value updated successfully"));
       }
 	
-	//add agent / Register agent
+	//add agent
 	@PostMapping("/create-agent")
 	public ResponseEntity<Msg> addService(@RequestBody Agent agent) {
 		

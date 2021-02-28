@@ -10,7 +10,7 @@ import com.project.dmcapp.model.TestResult;
 public interface TestResultRepo extends JpaRepository <TestResult, Integer>{
 	//display all test results according to patient id 
 		//(view patient itself on the basis of id of patient)
-			@Query("Select t FROM TestResult t WHERE t.patientId=?1")
+			@Query("Select t FROM TestResult t WHERE t.patientId.patientId=?1")
 		    public List<TestResult> getallTestPatient(int patientId);
 			
 			

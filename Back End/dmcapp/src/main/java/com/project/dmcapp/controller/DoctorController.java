@@ -21,7 +21,6 @@ import com.project.dmcapp.exception.TestResultNotFoundException;
 import com.project.dmcapp.model.BookAppointment;
 import com.project.dmcapp.model.Doctor;
 import com.project.dmcapp.model.Msg;
-import com.project.dmcapp.model.Patient;
 import com.project.dmcapp.model.TestResult;
 import com.project.dmcapp.model.UpdateTreatment;
 import com.project.dmcapp.service.DoctorService;
@@ -33,30 +32,28 @@ public class DoctorController {
 	@Autowired
 	DoctorService doctorService;
 	
-	
-	
 	//Docotr Registration
 	
-		@PostMapping("/registration")
-		public ResponseEntity<Msg> doctorRegistration(@RequestBody Doctor doctorData) {
+			@PostMapping("/registration")
+			public ResponseEntity<Msg> doctorRegistration(@RequestBody Doctor doctorData) {
+				
+				doctorService.doctorRegistration(doctorData);
+				
+				return ResponseEntity.ok().body(new Msg(HttpStatus.ACCEPTED, LocalDateTime.now(), "Registration successfully"));
+			}
 			
-			doctorService.doctorRegistration(doctorData);
 			
-			return ResponseEntity.ok().body(new Msg(HttpStatus.ACCEPTED, LocalDateTime.now(), "Registration successfully"));
-		}
-		
-		
-		//Doctor login
-		@PostMapping("/login")
-		public ResponseEntity<AuthResponseUser> doctorLogin(@RequestBody AuthRequestUser user) {
-			// TODO Auto-generated method stub
-			return new ResponseEntity<AuthResponseUser>(doctorService.loginDoctor(user),HttpStatus.OK);
-		}
+			//Doctor login
+			@PostMapping("/login")
+			public ResponseEntity<AuthResponseUser> doctorLogin(@RequestBody AuthRequestUser user) {
+				// TODO Auto-generated method stub
+				return new ResponseEntity<AuthResponseUser>(doctorService.loginDoctor(user),HttpStatus.OK);
+			}
 	
 	
 	//view appointment details made by patient respect to doctor
 		@GetMapping("/appointment/{id}")
-		public ResponseEntity<List<BookAppointment>> getallpatientId(@PathVariable int docId) {
+		public ResponseEntity<List<BookAppointment>> getallpatientId(@PathVariable("id") int docId) {
 			List<BookAppointment> patientAppointmentDetails = doctorService.getallpatientId(docId);
 			
 			if(patientAppointmentDetails == null)
@@ -90,7 +87,8 @@ public class DoctorController {
 		}
 			
 		
-		//updateAppointmentStatus
+		
+			//updateAppointmentStatus
 			@GetMapping("/approve/{appointmentId}")
 			public ResponseEntity<String> approveAppointment(@PathVariable int appointmentId) {
 				return new ResponseEntity<>(doctorService.approveAppointment(appointmentId), HttpStatus.OK);
