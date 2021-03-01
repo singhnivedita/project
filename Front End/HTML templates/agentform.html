@@ -34,12 +34,12 @@
 		<!-- Register Form -->
 		<div class="form-wrapper"> <!-- Form-wrapper only for positioning -->
 			<form action="#non" method="post" class="fcorn-register container">
-				<p class="register-info"> DOCTOR REGISTRATION FORM</p>
+				<p class="register-info">AGENT REGISTRATION FORM</p>
                 <div><p class="col-md-6 role-wrap">
                     <select>
                         <option value="0" selected disabled>Role</option>
-                        <option value="1">Doctor</option>
-                        <option value="1">Patient</option>
+                        <option value="1">Agent</option>
+                      
                        
                         
                     </select>
@@ -52,6 +52,7 @@
                             <option value="2">Male</option>
                             
                         </select>
+						<p><input type="text" placeholder="Agent ID " required></p>
                 </p></div> 
 				<div class="row">
 					<p class="col-md-6"><input type="text" placeholder="First Name" required></p>
@@ -64,35 +65,13 @@
                 <p><input type="address" placeholder="Address" required>
                 <p>Date Of Birth<input type="date"></p> 
 
-                    <p><input type="text" placeholder="Qualification" required></p>
-                    <p><input type="text" placeholder="Speciality" required></p>
+                    <p><input type="text" placeholder="Contact NUmber" required></p>
+                    <p><input type="text" placeholder="Email" required></p>
+					<p><input type="text" placeholder="Bank Account Number" required></p>
+					<p><input type="text" placeholder="Bank Name" required></p>
+					<p><input type="text" placeholder="Bank IFSC" required></p>
                   
 
-				<div class="row">
-                    <select name="role" multiple>
-                        <option value="0" selected disabled>Diagnosis Services</option>
-                        <option value="1">Clinical diagnosis</option>
-                        <option value="2">  Laboratory diagnosis</option>
-                        <option value="3"> Radiology diagnosis</option>
-                        <option value="4">  Tissue diagnosis</option>
-                        <option value="5"> Principal diagnosis</option>
-                        <option value="6"> Admitting diagnosis</option>
-                        <option value="7"> Differential diagnosis</option>
-                        <option value="8"> Diagnostic criteria</option>
-                        <option value="9"> Prenatal diagnosis</option>
-                        <option value="10">Diagnosis work done before birth</option>
-                        <option value="11"> Diagnosis of exclusion</option>
-                        <option value="12"> Dual diagnosis</option>
-                        <option value="13">  Remote diagnosis</option>
-                        <option value="14"> Nursing diagnosis</option>
-                        <option value="15"> Computer-aided diagnosis</option>
-                        <option value="16"> Retrospective diagnosis</option>
-                       
-                        
-                    </select>
-      
-		
-        </div>
         	<p class="register-toggle">	</p>
 				<p class="register-submit"><input type="submit" value="Register Now"></p>
 			</form>
