@@ -64,6 +64,7 @@ insert into request_table  (requestId, date, time, remark, status, patientId, do
 insert into request_table  (requestId, date, time, remark, status, patientId, docId, dgserviceId, agentId) values (2, '2020-07-03', '10:36', 'Curabitur convallis.', true, 2, 2, 2, 2);
 insert into request_table  (requestId, date, time, remark, status, patientId, docId, dgserviceId, agentId) values (3, '2020-07-02', '21:26', 'Aliquam non mauris.', true, 3, 3, 3, 3);
 insert into request_table  (requestId, date, time, remark, status, patientId, docId, dgserviceId, agentId) values (4, '2021-02-02', '04:30', 'In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.', false, 4, 4, 4, 4);
+insert into request_table  (date, time, remark, status, patientId, docId, dgserviceId, agentId) values ('21-02-02', '10:04:30', 'Headacheeee', false, 1, 4, 4, 4);
 
 #centre_table
 desc centre_table;

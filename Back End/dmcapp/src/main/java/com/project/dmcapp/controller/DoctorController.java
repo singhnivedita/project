@@ -94,7 +94,10 @@ public class DoctorController {
 		}
 			
 		
-		
+		//get all appointments based on doctor id ----> needs to write this before approving the appointments
+			
+			
+			
 			//updateAppointmentStatus
 			@GetMapping("/approve/{appointmentId}")
 			public ResponseEntity<String> approveAppointment(@PathVariable int appointmentId) {

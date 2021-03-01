@@ -1,5 +1,6 @@
 package com.project.dmcapp.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.project.dmcapp.dto.AuthRequestUser;
 import com.project.dmcapp.dto.AuthResponseUser;
+import com.project.dmcapp.dto.DiagnosticServiceDTO;
 import com.project.dmcapp.exception.UnauthorisedException;
 import com.project.dmcapp.model.BookAppointment;
 import com.project.dmcapp.model.DiagnosticService;
@@ -44,6 +46,8 @@ public class PatientService {
 	
 //	//to get all the service list/ details for patient
 	public List<DiagnosticService> getDiagnosticService(){
+	// here we need to return dto so that the response is in one json object/whatever instead of nested.
+		//same thing is implemented in the last method of this class but not working
 		return diagnosisServiceRepo.findAll();
 	}
 	
@@ -101,6 +105,28 @@ public class PatientService {
 			return authResponseUser;
 
 		}
+		
+		/*
+		 * @Transactional public List<DiagnosticServiceDTO> getDiagnosticServiceAll() {
+		 * 
+		 * Optional<List<DiagnosticService>> diagnosticService =
+		 * Optional.of(diagnosisServiceRepo.findAll()); if
+		 * (!diagnosticService.isPresent()) {
+		 * 
+		 * throw new UnauthorisedException();
+		 * 
+		 * }
+		 * 
+		 * List<DiagnosticService> diagnosticServices = diagnosticService.get();
+		 * 
+		 * 
+		 * List<DiagnosticServiceDTO> diagnosticServicesdto = new ArrayList<>();
+		 * diagnosticServicesdto.copy(diagnosticServices);
+		 * 
+		 * return diagnosticServicesdto;
+		 * 
+		 * }
+		 */
 	
 	
 }

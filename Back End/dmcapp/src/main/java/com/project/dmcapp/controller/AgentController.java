@@ -55,4 +55,6 @@ public class AgentController {
 			return ResponseEntity.ok().body(new Msg(HttpStatus.ACCEPTED, LocalDateTime.now(), "Booking successfully"));
 		}
 		
+		//view commission
+		
 }

@@ -1,4 +1,4 @@
-package com.project.dmcapp.model;
+package com.project.dmcapp.dto;
 
 import java.sql.Date;
 import java.sql.Time;
@@ -20,6 +20,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.project.dmcapp.model.Role;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -31,31 +34,27 @@ import lombok.Setter;
 @Setter 
 @NoArgsConstructor 
 @AllArgsConstructor
-@Data
-@Entity
-@Table(name = "service_table")
-public class DiagnosticService {
+
+public class DiagnosticServiceDTO {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@NotNull
+	
 	private Integer serviceId ;
-	@NotNull
+	
 	private String serviceName;
-	@NotNull
+	
 	private int cost;
-	@NotNull
+	
 	private Time time;
 	
-	@Size(min = 10, max = 100)
+	
 	private String instruction;
 	
 	
 	
 
-	@ManyToMany(mappedBy="diagnosticServiceList")
+	
    // @JoinColumn(name = "diagnosticCenterId", referencedColumnName = "dgcId")
-    private List<DiagnosticCentre> diagnosticCentre =new ArrayList<>();
+    private List<DiagnosticCentreDTO> diagnosticCentre =new ArrayList<>();
 	//private Set<DiagnosticCentre> diagnosticCentre = new HashSet<>();
 	
 }

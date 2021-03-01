@@ -1,4 +1,4 @@
-package com.project.dmcapp.model;
+package com.project.dmcapp.dto;
 
 
 
@@ -23,6 +23,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.project.dmcapp.model.Role;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -36,45 +37,35 @@ import lombok.Setter;
 @Setter 
 @NoArgsConstructor 
 @AllArgsConstructor
-@Data
-@Entity
 
-@Table(name = "centre_table")
 
-public class DiagnosticCentre {
+
+public class DiagnosticCentreDTO {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@NotNull
+
 	private Integer centreId ;
-	@NotNull
+	
 	private String brief;
-	@NotNull
+	
 	private String address;
-	@NotNull
+	
 	private String city;
-	@NotNull
+	
 	private String state;
-	@NotNull
+	
 	private String email;
-	@NotNull
+	
 	private String website;
-	@NotNull
+
 	private String contactno;
-	@NotNull
+	
 	private int zip;
 	
-	@JsonIgnore
-	@ManyToMany(cascade = CascadeType.ALL )
-    @JoinTable(
-     name = "Centre_Service", 
-     joinColumns =  {@JoinColumn(name = "centreId")} , 
-     inverseJoinColumns =  {@JoinColumn(name = "serviceId")} 
-  )
+	
 	
 	//@ManyToMany
     //@JoinColumn(name = "diagnosticServiceId", referencedColumnName = "dgsId")
-    private List<DiagnosticService> diagnosticServiceList = new ArrayList<>();
+    private List<DiagnosticServiceDTO> diagnosticServiceList = new ArrayList<>();
 	//Set<DiagnosticService> diagnosticServiceList = new HashSet<>();
 	
 
@@ -83,17 +74,6 @@ public class DiagnosticCentre {
 //	@NotNull
 //	private int serviceId;
 
-//	@ManyToMany(cascade = CascadeType.ALL )
-//    @JoinTable(
-//     name = "Centre_Service", 
-//     joinColumns =  {@JoinColumn(name = "centreId")} , 
-//     inverseJoinColumns =  {@JoinColumn(name = "serviceId")} 
-//  )
-//	
-//	//@ManyToMany
-//    //@JoinColumn(name = "diagnosticServiceId", referencedColumnName = "dgsId")
-//    private List<DiagnosticService> diagnosticServiceList = new ArrayList<>();
-	///Set<DiagnosticService> diagnosticServiceList = new HashSet<>();//old same  by set instead of list----->
 
 	
 }
