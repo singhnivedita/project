@@ -4,8 +4,9 @@
 		<title>Form</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
         
-       
-  
+        <link rel="stylesheet" href="sstyle.css">
+        
+   <link rel="stylesheet" href="./Stylesheets/style.css">
         
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         
@@ -33,11 +34,11 @@
 		<!-- Register Form -->
 		<div class="form-wrapper"> <!-- Form-wrapper only for positioning -->
 			<form action="#non" method="post" class="fcorn-register container">
-				<p class="register-info">PATIENT REGISTRATION FORM</p>
+				<p class="register-info">AGENT REGISTRATION FORM</p>
                 <div><p class="col-md-6 role-wrap">
                     <select>
                         <option value="0" selected disabled>Role</option>
-                        <option value="1">Patient</option>
+                        <option value="1">Agent</option>
                       
                        
                         
@@ -51,6 +52,7 @@
                             <option value="2">Male</option>
                             
                         </select>
+						<p><input type="text" placeholder="Agent ID " required></p>
                 </p></div> 
 				<div class="row">
 					<p class="col-md-6"><input type="text" placeholder="First Name" required></p>
@@ -60,12 +62,14 @@
 				<p><input type="password" placeholder="Password" required>
 					<span class="extern-type">Atleast 8 characters long.</span>
 				</p>
-                 <p>Date Of Birth<input type="date"></p> 
-				<p><input type="text" placeholder="Contact NUmber" required></p>
-				<p><input type="address" placeholder="Address" required>
-              
-                   
+                <p><input type="address" placeholder="Address" required>
+                <p>Date Of Birth<input type="date"></p> 
 
+                    <p><input type="text" placeholder="Contact NUmber" required></p>
+                    <p><input type="text" placeholder="Email" required></p>
+					<p><input type="text" placeholder="Bank Account Number" required></p>
+					<p><input type="text" placeholder="Bank Name" required></p>
+					<p><input type="text" placeholder="Bank IFSC" required></p>
                   
 
                     <div class="row" id="formButton">

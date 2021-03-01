@@ -4,8 +4,9 @@
 		<title>Form</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
         
-       
-  
+        <link rel="stylesheet" href="sstyle.css">
+        
+   <link rel="stylesheet" href="./Stylesheets/style.css">
         
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         
@@ -33,47 +34,27 @@
 		<!-- Register Form -->
 		<div class="form-wrapper"> <!-- Form-wrapper only for positioning -->
 			<form action="#non" method="post" class="fcorn-register container">
-				<p class="register-info">PATIENT REGISTRATION FORM</p>
+				<p class="register-info"> UPDATE TEST RESULT</p>
                 <div><p class="col-md-6 role-wrap">
-                    <select>
-                        <option value="0" selected disabled>Role</option>
-                        <option value="1">Patient</option>
-                      
-                       
-                        
-                    </select>
                    
-                    <div><p class="col-md-6 role-wrap">
-                        <select>
-                            <option value="0" selected disabled>Gender</option>
-                            <option value="1">Others</option>
-                            <option value="2">Female</option>
-                            <option value="2">Male</option>
-                            
-                        </select>
-                </p></div> 
+                   
+                 
 				<div class="row">
-					<p class="col-md-6"><input type="text" placeholder="First Name" required></p>
-					<p class="col-md-6"><input type="text" placeholder="Last Name" required></p>
-				</div>
-				
-				<p><input type="password" placeholder="Password" required>
-					<span class="extern-type">Atleast 8 characters long.</span>
-				</p>
-                 <p>Date Of Birth<input type="date"></p> 
-				<p><input type="text" placeholder="Contact NUmber" required></p>
-				<p><input type="address" placeholder="Address" required>
-              
+                    <p class="col-md-6"><input type="text" placeholder="Patient ID" required></p>
+					<p class="col-md-6"><input type="text" placeholder="Patient Name" required></p>
+					<p class="col-md-6"><input type="text" placeholder="Doctor Name" required></p>
+					<p class="col-md-6"><input type="text" placeholder=" Diagnostic Service" required></p>
+					
+					<p class="col-md-6"><input type="text" placeholder="Baseline Value" required><span class="extern-type">in INR*</span></p>
+                    
                    
-
-                  
-
-                    <div class="row" id="formButton">
-                        <p class="register-toggle"> </p>
-                        <p class="register-submit"><input type="submit" value="Update Now"></p>
-                    </div>
-			</form>
-		</div>
+				</div>
+                <div class="row" id="formButton">
+                    <p class="register-toggle"> </p>
+                    <p class="register-submit"><input type="submit" value="Update Now"></p>
+                </div>
+			
+              
 	
 
 <!--Footer Starts Here-->
