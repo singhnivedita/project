@@ -49,14 +49,10 @@ public class DiagnosticService {
 	
 	
 	
-	@ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY )
-    @JoinTable(
-     name = "Centre_Service", 
-     joinColumns =  {@JoinColumn(name = "serviceId")} , 
-     inverseJoinColumns =  {@JoinColumn(name = "centreId")} 
-  )
+
+	@ManyToMany(mappedBy="diagnosticServiceList")
    // @JoinColumn(name = "diagnosticCenterId", referencedColumnName = "dgcId")
-    private List<DiagnosticCentre> diagnosticCentreList =new ArrayList<>();
+    private List<DiagnosticCentre> diagnosticCentre =new ArrayList<>();
 	//private Set<DiagnosticCentre> diagnosticCentre = new HashSet<>();
 	
 }

@@ -56,8 +56,17 @@ public class DiagnosticCentre {
 	private String contactno;
 	@NotNull
 	private int zip;
-	@ManyToMany(mappedBy="diagnosticCentreList",fetch = FetchType.LAZY)
-	private List<DiagnosticService> diagnosticServiceList = new ArrayList<>();
+	@ManyToMany(cascade = CascadeType.ALL )
+    @JoinTable(
+     name = "Centre_Service", 
+     joinColumns =  {@JoinColumn(name = "centreId")} , 
+     inverseJoinColumns =  {@JoinColumn(name = "serviceId")} 
+  )
+	
+	//@ManyToMany
+    //@JoinColumn(name = "diagnosticServiceId", referencedColumnName = "dgsId")
+    private List<DiagnosticService> diagnosticServiceList = new ArrayList<>();
+	//Set<DiagnosticService> diagnosticServiceList = new HashSet<>();
 	
 
 	//I feel the below serviceId is not required as we are doing the many to many mapping between centre and service
