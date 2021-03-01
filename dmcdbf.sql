@@ -37,6 +37,7 @@ insert into doctor_table (docId, firstName, lastName, dob, gender, contactNumber
 insert into doctor_table (docId, firstName, lastName, dob, gender, contactNumber, password, address, qualification, speciality, roleId) values (2, 'Ermanno', 'Arnson', '2020-09-17', 'Non-binary', '5717508216', '15CUGygVkmG', '8 Pond Park', 'earnson1', 'GABAPENTIN', 1);
 insert into doctor_table (docId, firstName, lastName, dob, gender, contactNumber, password, address, qualification, speciality, roleId) values (3, 'Mannie', 'Loiterton', '2020-08-19', 'Bigender', '7692038862', 'B8j2QHtGVvS4', '64 Fallview Parkway', 'mloiterton2', 'Spice Anti-bacterial foaming Hand Wash', 1);
 insert into doctor_table (docId, firstName, lastName, dob, gender, contactNumber, password, address, qualification, speciality, roleId) values (4, 'Emlen', 'Willcock', '2020-10-27', 'Genderqueer', '2231586852', 'x5rFtHNT', '89 Thierer Plaza', 'ewillcock3', 'False Ragweed', 1);
+insert into doctor_table ( firstName, lastName, dob, gender, contactNumber, password, address, qualification, speciality, roleId) values ('RadheShyam', 'Bhandari', '2020-10-27', 'Male', '2231586852', 'radhe@1234', '111, Gods place ', 'ewillcock3', 'False Ragweed', 1);
 
 #patient_table
 select * from patient_table;
@@ -90,6 +91,7 @@ show tables;
 select * from centre_service;
 #update commission table
 select * from commission_table;
+
 insert into commission_table (commissionId, baselineValue, diagnosticServiceId) values (1, 286, 1);
 insert into commission_table (commissionId, baselineValue, diagnosticServiceId) values (2, 986, 2);
 insert into commission_table (commissionId, baselineValue, diagnosticServiceId) values (3, 842, 3);

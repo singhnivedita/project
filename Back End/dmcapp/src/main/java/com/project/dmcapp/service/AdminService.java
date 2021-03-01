@@ -48,8 +48,8 @@ public class AdminService {
 			@Transactional
 			public AuthResponseUser loginAdmin(AuthRequestUser user) {
 				
-				Optional<Admin> adminCheck = adminRepo.findByIdAndPassword(user.getUserId(),user.getPassword());
-				if (!adminCheck.isPresent()) {
+				Optional<Admin> adminCheck = adminRepo.findById(user.getUserId());
+				if(!adminCheck.isPresent() || !(adminCheck.get().getPassword().equals(user.getPassword()))) {
 						
 					throw new UnauthorisedException();
 					

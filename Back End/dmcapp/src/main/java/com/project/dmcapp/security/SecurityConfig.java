@@ -8,43 +8,48 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-@Configuration 
+@Configuration
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig  extends WebSecurityConfigurerAdapter {
+
 	private static final Logger LOGGER = LoggerFactory.getLogger(SecurityConfig.class);
 	
 	@Autowired
-	AppUserDetailsService appUserDetailsService;
-	
+	private Environment env;
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(appUserDetailsService)
-		.passwordEncoder(passwordEncoder());
+		// TODO Auto-generated method stub
+		super.configure(auth);
+
 	}
+
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
-		LOGGER.info("Start");
-		return new BCryptPasswordEncoder();
+
+	LOGGER.info("Start");
+	return new BCryptPasswordEncoder();
+
 	}
 
 	@Override
-	protected void configure(HttpSecurity httpSecurity) throws Exception {
-		httpSecurity.cors();
-		httpSecurity.csrf().disable().httpBasic().and()
-		.authorizeRequests()
-		.antMatchers("/users/signup").permitAll()
-		.antMatchers("/authenticate").permitAll()//
-		.anyRequest().authenticated()
-		.and()
-		.addFilter(new JwtAuthorizationFilter(authenticationManager()));;
+	protected void configure(HttpSecurity http) throws Exception {
+		
+		http.csrf().disable().authorizeRequests().antMatchers("/**").permitAll().anyRequest().authenticated()
+				.and().exceptionHandling().and().sessionManagement()
+				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	}
+	
 }
+
 */

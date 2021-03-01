@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import com.project.dmcapp.dto.AuthRequestUser;
 import com.project.dmcapp.dto.AuthResponseUser;
+import com.project.dmcapp.dto.TestResultDTO;
+import com.project.dmcapp.dto.UpdateTreatmentDTO;
 import com.project.dmcapp.exception.BookingNotFoundException;
 import com.project.dmcapp.exception.UnauthorisedException;
 import com.project.dmcapp.model.BookAppointment;
@@ -70,14 +72,21 @@ public class DoctorService {
 			}	
 	
 	//Update Test Result by doctor based on the patient id of the patient
-	public boolean updateTestResult(TestResult testResult) {
+	public boolean updateTestResult(TestResultDTO testResultdto) {
         //log.info("START");
       
-       TestResult testResultOld = testResultRepo.findById(testResult.getTestId()).orElse(null);
+		
+       TestResult testResultOld = testResultRepo.findById(testResultdto.getTestId()).orElse(null);
         
        // TestResult testResultOld2 = (TestResult) testResultOld1.stream().filter(p->p.getTestId().equals(testResult.getTestId()));
-        if(testResultOld == null)
+        if(testResultOld == null )
             return false;
+        TestResult testResult = new TestResult();
+        testResult.setTestId(testResultdto.getTestId());
+        testResult.setTestResult(testResultdto.getTestResult());
+        testResult.setTestName(testResultOld.getTestName());
+        testResult.setPatientId(testResultOld.getPatientId());
+        testResult.setDiagnosticServiceId(testResultOld.getDiagnosticServiceId());
         testResultRepo.save(testResult);
       
         //log.info("END");
@@ -86,16 +95,29 @@ public class DoctorService {
 	
 	
 	//Update medical record by doctor based on the patient id of the patient
-		public boolean updateTreatmentHistory(UpdateTreatment updateTreatment) {
+		public boolean updateTreatmentHistory(UpdateTreatmentDTO updateTreatmentdto) {
 			//log.info("START");
-			UpdateTreatment updateTreatmentOld = updateTreatmentRepo.findById(updateTreatment.getTreatmentId()).orElse(null);
+			UpdateTreatment updateTreatmentOld = updateTreatmentRepo.findById(updateTreatmentdto.getTreatmentId()).orElse(null);
 			//UpdateTreatment updateTreatmentOld = updateTreatmentRepo.getTreatmentHistory(updateTreatment.getPatientId().getPatientId());
 			
 			if(updateTreatmentOld == null)
 				return false;
+			UpdateTreatment updateTreatment = new UpdateTreatment();
 			
+			updateTreatment.setTreatmentId(updateTreatmentOld.getTreatmentId());
+			updateTreatment.setDoctorId(updateTreatmentOld.getDoctorId());
+			updateTreatment.setTestresultId(updateTreatmentOld.getTestresultId());
+			updateTreatment.setPatientId(updateTreatmentOld.getPatientId());
+			updateTreatment.setDiagnosticServiceId(updateTreatmentOld.getDiagnosticServiceId());
+	        updateTreatment.setSymptoms(updateTreatmentdto.getSymptoms());
+	        updateTreatment.setDiet(updateTreatmentdto.getDiet());
+	        updateTreatment.setDiagnosis(updateTreatmentdto.getDiagnosis());
+	        updateTreatment.setRecommendation(updateTreatmentdto.getRecommendation());
+	        updateTreatment.setPrescription(updateTreatmentdto.getPrescription());
+	        
 			updateTreatmentRepo.save(updateTreatment);
 			//log.info("END");
+			
 			
 			return true;
 		}

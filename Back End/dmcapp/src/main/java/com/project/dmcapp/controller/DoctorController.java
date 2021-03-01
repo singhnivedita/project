@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.dmcapp.dto.AuthRequestUser;
 import com.project.dmcapp.dto.AuthResponseUser;
+import com.project.dmcapp.dto.TestResultDTO;
+import com.project.dmcapp.dto.UpdateTreatmentDTO;
 import com.project.dmcapp.exception.DoctorAppointmentNotFoundException;
 import com.project.dmcapp.exception.TestResultNotFoundException;
 import com.project.dmcapp.model.BookAppointment;
@@ -69,8 +71,8 @@ public class DoctorController {
 		
 		//doctor can update test results of the patient 
 			@PutMapping("/update-test-result")
-			public ResponseEntity<Msg> updateTestResult(@RequestBody TestResult testResult) {
-				boolean updateStatus = doctorService.updateTestResult(testResult);
+			public ResponseEntity<Msg> updateTestResult(@RequestBody TestResultDTO testResultdto) {
+				boolean updateStatus = doctorService.updateTestResult(testResultdto);
 			
 				if(updateStatus == false)
 					throw new DoctorAppointmentNotFoundException();
@@ -82,8 +84,8 @@ public class DoctorController {
 			
 		//doctor can update treatment history of the patient (UpdateTreatment updateTreatment)
 			@PutMapping("/update-treatment-history")
-			public ResponseEntity<Msg> updateTreatmentHistory(@RequestBody UpdateTreatment updateTreatment) {
-				boolean updateStatus = doctorService.updateTreatmentHistory(updateTreatment);
+			public ResponseEntity<Msg> updateTreatmentHistory(@RequestBody UpdateTreatmentDTO updateTreatmentdto) {
+				boolean updateStatus = doctorService.updateTreatmentHistory(updateTreatmentdto);
 			
 				if(updateStatus == false)
 					throw new DoctorAppointmentNotFoundException();
