@@ -29,9 +29,10 @@ class AppointmentStatus extends React.Component{
         
 			return(
                 <div>
-                    <PatientHome/> 
+                    <PatientHome/>
+                    <div id="tableDiv"> 
                         <h2 align='center'> Patient Booking Status:</h2>
-                        <table  id="initialWrap" className="table table-responsive">
+                        <table   className="table table-responsive">
                             <thead>
                             <tr>
                                 <th>Request Id</th>
@@ -50,7 +51,7 @@ class AppointmentStatus extends React.Component{
                             </tbody>
                             
                         </table>
-
+                        </div>
                 
                         </div>
         

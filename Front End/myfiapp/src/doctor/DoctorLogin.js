@@ -5,6 +5,10 @@ import React from 'react';
 import axios from 'axios';
 
 import { Link, Redirect } from 'react-router-dom';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure();
 
 class Doctor extends React.Component{
     state ={}
@@ -18,15 +22,21 @@ class Doctor extends React.Component{
 
         axios.post("doctor/login", data).then(
             res =>{
-                localStorage.setItem('token', res.data.authToken);
-                console.log(res);
-                this.setState({
-                    loggedIn: true
-                });
-                
+                const role =res.data.role;
+                toast.success("Login Successful, Role: Doctor",{autoClose:4000,position:toast.POSITION.TOP_CENTER});
+               localStorage.setItem('userId', res.data.userId);
+
+               const userId = localStorage.getItem("userId");
+               console.log(res);
+               console.log("userId: "+userId);
+               this.setState({
+                   loggedIn: true
+               });
+               
             }
         ).catch(
             err => {
+                toast.error("IncorrectId/Password ,Please Try Again",{autoClose:4000,position:toast.POSITION.TOP_CENTER});
                 console.log(err);
             }
         )

@@ -24,6 +24,7 @@ import DiagnosticServiceAgent from './agent/DiagnosticServiceAgent';
 import AppointmentStatus from './patient/AppointmentStatus';
 import TreatmentHistory from './patient/TreatmentHistory';
 import TestResult from './patient/TestResult';
+import AppointmentRequests from './doctor/AppointmentRequests';
 
 class App extends React.Component {
   state ={};
@@ -53,6 +54,7 @@ class App extends React.Component {
           <Route exact path="/appointment-status/:patientId" component={ AppointmentStatus  } />
           <Route exact path="/treatment-history/:patientId" component={TreatmentHistory  } />
           <Route exact path="/test-result/:patientId" component={ TestResult  } />
+          <Route exact path="/appointment-request/:doctorId" component={ AppointmentRequests  } />
         </Switch>
         
         <Footer />

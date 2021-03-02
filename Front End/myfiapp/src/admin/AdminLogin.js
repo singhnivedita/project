@@ -1,7 +1,14 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 import axios from 'axios';
+toast.configure();
+
+
 class Admin extends React.Component{
 
     state ={}
@@ -15,15 +22,21 @@ class Admin extends React.Component{
 
         axios.post("admin/login", data).then(
             res =>{
-                localStorage.setItem('token', res.data.token);
-                console.log(res.data.token);
-                this.setState({
-                    loggedIn: true
-                });
-                
+                const role =res.data.role;
+                toast.success("Login Successful, Role : Admin",{autoClose:4000,position:toast.POSITION.TOP_CENTER});
+               localStorage.setItem('userId', res.data.userId);
+
+               const userId = localStorage.getItem("userId");
+               console.log(res);
+               console.log("userId: "+userId);
+               this.setState({
+                   loggedIn: true
+               });
+               
             }
         ).catch(
             err => {
+                toast.error("IncorrectId/Password ,Please Try Again",{autoClose:4000,position:toast.POSITION.TOP_CENTER});
                 console.log(err);
             }
         )

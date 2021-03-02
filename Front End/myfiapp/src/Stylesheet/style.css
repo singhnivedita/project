@@ -45,6 +45,17 @@
   background-color: whitesmoke;
 }
 
+#tableDiv{
+  padding-left: 180px;
+}
+.table{
+  max-width: 1000px;
+  border-radius: 10px;
+  margin: 50px auto;
+  padding: 30px 40px;
+  box-shadow: grey;
+  background-color: whitesmoke
+ }
 .h2 {
   font-size: 3.5rem;
   font-weight: bold;

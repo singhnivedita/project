@@ -7,7 +7,12 @@ import { Link, Redirect } from 'react-router-dom';
 
 
 class AdminHome extends React.Component{
-
+    state ={};
+    componentDidMount() {
+       const userId = localStorage.getItem('userId');
+       this.setState({userId})
+       console.log("userid in home page is "+userId);
+    }
     
 	render(){
        
