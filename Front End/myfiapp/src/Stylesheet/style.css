@@ -12,6 +12,7 @@
 .nav-item.active .nav-link,
 .nav-item:hover .nav-link {
   transform: scale(1.05);
+  
 }
 
 .custom-toggler .navbar-toggler-icon {

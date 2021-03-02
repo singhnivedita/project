@@ -8,9 +8,11 @@ import { Link, Redirect } from 'react-router-dom';
 
 class PatientHome extends React.Component{
 
-    // state ={};
-    // componentDidMount() {
-        
+    state ={};
+     componentDidMount() {
+        const userId = localStorage.getItem('userId');
+        this.setState({userId})
+        console.log("userid in home page is "+userId);
     //     axios.get("menuapp/menu-items").then(
     //         res =>{
     //             this.setState({
@@ -23,7 +25,7 @@ class PatientHome extends React.Component{
     //         }
     //     )
     //     console.log(data);
-    //}
+    }
 	render(){
        
         
@@ -37,12 +39,13 @@ class PatientHome extends React.Component{
                         </ul> 
                         <small className="text-muted px-3">APPOINTMENT</small>
                         <ul className="list-bullet-no">
-                            <li><a href="#"><i className="far fa-calendar-alt"></i>Book Appointment</a></li>
-                            <li><a href="#"><i className="fas fa-video"></i>Appointment Status</a></li>
-                        </ul> <small className="text-muted px-3">TEST REPORTS</small>
+                            <li><Link to={"#"}><i className="fa fa-credit-card"></i>Book Appointment</Link></li>
+                            <li> <Link to={"/appointment-status/"+this.state.userId}><i className="fa fa-credit-card"></i>Appointment Status</Link></li>
+                        </ul> 
+                        <small className="text-muted px-3">TEST REPORTS</small>
                         <ul className="list-bullet-no">
-                            <li><a href="#"><i className="fa fa-external-link-alt"></i>Test Results</a></li>
-                            <li><a href="#"><i className="fa fa-help"></i>Treatment History</a></li>
+                             <li> <Link to={"/test-result/"+this.state.userId}><i className="fa fa-credit-card"></i>Test Results</Link></li>
+                            <li><Link to={"/treatment-history/"+this.state.userId}><i className="fa fa-credit-card"></i>Treatment History</Link></li>
                         </ul> {/*<small className="text-muted px-3">OTHERS</small>
                         
                         <ul>

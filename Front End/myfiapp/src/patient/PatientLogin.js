@@ -23,11 +23,11 @@ class Patient extends React.Component{
             res =>{
                 const role =res.data.role;
                 toast.success("Login Successful, Role:Patient",{autoClose:4000,position:toast.POSITION.TOP_CENTER});
-               localStorage.setItem('token', res.data.token);
+               localStorage.setItem('userId', res.data.userId);
 
-               const token = localStorage.getItem("token");
+               const userId = localStorage.getItem("userId");
                console.log(res);
-               console.log("token: "+token);
+               console.log("userId: "+userId);
                this.setState({
                    loggedIn: true
                });
@@ -52,7 +52,7 @@ class Patient extends React.Component{
                     <div className="col" id="bg1"></div>
                     <div className="col" id="b2">
                     <div className="wrapper bg-white">
-                        <div className="h2 text-center">Diagnostic Medical Center</div>
+                        <div className="h2 text-center" >Diagnostic Medical Center</div>
                         <div className="h4 text-muted text-center pt-2">Patient Login</div>
                         <form className="pt-3" onSubmit = {this.handleSubmit}>
                             <div className="form-group py-2">

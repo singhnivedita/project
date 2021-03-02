@@ -4,6 +4,7 @@ import React from 'react';
 
 import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
+import PatientHome from './PatientHome';
 
 
 class DiagnosticService extends React.Component{
@@ -22,27 +23,8 @@ class DiagnosticService extends React.Component{
         
 			return(
                 <div>
-                    <div className="wrapper d-flex">
-                    <div className="sidebar"> <small className="text-muted pl-4"></small>
-                        <ul className="list-bullet-no">
-                            <li><a href="#"><i className="fa fa-home"></i>Patient Dashboard</a></li>
-                            <li><a href="#"><i className="fa fa-credit-card"></i> Diagnostic Services </a></li>
-                        </ul> <small className="text-muted px-3">APPOINTMENT</small>
-                        <ul className="list-bullet-no">
-                            <li><a href="#"><i className="far fa-calendar-alt"></i>Book Appointment</a></li>
-                            <li><a href="#"><i className="fas fa-video"></i>Appointment Status</a></li>
-                        </ul> <small className="text-muted px-3">TEST REPORTS</small>
-                        <ul className="list-bullet-no">
-                            <li><a href="#"><i className="fa fa-external-link-alt"></i>Test Results</a></li>
-                            <li><a href="#"><i className="fa fa-help"></i>Treatment History</a></li>
-                        </ul> 
-                        {/*<small className="text-muted px-3">OTHERS</small>
-                        
-                        <ul>
-                            <li><a href="#"><i className="fa fa-external-link-alt"></i>Help</a></li>
-                        </ul>*/} 
-                    </div>
-                    </div> 
+                    <PatientHome/>
+                     
                         <h2 align='center'> Diagnostic Services</h2>
                         <table align='center'>
                             <thead>

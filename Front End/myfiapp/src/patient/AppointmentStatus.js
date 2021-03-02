@@ -4,6 +4,7 @@ import React from 'react';
 
 import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
+import PatientHome from './PatientHome';
 
 
 class AppointmentStatus extends React.Component{
@@ -14,46 +15,23 @@ class AppointmentStatus extends React.Component{
     }
     
     componentWillMount(){
-        console.log(this.props ) //getting undefined ,how to get this value
-        axios.get('/patient/status/'+this.props.match.params.patiendId).then(res=> {
+        //console.log(this.props ) //getting undefined ,how to get this value
+        axios.get('/patient/status/'+this.props.match.params.patientId).then(res=> {
             const bookings = res.data;
             this.setState({bookings})
 
         });
     }
-    constructor(props) {
-        super(props);
-        console.log(this.props )
-    }
+    
 
 	render(){
        
         
 			return(
                 <div>
-                    <div className="wrapper d-flex">
-                    <div className="sidebar"> <small className="text-muted pl-4"></small>
-                        <ul className="list-bullet-no">
-                            <li><a href="#"><i className="fa fa-home"></i>Patient Dashboard</a></li>
-                            <li><a href="#"><i className="fa fa-credit-card"></i> Diagnostic Services </a></li>
-                        </ul> <small className="text-muted px-3">APPOINTMENT</small>
-                        <ul className="list-bullet-no">
-                            <li><a href="#"><i className="far fa-calendar-alt"></i>Book Appointment</a></li>
-                            <li><a href="#"><i className="fas fa-video"></i>Appointment Status</a></li>
-                        </ul> <small className="text-muted px-3">TEST REPORTS</small>
-                        <ul className="list-bullet-no">
-                            <li><a href="#"><i className="fa fa-external-link-alt"></i>Test Results</a></li>
-                            <li><a href="#"><i className="fa fa-help"></i>Treatment History</a></li>
-                        </ul> 
-                        {/*<small className="text-muted px-3">OTHERS</small>
-                        
-                        <ul>
-                            <li><a href="#"><i className="fa fa-external-link-alt"></i>Help</a></li>
-                        </ul>*/} 
-                    </div>
-                    </div> 
+                    <PatientHome/> 
                         <h2 align='center'> Patient Booking Status:</h2>
-                        <table align='center'>
+                        <table  id="initialWrap" className="table table-responsive">
                             <thead>
                             <tr>
                                 <th>Request Id</th>

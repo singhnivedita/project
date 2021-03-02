@@ -14,14 +14,15 @@ class Nav extends React.Component{
         let buttons;
         if(this.props.userInfo != null){
 
-            buttons =(  <ul className="navbar-nav ml-auto"> 
+            buttons =(  
+                        <ul className="navbar-nav ml-auto"> 
                         <li className="nav-item"> 
                         
-                            <Link to={"#"} ><i className = "fa fa-user"></i> {this.props.userInfo.firstName}</Link> 
+                            <Link to={"#"} className="nav-link"><i className = "fa fa-user"></i> {this.props.userInfo.firstName}</Link> 
                         </li>&nbsp;&nbsp;&nbsp;&nbsp;
                         <li className="nav-item"> 
                         
-                            <Link to={"/"} onClick = {this.handleLogout}><i className = "fa fa-sign-out"></i>Logout</Link> 
+                            <Link to={"/"} onClick = {this.handleLogout} className="nav-link"><i className = "fa fa-sign-out"></i>Logout</Link> 
                         </li> 
                         
                     </ul>
@@ -32,19 +33,19 @@ class Nav extends React.Component{
                   buttons =(  <ul className="navbar-nav ml-auto"> 
                         <li className="nav-item"> 
                         
-                            <Link to={"/"}><i className = "fa fa-user-md"></i> Patient</Link> 
-                        </li> &nbsp;&nbsp;&nbsp;&nbsp;
+                            <Link to={"/"} className="nav-link"><i className = "fa fa-user-md"></i> Patient</Link> 
+                        </li> &nbsp;
                         <li className="nav-item"> 
                            
-                            <Link to={"/agentLogin"}><i className=" fa fa-lock"></i> Agent</Link> 
-                        </li> &nbsp;&nbsp;&nbsp;&nbsp;
+                            <Link to={"/agentLogin"} className="nav-link"><i className=" fa fa-lock"></i> Agent</Link> 
+                        </li> &nbsp;
                         <li className="nav-item"> 
                         
-                            <Link to={"/doctorLogin"}><i className = "fa fa-user-md"></i> Doctor</Link> 
-                        </li> &nbsp;&nbsp;&nbsp;&nbsp;
+                            <Link to={"/doctorLogin"} className="nav-link"><i className = "fa fa-user-md"></i> Doctor</Link> 
+                        </li> &nbsp;
                         <li className="nav-item"> 
                            
-                            <Link to={"/adminLogin"}><i className=" fa fa-lock"></i> Admin</Link> 
+                            <Link to={"/adminLogin"} className="nav-link"><i className=" fa fa-lock"></i> Admin</Link> 
                         </li> 
                         
                     </ul>
@@ -54,7 +55,7 @@ class Nav extends React.Component{
 			<div>
 			<nav className="navbar navbar-expand-sm ">
   
-                <span className="navbar-brand"><Link to={"#"}> <i className = "fa fa-heartbeat"></i>   Diagnostic Medical Center </Link></span>
+                <span className="navbar-brand" > <i className = "fa fa-heartbeat"></i>   Diagnostic Medical Center </span>
                 <button className="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navI" aria-controls="navI" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>

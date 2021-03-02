@@ -8,22 +8,25 @@ import { Link, Redirect } from 'react-router-dom';
 
 class AgentHome extends React.Component{
 
-    // state ={};
-    // componentDidMount() {
+    state ={};
+    componentDidMount() {
         
-    //     axios.get("menuapp/menu-items").then(
-    //         res =>{
-    //             this.setState({
-    //                 patientData = res.data
-    //             })
-    //         }
-    //     ).catch(
-    //         err => {
-    //             console.log(err);
-    //         }
-    //     )
-    //     console.log(data);
-    //}
+        const userId = localStorage.getItem('userId');
+
+        console.log("userid in home page is "+userId);
+        // axios.get("menuapp/menu-items").then(
+        //     res =>{
+        //         this.setState({
+        //             patientData = res.data
+        //         })
+        //     }
+        // ).catch(
+        //     err => {
+        //         console.log(err);
+        //     }
+        // )
+        // console.log(data);
+    }
 	render(){
        
         
@@ -36,7 +39,8 @@ class AgentHome extends React.Component{
                             <li><a href="#"><i className="fa fa-credit-card"></i> Diagnostic Services </a></li>
                         </ul> <small className="text-muted px-3">APPOINTMENT</small>
                         <ul className="list-bullet-no">
-                            <li><a href="#"><i className="far fa-calendar-alt"></i>Book Appointment</a></li>
+                            <li><a href="#"><i className="far fa-calendar-alt"></i>Book Appointment</a>
+                            </li>
                             
                         </ul> <small className="text-muted px-3">Commission</small>
                         <ul className="list-bullet-no">

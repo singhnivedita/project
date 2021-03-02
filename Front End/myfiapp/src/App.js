@@ -22,6 +22,8 @@ import DoctorHome from './doctor/DoctorHome';
 import DiagnosticService from './patient/DiagnosticService';
 import DiagnosticServiceAgent from './agent/DiagnosticServiceAgent';
 import AppointmentStatus from './patient/AppointmentStatus';
+import TreatmentHistory from './patient/TreatmentHistory';
+import TestResult from './patient/TestResult';
 
 class App extends React.Component {
   state ={};
@@ -33,7 +35,7 @@ class App extends React.Component {
 
 
     <BrowserRouter>
-    <div classNameName="App">
+    <div className="App">
         <Nav />
         <Switch>
           <Route exact path="/home" component={ () => <Home  />}/>
@@ -49,6 +51,8 @@ class App extends React.Component {
           <Route exact path="/diagnosticService" component={ DiagnosticService  } />
           <Route exact path="/diagnosticServiceAgent" component={ DiagnosticServiceAgent } />
           <Route exact path="/appointment-status/:patientId" component={ AppointmentStatus  } />
+          <Route exact path="/treatment-history/:patientId" component={TreatmentHistory  } />
+          <Route exact path="/test-result/:patientId" component={ TestResult  } />
         </Switch>
         
         <Footer />

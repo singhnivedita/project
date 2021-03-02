@@ -10,6 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -39,6 +42,7 @@ public class TestResult {
 	//FK
 	
 	//foreign key of patient(id) table to specify tests of particular patient
+	@JsonIgnore
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "patientId", referencedColumnName = "patientId")
