@@ -48,24 +48,24 @@ class Doctor extends React.Component{
         }
 		return(
 		<div>
-			<div class="container-fluid">
-                <div class="row">
-                    <div class="col" id="bg1"></div>
-                    <div class="col" id="b2">
-                        <div class="wrapper bg-white">
-                            <div class="h2 text-center">Diagnostic Medical Center</div>
-                            <div class="h4 text-muted text-center pt-2">Doctor Login</div>
-                            <form class="pt-3" onSubmit= {this.handleSubmit}>
-                                <div class="form-group py-2">
-                                    <div class="input-field"><input type="text" placeholder="Username/Email" required class="" onChange = {e =>this.email = e.target.value }/> </div>
+			<div className="container-fluid">
+                <div className="row">
+                    <div className="col" id="bg1"></div>
+                    <div className="col" id="b2">
+                        <div className="wrapper bg-white">
+                            <div className="h2 text-center">Diagnostic Medical Center</div>
+                            <div className="h4 text-muted text-center pt-2">Doctor Login</div>
+                            <form className="pt-3" onSubmit= {this.handleSubmit}>
+                                <div className="form-group py-2">
+                                    <div className="input-field"><input type="text" placeholder="Username/Email" required className="" onChange = {e =>this.email = e.target.value }/> </div>
                                 </div>
-                                <div class="form-group py-1 pb-2">
-                                    <div class="input-field"><input type="text" placeholder="Enter your Password" required class=""   onChange = {e =>this.password = e.target.value }/> </div>
+                                <div className="form-group py-1 pb-2">
+                                    <div className="input-field"><input type="text" placeholder="Enter your Password" required className=""   onChange = {e =>this.password = e.target.value }/> </div>
                                 </div>
-                                <div class="d-flex align-items-start">
-                                    <div class="ml-auto"> <a href="#" id="forgot" style={{color: "red"}}>Forgot Password?</a> </div>
-                                </div> <button class="btn btn-block text-center my-3">Log in</button>
-                                <div class="text-center pt-3 text-muted">Not Registered? <Link to={"/registration"} style={{color: "#23487a"}}>Register Here</Link></div>
+                                <div className="d-flex align-items-start">
+                                    <div className="ml-auto"> <a href="#" id="forgot" style={{color: "red"}}>Forgot Password?</a> </div>
+                                </div> <button className="btn btn-block text-center my-3">Log in</button>
+                                <div className="text-center pt-3 text-muted">Not Registered? <Link to={"/registration"} style={{color: "#23487a"}}>Register Here</Link></div>
                             </form>
                         </div>
                     </div>

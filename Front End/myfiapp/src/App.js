@@ -25,6 +25,8 @@ import AppointmentStatus from './patient/AppointmentStatus';
 import TreatmentHistory from './patient/TreatmentHistory';
 import TestResult from './patient/TestResult';
 import AppointmentRequests from './doctor/AppointmentRequests';
+import DoctorRegistration from './doctor/DoctorRegistration';
+import CreateAgent from './admin/CreateAgent';
 
 class App extends React.Component {
   state ={};
@@ -46,6 +48,8 @@ class App extends React.Component {
           <Route exact path="/agentLogin"  component={  Agent}  />
           <Route exact path="/agentHome" component={ AgentHome } />
           <Route exact path="/registration" component={Registration} />
+          <Route exact path="/doctor-registration" component ={DoctorRegistration} />
+          <Route exact path="/create-agent" component ={CreateAgent} />
           <Route exact path="/patientHome" component={ PatientHome} />
           <Route exact path="/doctorHome" component={ DoctorHome} />
           <Route exact path="/adminHome" component={AdminHome  } />

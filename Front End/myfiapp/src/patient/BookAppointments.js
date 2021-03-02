@@ -6,34 +6,33 @@ import 'react-toastify/dist/ReactToastify.css';
 
 toast.configure();
 
-class Registration extends React.Component{
+class BookAppointments extends React.Component{
     state={}
     handleSubmit =(event) =>{
         event.preventDefault();
         const data ={
-            firstName: this.firstName,
-            lastName : this.LastName,
-            password : this.password,
+            date: this.date,
+            time : this.time,
+            remark : this.remark,
+            patientId:this.state.userId, //needs to get from local storage
+            docId : this.password,
             dob: this.dob,
-            gender:this.gender,
-            contactNumber:this.contactNumber,
-            password: this.password,
-            address: this.address,
-            role:"3" 
+            dgserviceId:this.gender,
+            
         };
 
-        axios.post("patient/register", data).then(
+        axios.post("patient/booking", data).then(
             res =>{
                 console.log(res);
                 
-                toast.success("Registration Successful, for role patient ",{autoClose:4000,position:toast.POSITION.TOP_CENTER});
+                toast.success("Booking Successful, wait fro approval",{autoClose:4000,position:toast.POSITION.TOP_CENTER});
                 this.setState({
-                    registered: true
+                    booked: true
                 });
             }
         ).catch(
             err => {
-                toast.error("Something went wrong....Registration Failed ,Please Try Again",{autoClose:4000,position:toast.POSITION.TOP_CENTER});
+                toast.error("Something went wrong....Booking Failed ,Please Try Again",{autoClose:4000,position:toast.POSITION.TOP_CENTER});
                 console.log(err);
             }
         )
@@ -44,8 +43,8 @@ class Registration extends React.Component{
         console.log(event.target.value);
       }
 	render(){
-        if(this.state.registered){
-            return <Redirect to={'/'} />;
+        if(this.state.booked){
+            return <Redirect to={'/patientHome'} />;
         }
 		return(
 		<div>
@@ -55,19 +54,8 @@ class Registration extends React.Component{
                     <div className="col" id="b2">
                         <div className="wrapper bg-white">
                             
-                            <div className="h4 text-muted text-center pt-2">Patient Registration</div>
+                            <div className="h4 text-muted text-center pt-2">Book Appointment</div>
                              <form className="pt-3" onSubmit={this.handleSubmit} >
-
-                             {/* <div className="form-group py-1 pb-2" onChange={e => this.role = e.target.value }>
-                                    <span className="input-field"> Select Role : 
-                                        <select>
-                                            <option value="3" >Patient</option>
-                                            
-                                            
-                                        </select>
-                                    </span>    
-                                </div> */}
-
                                 <div className="form-group py-2">
                                     <div className="input-field"><input type="text" placeholder="First Name" required className="" onChange = {e =>this.firstName = e.target.value }/> </div>
                                 </div>
@@ -106,6 +94,12 @@ class Registration extends React.Component{
                                     <div className="input-field"><input type="number" placeholder="Enter contact Number "   required className="" name="contactNumber"onChange = {e =>this.contactNumber = e.target.value }/> </div>
                                 </div>
 
+                                <div className="form-group py-2">
+                                    <div className="input-field"><input type="text" placeholder="Qualification" required className="" onChange = {e =>this.qualification = e.target.value }/> </div>
+                                </div>
+                                <div className="form-group py-2">
+                                    <div className="input-field"><input type="text" placeholder="Speciality" required className="" onChange = {e =>this.speciality = e.target.value }/> </div>
+                                </div>    
                                 <div className="form-group py-1 pb-2">
                                     <div className="input-field"><input type="text" placeholder="Enter your Address "   required className="" name="address"onChange = {e =>this.address = e.target.value }/> </div>
                                 </div>
@@ -119,45 +113,9 @@ class Registration extends React.Component{
                                 <div className="d-flex align-items-start">
                                     <div className="ml-auto"> <a href="#" id="forgot">Forgot Password?</a> </div>
                                 </div> <button className="btn btn-block text-center my-3">Register</button>
-                                <div className="text-center pt-3 text-muted">Already Registered? <Link to={"/"}>Login Here</Link></div>
+                                <div className="text-center pt-3 text-muted">Already Registered? <Link to={"/doctorLogin"}>Login Here</Link></div>
                             </form> 
-                            {/* <form action="#non" method="post" className="fcorn-register container">
-                                <p className="register-info">PATIENT REGISTRATION FORM</p>
-                                <div>
-                                    
-                                    
-                                
-                                    <p className="col-md-6 role-wrap"/>
-                                        <select>
-                                            <option value="0" selected disabled>Gender</option>
-                                            <option value="1">Others</option>
-                                            <option value="2">Female</option>
-                                            <option value="2">Male</option>
-                                            
-                                        </select>
-                                
-                                </div> 
-                                <div className="row">
-                                    <p className="col-md-6"><input type="text" placeholder="First Name" required/></p>
-                                    <p className="col-md-6"><input type="text" placeholder="Last Name" required/></p>
-                                </div>
-                                
-                                <p><input type="password" placeholder="Password" required/>
-                                    <span className="extern-type">Atleast 8 characters long.</span>
-                                </p>
-                                <p>Date Of Birth<input type="date"/></p> 
-                                <p><input type="text" placeholder="Contact NUmber" required/></p>
-                                <p><input type="address" placeholder="Address" required/></p>
                             
-                                
-
-                                
-
-                                    <div className="row" id="formButton">
-                                        <p className="register-toggle"> </p>
-                                        <p className="register-submit"><input type="submit" value="Register"/></p>
-                                    </div>
-                            </form> */}
                         </div>
                     </div>
                 </div>
@@ -170,4 +128,4 @@ class Registration extends React.Component{
 	}
 }
 
-export default Registration;
+export default BookAppointments;

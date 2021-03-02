@@ -6,46 +6,50 @@ import 'react-toastify/dist/ReactToastify.css';
 
 toast.configure();
 
-class Registration extends React.Component{
+class CreateAgent extends React.Component{
     state={}
     handleSubmit =(event) =>{
         event.preventDefault();
         const data ={
+            agentId: this.agentId,
             firstName: this.firstName,
             lastName : this.LastName,
+            bankName : this.bankName,
+
+            bankAccNo :this.accountNumber,
+            email:this.email,
+            ifsc:this.ifsc,
             password : this.password,
             dob: this.dob,
             gender:this.gender,
             contactNumber:this.contactNumber,
             password: this.password,
-            address: this.address,
-            role:"3" 
+            
+            roleId:"4"
         };
 
-        axios.post("patient/register", data).then(
+        axios.post("/admin/create-agent", data).then(
             res =>{
                 console.log(res);
                 
-                toast.success("Registration Successful, for role patient ",{autoClose:4000,position:toast.POSITION.TOP_CENTER});
+                toast.success("Agent Created  ",{autoClose:4000,position:toast.POSITION.TOP_CENTER});
                 this.setState({
                     registered: true
                 });
             }
         ).catch(
             err => {
-                toast.error("Something went wrong....Registration Failed ,Please Try Again",{autoClose:4000,position:toast.POSITION.TOP_CENTER});
+                toast.error("Something went wrong....Agent Creation failed,Please Try Again",{autoClose:4000,position:toast.POSITION.TOP_CENTER});
                 console.log(err);
             }
         )
         console.log(data);
     }
 
-    setGender(event) {
-        console.log(event.target.value);
-      }
+    
 	render(){
         if(this.state.registered){
-            return <Redirect to={'/'} />;
+            return <Redirect to={'/adminHome'} />;
         }
 		return(
 		<div>
@@ -55,26 +59,20 @@ class Registration extends React.Component{
                     <div className="col" id="b2">
                         <div className="wrapper bg-white">
                             
-                            <div className="h4 text-muted text-center pt-2">Patient Registration</div>
+                            <div className="h4 text-muted text-center pt-2">Agent Creation</div>
                              <form className="pt-3" onSubmit={this.handleSubmit} >
-
-                             {/* <div className="form-group py-1 pb-2" onChange={e => this.role = e.target.value }>
-                                    <span className="input-field"> Select Role : 
-                                        <select>
-                                            <option value="3" >Patient</option>
-                                            
-                                            
-                                        </select>
-                                    </span>    
-                                </div> */}
-
+                             <div className="form-group py-2">
+                                    <div className="input-field"><input type="text" placeholder="Unique Agent ID" required className="" onChange = {e =>this.agentId = e.target.value }/> </div>
+                                </div>
                                 <div className="form-group py-2">
                                     <div className="input-field"><input type="text" placeholder="First Name" required className="" onChange = {e =>this.firstName = e.target.value }/> </div>
                                 </div>
                                 <div className="form-group py-2">
                                     <div className="input-field"><input type="text" placeholder="Last Name" required className="" onChange = {e =>this.LastName = e.target.value }/> </div>
                                 </div>
-                                
+                                <div className="form-group py-1 pb-2">
+                                    <div className="input-field"><input type="mail" placeholder="Enter email" required className="" onChange = {e =>this.email = e.target.value }/> </div>
+                                </div>
                                 <div className="form-group py-1 pb-2">
                                     <div className="input-field"><input type="text" placeholder="Enter your Password" required className="" onChange = {e =>this.password = e.target.value }/> </div>
                                 </div>
@@ -106,8 +104,14 @@ class Registration extends React.Component{
                                     <div className="input-field"><input type="number" placeholder="Enter contact Number "   required className="" name="contactNumber"onChange = {e =>this.contactNumber = e.target.value }/> </div>
                                 </div>
 
+                                <div className="form-group py-2">
+                                    <div className="input-field"><input type="text" placeholder="Enter Bank Name" required className="" onChange = {e =>this.bankName = e.target.value }/> </div>
+                                </div>
+                                <div className="form-group py-2">
+                                    <div className="input-field"><input type="text" placeholder="Enter Bank Account Number" required className="" onChange = {e =>this.accountNumber = e.target.value }/> </div>
+                                </div>    
                                 <div className="form-group py-1 pb-2">
-                                    <div className="input-field"><input type="text" placeholder="Enter your Address "   required className="" name="address"onChange = {e =>this.address = e.target.value }/> </div>
+                                    <div className="input-field"><input type="text" placeholder="Enter IFS Code "   required className="" onChange = {e =>this.ifsc = e.target.value }/> </div>
                                 </div>
 
 
@@ -119,45 +123,9 @@ class Registration extends React.Component{
                                 <div className="d-flex align-items-start">
                                     <div className="ml-auto"> <a href="#" id="forgot">Forgot Password?</a> </div>
                                 </div> <button className="btn btn-block text-center my-3">Register</button>
-                                <div className="text-center pt-3 text-muted">Already Registered? <Link to={"/"}>Login Here</Link></div>
+                                <div className="text-center pt-3 text-muted">Already Registered? <Link to={"/doctorLogin"}>Login Here</Link></div>
                             </form> 
-                            {/* <form action="#non" method="post" className="fcorn-register container">
-                                <p className="register-info">PATIENT REGISTRATION FORM</p>
-                                <div>
-                                    
-                                    
-                                
-                                    <p className="col-md-6 role-wrap"/>
-                                        <select>
-                                            <option value="0" selected disabled>Gender</option>
-                                            <option value="1">Others</option>
-                                            <option value="2">Female</option>
-                                            <option value="2">Male</option>
-                                            
-                                        </select>
-                                
-                                </div> 
-                                <div className="row">
-                                    <p className="col-md-6"><input type="text" placeholder="First Name" required/></p>
-                                    <p className="col-md-6"><input type="text" placeholder="Last Name" required/></p>
-                                </div>
-                                
-                                <p><input type="password" placeholder="Password" required/>
-                                    <span className="extern-type">Atleast 8 characters long.</span>
-                                </p>
-                                <p>Date Of Birth<input type="date"/></p> 
-                                <p><input type="text" placeholder="Contact NUmber" required/></p>
-                                <p><input type="address" placeholder="Address" required/></p>
                             
-                                
-
-                                
-
-                                    <div className="row" id="formButton">
-                                        <p className="register-toggle"> </p>
-                                        <p className="register-submit"><input type="submit" value="Register"/></p>
-                                    </div>
-                            </form> */}
                         </div>
                     </div>
                 </div>
@@ -170,4 +138,4 @@ class Registration extends React.Component{
 	}
 }
 
-export default Registration;
+export default CreateAgent;

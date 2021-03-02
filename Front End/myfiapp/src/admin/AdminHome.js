@@ -22,16 +22,20 @@ class AdminHome extends React.Component{
                     <div className="wrapper d-flex " id="dashWrap">
                     <div className="sidebar"> <small className="text-muted pl-4"></small>
                         <ul className="list-bullet-no">
-                            <li><a href="#"><i className="fa fa-home"></i>Admin Dashboard</a></li>
-                            <li><a href="#"><i className="fa fa-credit-card"></i> Diagnostic Services </a></li>
+                            <li><Link to={"/adminHome"}><i className="fa fa-home"></i>Admin Dashboard</Link></li>
+                            <li><Link to={"/create-diagnostic-Service"}><i className="fa fa-credit-card"></i> Create Diagnostic Services</Link></li>
                         </ul> <small className="text-muted px-3">APPOINTMENT</small>
                         <ul className="list-bullet-no">
-                            <li><a href="#"><i className="far fa-calendar-alt"></i>Book Appointment</a></li>
-                            <li><a href="#"><i className="fas fa-video"></i>Appointment Status</a></li>
-                        </ul> <small className="text-muted px-3">TEST REPORTS</small>
+                            
+                            <li><Link to={"/create-agent"}><i className="fa fa-credit-card"></i>Create Agent</Link></li>
+                        </ul> <small className="text-muted px-3">TEST RESULTS</small>
                         <ul className="list-bullet-no">
-                            <li><a href="#"><i className="fa fa-external-link-alt"></i>Test Results</a></li>
-                            <li><a href="#"><i className="fa fa-help"></i>Treatment History</a></li>
+                            <li><Link to={"/update-test-result"}><i className="fa fa-credit-card"></i>Update Test Result</Link></li>
+                            <li><Link to={"/update-commission"}><i className="fa fa-credit-card"></i>Update Commission</Link></li>
+                         </ul>
+                         <ul className="list-bullet-no">
+                            <li><Link to={"/create-questions"}><i className="fa fa-credit-card"></i>Create Review Questionarie</Link></li>
+                            <li><Link to={"/generate-report"}><i className="fa fa-credit-card"></i>Generate Report</Link></li>
                          </ul>
                          {/*<small className="text-muted px-3">OTHERS</small>
                         
