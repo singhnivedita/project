@@ -1,0 +1,106 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./Stylesheets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./Stylesheets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-sm ">
+        <span class="navbar-brand"><i class="fa fa-heartbeat"></i> Diagnostic Medical Center</span> </button>
+
+    </nav>
+    <!-- Register Form -->
+    <div class="form-wrapper">
+        <!-- Form-wrapper only for positioning -->
+        <form action="#non" method="post" class="fcorn-register container">
+            <p class="register-info">MEDICAL RECORD FORM</p>
+            <div class="row">
+                <p class="col-md-6"><input type="text" placeholder="Patient ID" required></p>
+                <p class="col-md-6"><input type="text" placeholder=" Symptoms" required></p>
+            </div>
+            <div class="row">
+                <p class="col-md-6"><input type="text" placeholder="Diet" required></p>
+                <p class="col-md-6"><input type="text" placeholder=" Diagnosis" required></p>
+                <p class="col-md-6"><input type="text" placeholder="Recommendations" required></p>
+                <p class="col-md-6"><input type="text" placeholder="furtherdsadadasdas" required></p>
+
+            </div>
+            <div class="page-content page-container" id="page-content">
+                <div class="padding">
+                    <div class="row container d-flex justify-content-center">
+                        <div class="col-lg-8 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title text-center"> Prescription: Medicine</h4>
+                                    <hr>
+                                    <div class="table-responsive">
+                                        <table id="faqs" class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Medicine</th>
+                                                    <th>Quantity</th>
+                                                    <th>Dosage</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><input type="text" class="form-control" placeholder="Medicine"></td>
+                                                    <td><input type="text" placeholder="Quantity" class="form-control"></td>
+                                                    <td><input type="text" placeholder="Dosage" class="form-control"></td>
+                                                    <td class="mt-10"><button class="badge badge-danger"><i class="fa fa-trash"></i> Delete</button></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="text-center"><button onclick="addfaqs();" class="badge badge-success"><i class="fa fa-plus"></i> ADD NEW</button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="formButton">
+                <p class="register-toggle"> </p>
+                <p class="register-submit"><input type="submit" value="Update Now"></p>
+            </div>
+
+        </form>
+
+    </div>
+    <footer class="container-fluid" style="position: fixed;">
+        <div class="container text-center">© 2021 Copyright:Diagnostic Medical Centre</div>
+    </footer>
+</body>
+<script>
+    var faqs_row = 0;
+
+    function addfaqs() {
+        html = '<tr id="faqs-row' + faqs_row + '">';
+        html += '<td><input type="text" class="form-control" placeholder="Medicine"></td>';
+        html += '<td><input type="text" placeholder="Quantity" class="form-control"></td>';
+        html += '<td><input type="text" placeholder="Dosage" class="form-control"></td>';
+        html += '<td class="mt-10"><button class="badge badge-danger" onclick="$(\'#faqs-row' + faqs_row + '\').remove();"><i class="fa fa-trash"></i> Delete</button></td>';
+
+        html += '</tr>';
+
+        $('#faqs tbody').append(html);
+
+        faqs_row++;
+    }
+</script>
+
+</html>
