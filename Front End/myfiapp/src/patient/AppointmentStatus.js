@@ -19,8 +19,9 @@ class AppointmentStatus extends React.Component{
         axios.get('/patient/status/'+this.props.match.params.patientId).then(res=> {
             const bookings = res.data;
             this.setState({bookings})
-
+           
         });
+        
     }
     
 
@@ -42,7 +43,7 @@ class AppointmentStatus extends React.Component{
                                 <th>Doctor Name</th>
                                 <th>Service Name</th>
                                 <th>Status</th>
-                                <th>Booked By</th>
+                                
                                 
                             </tr>
                             </thead>
@@ -67,16 +68,17 @@ class AppointmentStatus extends React.Component{
 class RowCreator extends React.Component{
     render(){
          var booking = this.props.item;
+         
          return(
              <tr>
                  <td>{booking.requestId}</td>
                  <td>{booking.date}</td>
                  <td>{booking.time}</td>
                  <td>{booking.remark}</td>
-                 <td>{booking.doctorId.firstName}</td>
+                 <td>{booking.doctorId.firstName +" "+ booking.doctorId.lastName}</td>
                  <td>{booking.diagnosticService.serviceName}</td>
-                 <td>{booking.status}</td>
-                 <td>{booking.agentId.firstName}</td>
+                 <td>{booking.status.toString()}</td>
+                 {/* <td>{booking.agentId.firstName+' '+booking.agentId.lastName}</td> */}
 
              </tr>
          )

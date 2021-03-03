@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.Type;
 import org.springframework.beans.factory.annotation.Value;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -44,15 +45,13 @@ public class BookAppointment {
 	@NotNull
 	private String remark;
 	@NotNull
-	@Value("Yes")
+	@Type(type="yes_no")
 	private boolean status; 
 
 	//change all primitive type to wrapper
 	//foreign keys
-	
-	
 	@ManyToOne
-	@JoinColumn(name = "patientId", referencedColumnName = "patientId")
+	@JoinColumn(name = "patId", referencedColumnName = "patientId")
 	private Patient patientId;
 	
 	@ManyToOne

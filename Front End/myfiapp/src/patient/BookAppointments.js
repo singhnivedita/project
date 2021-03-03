@@ -8,18 +8,23 @@ toast.configure();
 
 class BookAppointments extends React.Component{
     state={
-        doc:[]
+        docList:[],
+        serviceList:[]
     }
     handleSubmit =(event) =>{
+
         event.preventDefault();
         const data ={
+            requestId:8,
             date: this.date,
             time : this.time,
             remark : this.remark,
-            patientId:this.state.userId, //needs to get from local storage
-            docId : this.docId,
-            dob: this.dob,
-            dgserviceId:this.serviceId,
+            patientId : {patientId:this.state.userId}, //getting from local storage
+            
+            doctorId :{ docId:this.state.docId},
+            
+            diagnosticService : {serviceId:this.state.dgserviceId}
+            
             
         };
         
@@ -27,43 +32,97 @@ class BookAppointments extends React.Component{
             res =>{
                 console.log(res);
                 
-                toast.success("Booking Successful, wait fro approval",{autoClose:4000,position:toast.POSITION.TOP_CENTER});
+                toast.success("Booking Successful, wait fro approval",{autoClose:7000,position:toast.POSITION.TOP_CENTER});
                 this.setState({
                     booked: true
                 });
             }
         ).catch(
             err => {
-                toast.error("Something went wrong....Booking Failed ,Please Try Again",{autoClose:4000,position:toast.POSITION.TOP_CENTER});
+                toast.error("Something went wrong....Booking Failed ,Please Try Again",{autoClose:7000,position:toast.POSITION.TOP_CENTER});
                 console.log(err);
             }
         )
         console.log(data);
     }
+
+    handleChanged = (event) => {
+        const { name, value } = event.target;
+
+        switch(name) {
+            case "docId":
+                this.setState({
+                    docId: value
+                });
+                break;
+            case "dgserviceId":
+                this.setState({
+                    dgserviceId: value
+                });
+                break;
+        }
+    }
+
+    
     componentWillMount(){
+
+        const userId = localStorage.getItem('userId');
+        this.setState({userId})
+        
+        axios.get('/patient/diagnostic-service').then(
+            response =>{
+                    
+                    const serviceList=response.data
+                    this.setState({
+                        serviceList: serviceList
+                    });
+                    console.log(serviceList);
+    
+            }
+        )
+
+
         
         axios.get('doctor/all-doctors').then(
             response =>{
                     
-                    const doc=response.data.docId
-                    this.setState({doc})
-                    console.log(doc);
+                    const docList=response.data
+                    this.setState({
+                        docList: docList
+                    });
+                    console.log(docList);
     
             }
         )
+
+        
     }
-    // bindDropDowns() {
-    //     var clientName = document.getElementById('clientName').value
- 
-    //     for(var i=0; i < this.state.doc.length; i++) {
-    //      var clientName = this.state.doc[i].clientName;
-    //      console.log("Some"+clientName)
-    //     }
-    // }
+    
+    
+
+    renderOptions = () => {
+        return (
+            this.state.docList.map((company) => {
+                return (
+                    <option key={company.docId} value={company.docId}>{company.firstName +' '+ company.lastName}</option>
+                );
+            })
+        );
+    }
+
+    renderServices = () => {
+        return (
+            this.state.serviceList.map((company) => {
+                return (
+                    <option key={company.serviceId} value={company.serviceId}>{company.serviceName}</option>
+                );
+            })
+        );
+    }
     
 	render(){
         if(this.state.booked){
-            return <Redirect to={'/patientHome'} />;
+            return <Redirect to={'/appointment-status/'+this.state.userId} />;
         }
 		return(
 		<div>
@@ -83,60 +142,24 @@ class BookAppointments extends React.Component{
                                 </div>
                                 
                                 <div className="form-group py-1 pb-2">
-                                    <div className="input-field"><input type="time" placeholder="Time of Appointment" required className="" onChange = {e =>this.time = e.target.value }/> </div>
+                                    <div className="input-field"><input type="time" step="1" placeholder="Time of Appointment" required className="" onChange = {e =>this.time = e.target.value }/> </div>
                                 </div>
                                 
 
-                                {/* <div>
-                                    <select className="custom-select" id="clientName" onSelect="bindDropDowns()">
-                                    
-                                        {this.state.doc.map((obj) => 
-                                        <option key={obj.clientName}>{obj.clientName}</option>
-                                        )};
-                                    </select>
-                                </div> */}
-
-                                    
-
-                                {/* <div className="form-group py-1 pb-2" onChange={e => this.gender = e.target.value }>
-                                    <span className="input-field"> Select Gender : 
-                                        <select>
-                                            <option selected disabled>Gender</option>
-                                            <option value="Other">Others</option>
-                                            <option value="Female">Female</option>
-                                            <option value="Male">Male</option>
-                                            
-                                        </select>
-                                    </span>    
-                                </div> */}
-
-
-
-                                {/* <div className="form-group py-1 pb-2">
-                                    <div className="input-field"><input type="date"  required className="" name="dob"onChange = {e =>this.dob = e.target.value }/> </div>
-                                </div>
-                                <div className="form-group py-1 pb-2">
-                                    <div className="input-field"><input type="number" placeholder="Enter contact Number "   required className="" name="contactNumber"onChange = {e =>this.contactNumber = e.target.value }/> </div>
-                                </div>
-
-                                <div className="form-group py-2">
-                                    <div className="input-field"><input type="text" placeholder="Qualification" required className="" onChange = {e =>this.qualification = e.target.value }/> </div>
-                                </div>
-                                <div className="form-group py-2">
-                                    <div className="input-field"><input type="text" placeholder="Speciality" required className="" onChange = {e =>this.speciality = e.target.value }/> </div>
-                                </div>    
-                                <div className="form-group py-1 pb-2">
-                                    <div className="input-field"><input type="text" placeholder="Enter your Address "   required className="" name="address"onChange = {e =>this.address = e.target.value }/> </div>
-                                </div> */}
-
-
-
-
-
-
+                                
+                                <select id="docId" name="docId" className="form-control input-field" defaultValue="Select Doctor" onChange={(event) => this.handleChanged(event)}>
+                                    <option value="choose..">Select Doctor</option>
+                                    {this.renderOptions()}
+                                </select>
+                                <br></br>
+                                <select id="dgserviceId" name="dgserviceId" className="form-control input-field" defaultValue="Select Service" onChange={(event) => this.handleChanged(event)}>
+                                    <option value="choose..">Select Service</option>
+                                    {this.renderServices()}
+                                </select>
+                              
 
                                 <div className="d-flex align-items-start">
-                                    
+                                <div className="text-center pt-3 ml-auto">Feeling well? <Link to={"/patientHome"}> Go Back</Link></div>
                                 </div> <button className="btn btn-block text-center my-3">Book</button>
                                 
                             </form> 

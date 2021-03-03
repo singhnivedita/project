@@ -21,22 +21,23 @@ class AdminHome extends React.Component{
                 
                     <div className="wrapper d-flex " id="dashWrap">
                     <div className="sidebar"> <small className="text-muted pl-4"></small>
-                        <ul className="list-bullet-no">
+                        <ul className="list-bullet-no" >
                             <li><Link to={"/adminHome"}><i className="fa fa-home"></i>Admin Dashboard</Link></li>
-                            <li><Link to={"/create-diagnostic-Service"}><i className="fa fa-credit-card"></i> Create Diagnostic Services</Link></li>
-                        </ul> <small className="text-muted px-3">APPOINTMENT</small>
-                        <ul className="list-bullet-no">
+                            <li><Link to={"/view-centre"}> View Diagnostic Centre</Link></li>
+                            <li><Link to={"/add-services"}>Add Diagnostic Services</Link></li>
+                        
+                        
                             
-                            <li><Link to={"/create-agent"}><i className="fa fa-credit-card"></i>Create Agent</Link></li>
-                        </ul> <small className="text-muted px-3">TEST RESULTS</small>
-                        <ul className="list-bullet-no">
-                            <li><Link to={"/update-test-result"}><i className="fa fa-credit-card"></i>Update Test Result</Link></li>
-                            <li><Link to={"/update-commission"}><i className="fa fa-credit-card"></i>Update Commission</Link></li>
-                         </ul>
-                         <ul className="list-bullet-no">
-                            <li><Link to={"/create-questions"}><i className="fa fa-credit-card"></i>Create Review Questionarie</Link></li>
-                            <li><Link to={"/generate-report"}><i className="fa fa-credit-card"></i>Generate Report</Link></li>
-                         </ul>
+                            <li><Link to={"/create-agent"}>Create Agent</Link></li>
+                        
+                        
+                            <li><Link to={"/view-test-admin"}>View Test Result</Link></li>
+                            <li><Link to={"/update-commission"}>Update Commission</Link></li>
+                         
+                         
+                            <li><Link to={"/create-questions"}>Create Review Questionarie</Link></li>
+                            <li><Link to={"/generate-report"}><i className="fa fa-credit-card"></i> Generate Report</Link></li>
+                            </ul> 
                          {/*<small className="text-muted px-3">OTHERS</small>
                         
                         <ul>

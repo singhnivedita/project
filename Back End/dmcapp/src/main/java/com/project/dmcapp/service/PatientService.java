@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.project.dmcapp.dto.AuthRequestUser;
 import com.project.dmcapp.dto.AuthResponseUser;
+import com.project.dmcapp.dto.BookAppointmentDTO;
 import com.project.dmcapp.dto.DiagnosticServiceDTO;
 import com.project.dmcapp.exception.UnauthorisedException;
 import com.project.dmcapp.model.BookAppointment;
@@ -59,7 +60,18 @@ public class PatientService {
 	
 	
 	//to book new appointments
-	public String bookAppointment(BookAppointment bookAptmnt){
+	public String bookAppointment(BookAppointmentDTO bookAptmntdto){
+		
+		BookAppointment bookAptmnt = new BookAppointment();
+		bookAptmnt.setRequestId(bookAptmntdto.getRequestId());
+		bookAptmnt.setRemark(bookAptmntdto.getRemark());
+		bookAptmnt.setDate(bookAptmntdto.getDate());
+		bookAptmnt.setTime(bookAptmntdto.getTime());
+		bookAptmnt.setPatientId(bookAptmntdto.getPatientId());
+		bookAptmnt.setDoctorId(bookAptmntdto.getDoctorId());
+		bookAptmnt.setDiagnosticService(bookAptmntdto.getDiagnosticService());
+		bookAptmnt.setAgentId(bookAptmntdto.getAgentId());
+				
 		bookAppointmentRepo.save(bookAptmnt);
 		
 		return "Appointment Booked";

@@ -29,6 +29,7 @@ import com.project.dmcapp.model.TestResult;
 import com.project.dmcapp.model.UpdateCommission;
 import com.project.dmcapp.repo.AgentRepo;
 import com.project.dmcapp.repo.DiagnosticCentreRepo;
+import com.project.dmcapp.repo.TestResultRepo;
 import com.project.dmcapp.service.AdminService;
 @CrossOrigin
 @RestController
@@ -42,6 +43,9 @@ public class AdminController {
 	
 	@Autowired
 	DiagnosticCentreRepo diagnosticCentreRepo;
+	
+	@Autowired
+	TestResultRepo testResultRepo;
 	
 	//Admin Login
 		@PostMapping("/login")
@@ -57,6 +61,13 @@ public class AdminController {
 			
 			return new ResponseEntity<>(diagnosticCentreRepo.findAll(), HttpStatus.OK);
 		}
+		
+		@GetMapping("/all-test")
+		public ResponseEntity<List<TestResult>> getAllTestResults(){
+			
+			return new ResponseEntity<>(testResultRepo.findAll(), HttpStatus.OK);
+		}
+		
 	//add a service
 	@PutMapping("add-service/{centreId}/{serviceId}")
 	public ResponseEntity<Msg> addService(@PathVariable("centreId") int centreId, @PathVariable("serviceId") int serviceId) {
@@ -69,10 +80,10 @@ public class AdminController {
 	}
 	
 	//update service details
-	@PutMapping("/modify-service") 
-	  public ResponseEntity<?> modifyService(@RequestBody DiagnosticService diagnosticService)
+	@PutMapping("/modify-centre") 
+	  public ResponseEntity<?> modifyService(@RequestBody DiagnosticCentre diagnosticCentre)
 	  {
-		  return new ResponseEntity<>(adminService.modifyService(diagnosticService),HttpStatus.OK); 
+		  return new ResponseEntity<>(adminService.modifyCentre(diagnosticCentre),HttpStatus.OK); 
 		  
 	  }
 	
@@ -88,7 +99,7 @@ public class AdminController {
       }
 	
 	//update commission table
-	@PutMapping("/{serviceId}")
+	@PutMapping("update-commission/{serviceId}")
 	public ResponseEntity<Msg> modifyCommissionTable(@PathVariable("serviceId") int serviceId,@RequestBody UpdateCommission updateCommission) {
 		boolean updateStatus = adminService.modifyCommissionTable(serviceId,updateCommission );
 	

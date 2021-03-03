@@ -4,10 +4,10 @@ import React from 'react';
 
 import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
-import DoctorHome from './DoctorHome';
+import AdminHome from './AdminHome';
 
 
-class TestResultDoctor extends React.Component{
+class AllTestResult extends React.Component{
     
     state = {
         tests:[]
@@ -16,7 +16,7 @@ class TestResultDoctor extends React.Component{
     
     componentWillMount(){
         //console.log(this.props ) //getting undefined ,how to get this value
-        axios.get('/doctor/treatment-history/'+this.props.match.params.doctorId).then(res=> {
+        axios.get('/admin/all-test/').then(res=> {
             const tests = res.data;
             this.setState({tests})
 
@@ -29,9 +29,9 @@ class TestResultDoctor extends React.Component{
         
 			return(
                 <div>
-                    <DoctorHome/> 
+                    <AdminHome/> 
                     <div id="tableDiv">
-                        <h2 > Test Result</h2>
+                        <h2 align='center'> Test Result</h2>
                         <table  id="tableWrap" className="table table-responsive">
                             <thead>
                             <tr>
@@ -39,7 +39,7 @@ class TestResultDoctor extends React.Component{
                                 <th>Test Name</th>
                                 <th>Test Result</th>
                                 <th>Service</th>
-                                <th>Update Test Result</th>
+                                <th>Update</th>
                                 
                                 
                             </tr>
@@ -50,7 +50,7 @@ class TestResultDoctor extends React.Component{
                             
                         </table>
 
-                        </div>
+                </div>
                         </div>
         
                     
@@ -67,11 +67,11 @@ class RowCreator extends React.Component{
          var test = this.props.item;
          return(
              <tr>
-                 <td>{test.testresultId.testId}</td>
-                 <td>{test.testresultId.testName}</td>
-                 <td>{test.testresultId.testResult}</td>
-                 <td>{test.testresultId.diagnosticServiceId.serviceName}</td>
-                 <td><Link to={"/update-testresult-doctor/"}>Update</Link></td>
+                 <td>{test.testId}</td>
+                 <td>{test.testName}</td>
+                 <td>{test.testResult}</td>
+                 <td>{test.diagnosticServiceId.serviceName}</td>
+                 <td><Link to={'/update-test-result-admin/'+test.testId}>Update</Link></td>
                  
 
              </tr>
@@ -79,4 +79,4 @@ class RowCreator extends React.Component{
     }
 }
 
-export default TestResultDoctor;
+export default AllTestResult;

@@ -33,6 +33,12 @@ import TestResultDoctor from './doctor/TestResult-doctor';
 import UpdateTreatment from './doctor/UpdateTreatment';
 import TreatmentHistoryDoctor from './doctor/TreatmentHistory-Doctor';
 import UpdateTestResult from './doctor/UpdateTestResult';
+import AddService from './admin/AddService';
+import DiagnosticCentre from './admin/Centre';
+import UpdateServiceCentre from './admin/UpdateServiceCentre';
+import AllTestResult from './admin/AllTestResult';
+import UpdateTestResultAdmin from './admin/UpdateTestResultAdmin';
+import ApproveRequest from './doctor/ApproveRequest';
 
 class App extends React.Component {
   state ={};
@@ -65,11 +71,22 @@ class App extends React.Component {
           <Route exact path="/treatment-history/:patientId" component={TreatmentHistory  } />
           <Route exact path="/test-result/:patientId" component={ TestResult  } />
           <Route exact path="/appointment-request/:doctorId" component={ AppointmentRequests  } />
+          <Route exact path="/appointment-request-approve/:requestId" component={ ApproveRequest  } />
+
+
           <Route exact path="/appointment-booking/" component={ BookAppointments  } />
           <Route exact path="/patient-record/:doctorId" component={ PatientRecord  } />
           <Route exact path="/test-result-doctor/:doctorId" component={ TestResultDoctor  } />
           <Route exact path="/update-treatment-doctor/" component={ UpdateTreatment  } />
           <Route exact path="/update-testresult-doctor/" component={ UpdateTestResult  } />
+          <Route exact path="/add-services/" component={ AddService  } />
+          <Route exact path="/view-centre/" component={ DiagnosticCentre } />
+          <Route exact path="/update-centre/:centreId" component={ UpdateServiceCentre } />
+          <Route exact path="/update-test-result-admin/:testId" component={ UpdateTestResultAdmin } />
+          <Route exact path="/view-test-admin" component={ AllTestResult } />
+          <Route exact path="/add-service/" component={ AddService } />
+          
+          
           <Route exact path="/treatment-history-doctor/:doctorId" component={ TreatmentHistoryDoctor  } />
 
 

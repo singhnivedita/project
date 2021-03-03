@@ -39,7 +39,7 @@ class PatientHome extends React.Component{
                         </ul> 
                         <small className="text-muted px-3">APPOINTMENT</small>
                         <ul className="list-bullet-no">
-                            <li><Link to={"appointment-booking"}><i className="fa fa-credit-card"></i>Book Appointment</Link></li>
+                            <li><Link to={"/appointment-booking"}><i className="fa fa-credit-card"></i>Book Appointment</Link></li>
                             <li> <Link to={"/appointment-status/"+this.state.userId}><i className="fa fa-credit-card"></i>Appointment Status</Link></li>
                         </ul> 
                         <small className="text-muted px-3">TEST REPORTS</small>

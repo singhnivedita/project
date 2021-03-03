@@ -24,9 +24,9 @@ class DiagnosticService extends React.Component{
 			return(
                 <div>
                     <PatientHome/>
-                     
+                     <div id="tableDiv">
                         <h2 align='center'> Diagnostic Services</h2>
-                        <table align='center'>
+                        <table id="tableWrap" className="table table-responsive" >
                             <thead>
                             <tr>
                                 <th>Id</th>
@@ -42,7 +42,7 @@ class DiagnosticService extends React.Component{
                             </tbody>
                             
                         </table>
-
+                        </div>
                 
                         </div>
         

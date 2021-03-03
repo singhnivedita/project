@@ -35,8 +35,9 @@ class TreatmentHistory extends React.Component{
 			return(
                 <div>
                     <PatientHome/> 
+                    <div id="tableDiv">
                         <h2 align='center'> Treatment History</h2>
-                        <table  id="initialWrap">
+                        <table  id="tableWrap" className="table table-responsive">
                             <thead>
                             <tr>
                                 <th>Treatment Id</th>
@@ -57,6 +58,7 @@ class TreatmentHistory extends React.Component{
                             </tbody>
                             
                         </table>
+                        </div>
 
                 
                         </div>

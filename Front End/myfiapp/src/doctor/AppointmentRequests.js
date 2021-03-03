@@ -80,7 +80,9 @@ class RowCreator extends React.Component{
                  {/* <td>{booking.doctorId.firstName}</td> */}
                  <td>{booking.diagnosticService.serviceName}</td>
                  
-                 <td><Link to={"/approve/"+booking.status}>Appproved</Link></td>
+                 <td><Link to={"/appointment-request-approve/"+booking.requestId}>{booking.status.toString()}</Link></td>
+                 
+
 
              </tr>
          )

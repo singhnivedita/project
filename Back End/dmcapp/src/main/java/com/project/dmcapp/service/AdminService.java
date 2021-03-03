@@ -79,14 +79,14 @@ public class AdminService {
 	}
 	
 	//modify diagnostic service details
-	public boolean modifyService(DiagnosticService diagnosticService) {
+	public boolean modifyCentre(DiagnosticCentre diagnosticCentre) {
 		
-		DiagnosticService diagnosticServiceold = diagnosticServiceRepo.findById(diagnosticService.getServiceId()).orElse(null);
+		DiagnosticCentre diagnosticCentreold = diagnosticCentreRepo.findById(diagnosticCentre.getCentreId()).orElse(null);
 		
-		if(diagnosticServiceold == null)
+		if(diagnosticCentreold == null)
 			return false;
 		
-		diagnosticServiceRepo.save(diagnosticService);
+		diagnosticCentreRepo.save(diagnosticCentre);
 		
 		return true;
 	}

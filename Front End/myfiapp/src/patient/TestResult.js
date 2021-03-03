@@ -30,8 +30,9 @@ class TestResult extends React.Component{
 			return(
                 <div>
                     <PatientHome/> 
+                    <div id="tableDiv">
                         <h2 align='center'> Test Result</h2>
-                        <table  id="initialWrap">
+                        <table  id="tableWrap" className="table ">
                             <thead>
                             <tr>
                                 <th>Test Id</th>
@@ -48,7 +49,7 @@ class TestResult extends React.Component{
                             
                         </table>
 
-                
+                        </div>
                         </div>
         
                     

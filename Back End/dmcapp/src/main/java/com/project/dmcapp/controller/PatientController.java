@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.dmcapp.dto.AuthRequestUser;
 import com.project.dmcapp.dto.AuthResponseUser;
+import com.project.dmcapp.dto.BookAppointmentDTO;
 import com.project.dmcapp.dto.DiagnosticServiceDTO;
 import com.project.dmcapp.exception.BookingNotFoundException;
 import com.project.dmcapp.exception.TestResultNotFoundException;
@@ -52,7 +53,7 @@ public class PatientController {
 	
 	//for new booking
 	@PostMapping("/booking")
-	public ResponseEntity<Msg> appointmentBooking(@RequestBody BookAppointment bookAppointment) {
+	public ResponseEntity<Msg> appointmentBooking(@RequestBody BookAppointmentDTO bookAppointment) {
 		
 		patientService.bookAppointment(bookAppointment);
 		

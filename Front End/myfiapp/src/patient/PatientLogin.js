@@ -21,8 +21,8 @@ class Patient extends React.Component{
 
         axios.post("patient/login", data).then(
             res =>{
-                const role =res.data.role;
-                toast.success("Login Successful, Role:Patient",{autoClose:4000,position:toast.POSITION.TOP_CENTER});
+               //const role =res.data.role;
+               toast.success("Login Successful, Role:Patient",{autoClose:4000,position:toast.POSITION.TOP_CENTER});
                localStorage.setItem('userId', res.data.userId);
 
                const userId = localStorage.getItem("userId");
