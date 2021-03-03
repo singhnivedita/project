@@ -33,13 +33,13 @@ class TreatmentHistoryDoctor extends React.Component{
                     <DoctorHome/> 
                         
                         <div id="tableDiv">
-                        <h2 align='center'> Patient Record</h2>
+                        <h2 align='center'> Treatment History</h2>
                             <table  id="tableWrap" className="table table-responsive">
                             <thead>
                             <tr>
                             
-                                <th>First Name</th>
-                                <th>Last Name</th>
+                                <th>Name</th>
+                                
                                 <th>Symptoms</th>
                                 <th>Diagnosis</th>
                                 <th>Service Name</th>
@@ -74,8 +74,8 @@ class RowCreator extends React.Component{
          return(
              <tr>
                  
-                 <td>{booking.patientId.firstName}</td>
-                 <td>{booking.patientId.lastName}</td>
+                 <td>{booking.patientId.firstName+' '+booking.patientId.lastName}</td>
+                 
                  
                  <td>{booking.symptoms}</td>
                  <td>{booking.diagnosis}</td>

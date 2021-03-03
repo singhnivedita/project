@@ -23,7 +23,7 @@ class UpdateTreatment extends React.Component{
             
         };
 
-        axios.post("doctor/update-treatment-history", data).then(
+        axios.put("doctor/update-treatment-history", data).then(
             res =>{
                 console.log(res);
                 

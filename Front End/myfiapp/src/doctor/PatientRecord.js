@@ -37,9 +37,9 @@ class PatientRecord extends React.Component{
                             <table  id="tableWrap" className="table table-responsive">
                             <thead>
                             <tr>
-                            <th>Date</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
+                                <th>Date</th>
+                                <th>Name</th>
+                                
                                 <th>Remark</th>
                                 <th>Service Name</th>
                                 
@@ -73,8 +73,8 @@ class RowCreator extends React.Component{
          return(
              <tr>
                  <td>{booking.date}</td>
-                 <td>{booking.patientId.firstName}</td>
-                 <td>{booking.patientId.lastName}</td>
+                 <td>{booking.patientId.firstName+' '+booking.patientId.lastName}</td>
+                 
                  
                  <td>{booking.remark}</td>
                  {/* <td>{booking.doctorId.firstName}</td> */}
