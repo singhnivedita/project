@@ -5,6 +5,7 @@ import React from 'react';
 import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
 import PatientHome from '../patient/PatientHome';
+import AgentHome from './AgentHome';
 
 
 class DiagnosticServiceAgent extends React.Component{
@@ -23,9 +24,10 @@ class DiagnosticServiceAgent extends React.Component{
         
 			return(
                 <div>
-                    <PatientHome/>  
+                    <AgentHome/>  
+                    <div id="tableDiv">
                         <h2 align='center'> Diagnostic Services</h2>
-                        <table align='center'>
+                        <table id="tableWrap" className="table ">
                             <thead>
                             <tr>
                                 <th>Id</th>
@@ -41,7 +43,7 @@ class DiagnosticServiceAgent extends React.Component{
                             </tbody>
                             
                         </table>
-
+                        </div>          
                 
                         </div>
         

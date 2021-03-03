@@ -7,7 +7,9 @@ import 'react-toastify/dist/ReactToastify.css';
 toast.configure();
 
 class Registration extends React.Component{
-    state={}
+    state={
+        serviceList:[]
+    }
     handleSubmit =(event) =>{
         event.preventDefault();
         const data ={
@@ -40,9 +42,48 @@ class Registration extends React.Component{
         console.log(data);
     }
 
-    setGender(event) {
-        console.log(event.target.value);
-      }
+    handleChanged = (event) => {
+        const { name, value } = event.target;
+
+        switch(name) {
+            
+            case "diagnosticServiceId":
+                this.setState({
+                    diagnosticServiceId: value
+                });
+                break;
+        }
+    }
+
+    
+    componentWillMount(){
+
+        axios.get('/admin/roles/3').then(
+            response =>{
+                    
+                    const serviceList=response.data
+                    this.setState({
+                        serviceList: serviceList
+                    });
+                    console.log(serviceList);
+    
+            }
+        )
+     }
+    
+    
+
+   
+
+    renderServices = () => {
+        return (
+            this.state.serviceList.map((company) => {
+                return (
+                    <option key={company.roleId} value={company.roleId}>{company.roleName}</option>
+                );
+            })
+        );
+    }
 	render(){
         if(this.state.registered){
             return <Redirect to={'/'} />;
@@ -58,15 +99,10 @@ class Registration extends React.Component{
                             <div className="h4 text-muted text-center pt-2">Patient Registration</div>
                              <form className="pt-3" onSubmit={this.handleSubmit} >
 
-                             {/* <div className="form-group py-1 pb-2" onChange={e => this.role = e.target.value }>
-                                    <span className="input-field"> Select Role : 
-                                        <select>
-                                            <option value="3" >Patient</option>
-                                            
-                                            
-                                        </select>
-                                    </span>    
-                                </div> */}
+                             <select id="diagnosticServiceId" name="diagnosticServiceId" className="form-control input-field" defaultValue="Select Service" onChange={(event) => this.handleChanged(event)}>
+                                    
+                                    {this.renderServices()}
+                             </select>
 
                                 <div className="form-group py-2">
                                     <div className="input-field"><input type="text" placeholder="First Name" required className="" onChange = {e =>this.firstName = e.target.value }/> </div>

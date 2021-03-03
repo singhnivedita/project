@@ -7,7 +7,9 @@ import 'react-toastify/dist/ReactToastify.css';
 toast.configure();
 
 class DoctorRegistration extends React.Component{
-    state={}
+    state={
+        serviceList:[]
+    }
     handleSubmit =(event) =>{
         event.preventDefault();
         const data ={
@@ -21,7 +23,7 @@ class DoctorRegistration extends React.Component{
             contactNumber:this.contactNumber,
             password: this.password,
             address: this.password,
-            roleId:"1"
+            roleId:this.state.diagnosticServiceId
         };
 
         axios.post("doctor/registration", data).then(
@@ -42,9 +44,48 @@ class DoctorRegistration extends React.Component{
         console.log(data);
     }
 
-    setGender(event) {
-        console.log(event.target.value);
-      }
+    handleChanged = (event) => {
+        const { name, value } = event.target;
+
+        switch(name) {
+            
+            case "diagnosticServiceId":
+                this.setState({
+                    diagnosticServiceId: value
+                });
+                break;
+        }
+    }
+
+    
+    componentWillMount(){
+
+        axios.get('/admin/roles/1').then(
+            response =>{
+                    
+                    const serviceList=response.data
+                    this.setState({
+                        serviceList: serviceList
+                    });
+                    console.log(serviceList);
+    
+            }
+        )
+     }
+    
+    
+
+   
+
+    renderServices = () => {
+        return (
+            this.state.serviceList.map((company) => {
+                return (
+                    <option key={company.roleId} value={company.roleId}>{company.roleName}</option>
+                );
+            })
+        );
+    }
 	render(){
         if(this.state.registered){
             return <Redirect to={'/doctorLogin'} />;
@@ -59,6 +100,11 @@ class DoctorRegistration extends React.Component{
                             
                             <div className="h4 text-muted text-center pt-2">Doctor Registration</div>
                              <form className="pt-3" onSubmit={this.handleSubmit} >
+
+                                <select id="diagnosticServiceId" name="diagnosticServiceId" className="form-control input-field" defaultValue="Select Service" onChange={(event) => this.handleChanged(event)}>
+                                    
+                                    {this.renderServices()}
+                                </select>
                                 <div className="form-group py-2">
                                     <div className="input-field"><input type="text" placeholder="First Name" required className="" onChange = {e =>this.firstName = e.target.value }/> </div>
                                 </div>

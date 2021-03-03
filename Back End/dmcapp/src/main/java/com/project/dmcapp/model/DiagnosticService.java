@@ -39,7 +39,7 @@ public class DiagnosticService {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NotNull
-	private Integer serviceId ;
+	private int serviceId ;
 	@NotNull
 	private String serviceName;
 	@NotNull

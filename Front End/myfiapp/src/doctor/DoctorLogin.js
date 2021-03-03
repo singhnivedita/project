@@ -25,6 +25,7 @@ class Doctor extends React.Component{
                 const role =res.data.role;
                 toast.success("Login Successful, Role: Doctor",{autoClose:4000,position:toast.POSITION.TOP_CENTER});
                localStorage.setItem('userId', res.data.userId);
+               localStorage.setItem('firstname', res.data.firstname);
 
                const userId = localStorage.getItem("userId");
                console.log(res);
@@ -65,7 +66,7 @@ class Doctor extends React.Component{
                                 <div className="d-flex align-items-start">
                                     <div className="ml-auto"> <a href="#" id="forgot" style={{color: "red"}}>Forgot Password?</a> </div>
                                 </div> <button className="btn btn-block text-center my-3">Log in</button>
-                                <div className="text-center pt-3 text-muted">Not Registered? <Link to={"/registration"} style={{color: "#23487a"}}>Register Here</Link></div>
+                                <div className="text-center pt-3 text-muted">Not Registered? <Link to={"/doctor-registration"} style={{color: "#23487a"}}>Register Here</Link></div>
                             </form>
                         </div>
                     </div>

@@ -79,5 +79,11 @@ public class AgentService {
 		return "Appointment Booked";
 		
 	}
+
+
+	public List<BookAppointment> getAppointmentStatusAgent(int aId) {
+		// TODO Auto-generated method stub
+		return bookAppointmentRepo.getviewCommission(aId);
+	}
 	
 }

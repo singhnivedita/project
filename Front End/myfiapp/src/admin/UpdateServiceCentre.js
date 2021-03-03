@@ -8,7 +8,8 @@ toast.configure();
 
 class UpdateServiceCentre extends React.Component{
     state={
-        serviceList:[]
+        serviceList:[],
+        centreList:[]
     }
     
     handleSubmit =(event) =>{
@@ -76,12 +77,19 @@ class UpdateServiceCentre extends React.Component{
     
             }
         )
-
-
+        axios.get('/admin/diagnostik-centre/'+this.props.match.params.centreId).then(
+            response =>{
+                    
+                    const centreList=response.data
+                    this.setState({
+                        centreList: centreList
+                    });
+                    console.log(centreList);
+    
+            }
+        )
         
-        
-
-        
+   
     }
     
     
@@ -101,6 +109,7 @@ class UpdateServiceCentre extends React.Component{
         if(this.state.updated){
             return <Redirect to={'/adminHome'} />;
         }
+        
 		return(
 		<div>
 			<div className="container-fluid">
@@ -115,11 +124,11 @@ class UpdateServiceCentre extends React.Component{
                                     <div className="input-field"><input type="text" defaultValue={this.props.match.params.centreId || ''} disabled placeholder="centreId" required className="" onChange = {e =>this.centreId = e.target.value }/> </div>
                                 </div>
                                 <div className="form-group py-2">
-                                    <div className="input-field"><input type="text" placeholder="brief" required className="" onChange = {e =>this.brief = e.target.value }/> </div>
+                                    <div className="input-field"><input type="text" defaultValue={this.state.centreList.brief || ''} placeholder="brief" required className="" onChange = {e =>this.brief = e.target.value }/> </div>
                                 </div>
                                 
                                 <div className="form-group py-1 pb-2">
-                                    <div className="input-field"><input type="text" placeholder="address" required className="" onChange = {e =>this.address = e.target.value }/> </div>
+                                    <div className="input-field"><input type="text" placeholder="address" defaultValue={this.state.centreList.address || ''} required className="" onChange = {e =>this.address = e.target.value }/> </div>
                                 </div>
                                 
 
@@ -129,23 +138,23 @@ class UpdateServiceCentre extends React.Component{
 
 
                                 <div className="form-group py-1 pb-2">
-                                    <div className="input-field"><input type="text"  required className="" placeholder="city"onChange = {e =>this.city = e.target.value }/> </div>
+                                    <div className="input-field"><input type="text"  required className="" defaultValue={this.state.centreList.city || ''} placeholder="city"onChange = {e =>this.city = e.target.value }/> </div>
                                 </div>
                                 <div className="form-group py-1 pb-2">
-                                    <div className="input-field"><input type="text" placeholder="state "   required className="" onChange = {e =>this.state = e.target.value }/> </div>
+                                    <div className="input-field"><input type="text" placeholder="state "   required className="" defaultValue={this.state.centreList.state || ''} onChange = {e =>this.state = e.target.value }/> </div>
                                 </div>
 
                                 <div className="form-group py-2">
-                                    <div className="input-field"><input type="text" placeholder="Email" required className="" onChange = {e =>this.email = e.target.value }/> </div>
+                                    <div className="input-field"><input type="text" placeholder="Email" required className=""defaultValue={this.state.centreList.email || ''}  onChange = {e =>this.email = e.target.value }/> </div>
                                 </div>
                                 <div className="form-group py-2">
-                                    <div className="input-field"><input type="text" placeholder="Website" required className="" onChange = {e =>this.website = e.target.value }/> </div>
+                                    <div className="input-field"><input type="text" placeholder="Website" required className=""defaultValue={this.state.centreList.website || ''}  onChange = {e =>this.website = e.target.value }/> </div>
                                 </div>    
                                 <div className="form-group py-1 pb-2">
-                                    <div className="input-field"><input type="number" placeholder="contactno "   required className="" onChange = {e =>this.contactno = e.target.value }/> </div>
+                                    <div className="input-field"><input type="number" placeholder="contactno "   required className=""defaultValue={this.state.centreList.contactno || ''}  onChange = {e =>this.contactno = e.target.value }/> </div>
                                 </div>
                                 <div className="form-group py-1 pb-2">
-                                    <div className="input-field"><input type="number" placeholder="zip "   required className=""onChange = {e =>this.zip = e.target.value }/> </div>
+                                    <div className="input-field"><input type="number" placeholder="zip "   required className=""  defaultValue={this.state.centreList.zip || ''}  onChange = {e =>this.zip = e.target.value }/> </div>
                                 </div>
 
 

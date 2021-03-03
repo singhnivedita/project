@@ -7,12 +7,15 @@ import 'react-toastify/dist/ReactToastify.css';
 toast.configure();
 
 class AddService extends React.Component{
-    state={}
+    state={ 
+        serviceList:[],
+        centreList:[]
+    }
     handleSubmit =(event) =>{
         event.preventDefault();
         const data ={
-            centreId: this.centreId,
-            serviceId : this.serviceId,
+            centreId: this.state.centreId,
+            serviceId : this.state.serviceId,
             
             
         };
@@ -35,12 +38,74 @@ class AddService extends React.Component{
         console.log(data);
     }
 
-    setGender(event) {
-        console.log(event.target.value);
-      }
+    componentWillMount(){
+
+        
+        
+        axios.get('/patient/diagnostic-service').then(
+            response =>{
+                    
+                    const serviceList=response.data
+                    this.setState({
+                        serviceList: serviceList
+                    });
+                    console.log(serviceList);
+    
+            }
+        )
+        axios.get('admin/diagnostic-centre').then(
+            response =>{
+                    
+                    const centreList=response.data
+                    this.setState({
+                        centreList: centreList
+                    });
+                    console.log(centreList);
+    
+            }
+        )
+        
+   
+    }
+    handleChanged = (event) => {
+        const { name, value } = event.target;
+
+        switch(name) {
+            
+            case "serviceId":
+                this.setState({
+                    serviceId: value
+                });
+                break;
+                case "centreId":
+                this.setState({
+                    centreId: value
+                });
+                break;
+        }
+    }
+
+    renderCentres = () => {
+        return (
+            this.state.centreList.map((company) => {
+                return (
+                    <option key={company.centreId} value={company.centreId}>{company.centreId}</option>
+                );
+            })
+        );
+    }
+    renderServices = () => {
+        return (
+            this.state.serviceList.map((company) => {
+                return (
+                    <option key={company.serviceId} value={company.serviceId}>{company.serviceName}</option>
+                );
+            })
+        );
+    }
 	render(){
         if(this.state.added){
-            return <Redirect to={'/doctorHome'} />;
+            return <Redirect to={'/adminHome'} />;
         }
 		return(
 		<div>
@@ -52,38 +117,29 @@ class AddService extends React.Component{
                             
                             <div className="h4 text-muted text-center pt-2">Add Services</div>
                              <form className="pt-3" onSubmit={this.handleSubmit} >
+                               
+
+
+
+                                
+
                                 {/* <div className="form-group py-2">
-                                    <div className="input-field"><input type="text" placeholder="Symptoms" required className="" onChange = {e =>this.symptoms = e.target.value }/> </div>
-                                </div> */}
-                                
-                                
-
-                                
-                                {/* <div className="form-group py-1 pb-2" onChange={e => this.gender = e.target.value }>
-                                    <span className="input-field"> Select Gender : 
-                                        <select>
-                                            <option selected disabled>Gender</option>
-                                            <option value="Other">Others</option>
-                                            <option value="Female">Female</option>
-                                            <option value="Male">Male</option>
-                                            
-                                        </select>
-                                    </span>    
-                                </div> */}
-
-
-
-                                
-
-                                <div className="form-group py-2">
                                     <div className="input-field"><input type="number" placeholder="Centre Id " required className="" onChange = {e =>this.centreId = e.target.value }/> </div>
                                 </div>
                                 <div className="form-group py-2">
                                     <div className="input-field"><input type="number" placeholder="Service Id" required className="" onChange = {e =>this.serviceId = e.target.value }/> </div>
-                                </div>    
+                                </div>     */}
                                 
 
-
+                                <select id="centreId" name="centreId" className="form-control input-field" defaultValue="Select Centre" onChange={(event) => this.handleChanged(event)}>
+                                    <option value="choose..">Select Service</option>
+                                    {this.renderCentres()}
+                                </select>
+                                <br></br>
+                                <select id="serviceId" name="serviceId" className="form-control input-field" defaultValue="Select Service" onChange={(event) => this.handleChanged(event)}>
+                                    <option value="choose..">Select Service</option>
+                                    {this.renderServices()}
+                                </select>
 
 
 

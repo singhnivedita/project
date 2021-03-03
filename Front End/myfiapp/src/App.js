@@ -39,6 +39,12 @@ import UpdateServiceCentre from './admin/UpdateServiceCentre';
 import AllTestResult from './admin/AllTestResult';
 import UpdateTestResultAdmin from './admin/UpdateTestResultAdmin';
 import ApproveRequest from './doctor/ApproveRequest';
+import BookAppointmentAgent from './agent/BookAppointmentAgent';
+import AppointmentStatusAgent from './agent/AppointmentStatus-Agent';
+import AddReviewQuestions from './admin/ReviewQuestionarie';
+import ViewAllServiceCommission from './admin/ViewAllServiceCommission';
+import UpdateCommissionBaseline from './admin/UpdateCommission';
+import ViewCommissionAgent from './agent/ViewCommissionAgent';
 
 class App extends React.Component {
   state ={};
@@ -66,25 +72,31 @@ class App extends React.Component {
           <Route exact path="/doctorHome" component={ DoctorHome} />
           <Route exact path="/adminHome" component={AdminHome  } />
           <Route exact path="/diagnosticService" component={ DiagnosticService  } />
-          <Route exact path="/diagnosticServiceAgent" component={ DiagnosticServiceAgent } />
+          <Route exact path="/diagnostic-service-agent" component={ DiagnosticServiceAgent } />
           <Route exact path="/appointment-status/:patientId" component={ AppointmentStatus  } />
           <Route exact path="/treatment-history/:patientId" component={TreatmentHistory  } />
           <Route exact path="/test-result/:patientId" component={ TestResult  } />
           <Route exact path="/appointment-request/:doctorId" component={ AppointmentRequests  } />
           <Route exact path="/appointment-request-approve/:requestId" component={ ApproveRequest  } />
-
+          <Route exact path="/booking-agent" component={ BookAppointmentAgent  } />
+          <Route exact path="/appointment-status-agent/:agentId" component={ AppointmentStatusAgent  } />
+          <Route exact path="/add-review-question" component={ AddReviewQuestions  } />
+          <Route exact path="/view-all-commission-admin" component={ ViewAllServiceCommission  } />
+          <Route exact path="/update-service-baseline/:serviceId" component={ UpdateCommissionBaseline  } />
+          <Route exact path="/view-commission-agent/:agentId" component={ ViewCommissionAgent  } />
+          
 
           <Route exact path="/appointment-booking/" component={ BookAppointments  } />
           <Route exact path="/patient-record/:doctorId" component={ PatientRecord  } />
           <Route exact path="/test-result-doctor/:doctorId" component={ TestResultDoctor  } />
           <Route exact path="/update-treatment-doctor/" component={ UpdateTreatment  } />
           <Route exact path="/update-testresult-doctor/" component={ UpdateTestResult  } />
-          <Route exact path="/add-services/" component={ AddService  } />
-          <Route exact path="/view-centre/" component={ DiagnosticCentre } />
+          <Route exact path="/add-services" component={ AddService  } />
+          <Route exact path="/view-centre" component={ DiagnosticCentre } />
           <Route exact path="/update-centre/:centreId" component={ UpdateServiceCentre } />
           <Route exact path="/update-test-result-admin/:testId" component={ UpdateTestResultAdmin } />
           <Route exact path="/view-test-admin" component={ AllTestResult } />
-          <Route exact path="/add-service/" component={ AddService } />
+          <Route exact path="/add-service" component={ AddService } />
           
           
           <Route exact path="/treatment-history-doctor/:doctorId" component={ TreatmentHistoryDoctor  } />

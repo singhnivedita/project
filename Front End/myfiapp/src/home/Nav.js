@@ -1,24 +1,40 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure();
+
 
 
 class Nav extends React.Component{
+    componentWillMount(){
+        const userId = localStorage.getItem('userId');
+        const firstname = localStorage.getItem('firstname');
+        this.setState({userId})
+        this.setState({firstname})
+        console.log(firstname)
+
+        
+    } 
+
     handleLogout= () =>{
         localStorage.clear();
-        this.props.setUser(null);
+        this.state.userId = null;
         console.log("Logged out")
+        toast.info("Logged Out Successfully",{autoClose:4000,position:toast.POSITION.TOP_CENTER});
 
     }
 	render(){
         let buttons;
-        if(this.props.userInfo != null){
+        if(this.state.userId !=null ){
 
             buttons =(  
                         <ul className="navbar-nav ml-auto"> 
                         <li className="nav-item"> 
                         
-                            <Link to={"#"} className="nav-link"><i className = "fa fa-user"></i> {this.props.userInfo.firstName}</Link> 
+                            <Link to={"#"} className="nav-link"><i className = "fa fa-user"></i> {this.state.firstname}</Link> 
                         </li>&nbsp;&nbsp;&nbsp;&nbsp;
                         <li className="nav-item"> 
                         

@@ -24,6 +24,7 @@ class Patient extends React.Component{
                //const role =res.data.role;
                toast.success("Login Successful, Role:Patient",{autoClose:4000,position:toast.POSITION.TOP_CENTER});
                localStorage.setItem('userId', res.data.userId);
+               localStorage.setItem('firstname', res.data.firstname);
 
                const userId = localStorage.getItem("userId");
                console.log(res);

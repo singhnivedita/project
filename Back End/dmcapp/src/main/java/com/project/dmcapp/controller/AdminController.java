@@ -25,11 +25,17 @@ import com.project.dmcapp.model.Agent;
 import com.project.dmcapp.model.DiagnosticCentre;
 import com.project.dmcapp.model.DiagnosticService;
 import com.project.dmcapp.model.Msg;
+import com.project.dmcapp.model.ReviewQuestion;
+import com.project.dmcapp.model.Role;
 import com.project.dmcapp.model.TestResult;
 import com.project.dmcapp.model.UpdateCommission;
 import com.project.dmcapp.repo.AgentRepo;
 import com.project.dmcapp.repo.DiagnosticCentreRepo;
+import com.project.dmcapp.repo.DiagnosticServiceRepo;
+import com.project.dmcapp.repo.ReviewQuestionRepo;
+import com.project.dmcapp.repo.RoleRepo;
 import com.project.dmcapp.repo.TestResultRepo;
+import com.project.dmcapp.repo.UpdateCommissionRepo;
 import com.project.dmcapp.service.AdminService;
 @CrossOrigin
 @RestController
@@ -47,6 +53,23 @@ public class AdminController {
 	@Autowired
 	TestResultRepo testResultRepo;
 	
+	
+	
+	@Autowired
+	ReviewQuestionRepo reviewQuestionRepo;
+	
+	
+	@Autowired
+	UpdateCommissionRepo updateCommissionRepo;
+	
+	
+	
+	@Autowired
+	DiagnosticServiceRepo diagnosticServiceRepo;
+	
+	@Autowired
+	RoleRepo roleRepo;
+	
 	//Admin Login
 		@PostMapping("/login")
 		public ResponseEntity<AuthResponseUser> adminLogin(@RequestBody AuthRequestUser user) {
@@ -55,17 +78,35 @@ public class AdminController {
 		}
 	
 		
-		//show centre
+		//show centre all centres
 		@GetMapping("/diagnostic-centre")
 		public ResponseEntity<List<DiagnosticCentre>> getAllDiagnosticService(){
 			
 			return new ResponseEntity<>(diagnosticCentreRepo.findAll(), HttpStatus.OK);
 		}
-		
+		//get all aacordig to test id
 		@GetMapping("/all-test")
 		public ResponseEntity<List<TestResult>> getAllTestResults(){
 			
 			return new ResponseEntity<>(testResultRepo.findAll(), HttpStatus.OK);
+		}
+		//view diagnostic centre according to centre id
+		@GetMapping("/diagnostik-centre/{id}")
+		public ResponseEntity<List<DiagnosticCentre>> getCentreById(@PathVariable("id") int cId){
+			
+			return new ResponseEntity<>(diagnosticCentreRepo.findCentreById(cId), HttpStatus.OK);
+		}
+		
+		@GetMapping("/diagnostik-service/{id}")
+		public ResponseEntity<List<DiagnosticService>> getServiceById(@PathVariable("id") int serviceId){
+			
+			return new ResponseEntity<>(diagnosticServiceRepo.findServiceById(serviceId), HttpStatus.OK);
+		}
+		//view all commission
+		@GetMapping("/view-commission")
+		public ResponseEntity<List<UpdateCommission>> getAllComm(){
+			
+			return new ResponseEntity<>(updateCommissionRepo.findAll(), HttpStatus.OK);
 		}
 		
 	//add a service
@@ -116,5 +157,19 @@ public class AdminController {
 		agentRepo.save(agent);
 		return ResponseEntity.ok().body(new Msg("Agent added to your centre successfully.", HttpStatus.ACCEPTED));
 	}
+	
+	//get roles by role help us in registration
+	@GetMapping("/roles/{id}")
+	public ResponseEntity<List<Role>> getRoleById(@PathVariable("id") int rId){
+		
+		return new ResponseEntity<>(roleRepo.findRoleById(rId), HttpStatus.OK);
+	}
 
+	@PostMapping("/create-review-question")
+	public ResponseEntity<Msg> addReviewQuestion(@RequestBody ReviewQuestion reviewQuestion) {
+		
+		reviewQuestionRepo.save(reviewQuestion);
+		return ResponseEntity.ok().body(new Msg("Question added to the review questionarie successfully.", HttpStatus.ACCEPTED));
+	}
+	
 }

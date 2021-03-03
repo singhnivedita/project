@@ -12,7 +12,7 @@ class AgentHome extends React.Component{
     componentDidMount() {
         
         const userId = localStorage.getItem('userId');
-
+        this.setState({userId})
         console.log("userid in home page is "+userId);
         // axios.get("menuapp/menu-items").then(
         //     res =>{
@@ -35,27 +35,23 @@ class AgentHome extends React.Component{
                     <div className="wrapper d-flex">
                     <div className="sidebar"> <small className="text-muted pl-4"></small>
                         <ul className="list-bullet-no">
-                            <li><a href="#"><i className="fa fa-home"></i>Agent Dashboard</a></li>
-                            <li><a href="#"><i className="fa fa-credit-card"></i> Diagnostic Services </a></li>
+                            <li><Link to={'#'}><i className="fa fa-home"></i>Agent Dashboard</Link></li>
+                            <li><Link to={'/diagnostic-service-agent'}>Diagnostic Service</Link></li>
                         </ul> <small className="text-muted px-3">APPOINTMENT</small>
                         <ul className="list-bullet-no">
-                            <li><a href="#"><i className="far fa-calendar-alt"></i>Book Appointment</a>
-                            </li>
+                            <li><Link to={'/booking-agent'}>Book Appointment</Link></li>
+                            <li><Link to={'/booking-agent'}>Book Appointment</Link></li>
                             
                         </ul> <small className="text-muted px-3">Commission</small>
                         <ul className="list-bullet-no">
-                            <li><a href="#"><i className="fa fa-external-link-alt"></i>View Commission</a></li>
-                            <li><a href="#"><i className="fa fa-help"></i>Treatment History</a></li>
-                        </ul> {/*<small className="text-muted px-3">OTHERS</small>
-                        
-                        <ul>
-                            <li><a href="#"><i className="fa fa-external-link-alt"></i>Help</a></li>
-                        </ul> */}
+                            
+                            <li><Link to={'view-commission-agent/'+this.state.userId}>View Commission</Link></li>
+                           
+                            
+                        </ul>
                     </div>
                 </div>
-            
-        
-                    
+               
                 );
 		
 

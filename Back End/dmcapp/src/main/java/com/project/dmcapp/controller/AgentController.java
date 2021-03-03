@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,9 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.dmcapp.dto.AuthRequestUser;
 import com.project.dmcapp.dto.AuthResponseUser;
+import com.project.dmcapp.exception.BookingNotFoundException;
 import com.project.dmcapp.model.BookAppointment;
 import com.project.dmcapp.model.DiagnosticService;
 import com.project.dmcapp.model.Msg;
+import com.project.dmcapp.repo.UpdateCommissionRepo;
 import com.project.dmcapp.service.AgentService;
 @CrossOrigin
 @RestController
@@ -29,6 +32,10 @@ public class AgentController {
 	
 	@Autowired
 	AgentService agentService;
+	
+	
+	@Autowired
+	UpdateCommissionRepo updateCommissionRepo;
 	
 	//Agent Login
 		@PostMapping("/login")
@@ -56,5 +63,27 @@ public class AgentController {
 		}
 		
 		//view commission
+		
+		
+		//appointment status booked by agent
+		
+		
+		@GetMapping("/status/{id}")
+		public ResponseEntity<List<BookAppointment>> getAppointmentStatus(@PathVariable("id") int aId) {
+			List<BookAppointment> bookAppointments = agentService.getAppointmentStatusAgent(aId);
+			/////////log.info("appointments size"+bookAppointments.size());
+			if(bookAppointments == null)
+				throw new BookingNotFoundException();
+			
+			return new ResponseEntity<>(bookAppointments, HttpStatus.OK);
+		}
+		
+		
+		@GetMapping("/commission/{id}")
+		public int getCommission(@PathVariable("id") int aId) {
+			
+			return updateCommissionRepo.findCommissionValue(aId);
+			
+		}
 		
 }
