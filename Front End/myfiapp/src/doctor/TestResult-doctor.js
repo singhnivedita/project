@@ -16,7 +16,7 @@ class TestResultDoctor extends React.Component{
     
     componentWillMount(){
         //console.log(this.props ) //getting undefined ,how to get this value
-        axios.get('/patient/test-result/'+this.props.match.params.patientId).then(res=> {
+        axios.get('/doctor/treatment-history/'+this.props.match.params.doctorId).then(res=> {
             const tests = res.data;
             this.setState({tests})
 
@@ -66,11 +66,11 @@ class RowCreator extends React.Component{
          var test = this.props.item;
          return(
              <tr>
-                 <td>{test.testId}</td>
-                 <td>{test.testName}</td>
-                 <td>{test.testResult}</td>
-                 <td>{test.diagnosticServiceId.serviceName}</td>
-                 <td><Link to={"/update-test-result/"+test.testId}>Update</Link></td>
+                 <td>{test.testresultId.testId}</td>
+                 <td>{test.testresultId.testName}</td>
+                 <td>{test.testresultId.testResult}</td>
+                 <td>{test.testresultId.diagnosticServiceId.serviceName}</td>
+                 <td><Link to={"/update-testresult-doctor/"}>Update</Link></td>
                  
 
              </tr>

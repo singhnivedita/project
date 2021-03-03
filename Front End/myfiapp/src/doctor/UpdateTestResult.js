@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 toast.configure();
 
-class UpdateTreatment extends React.Component{
+class UpdateTestResult extends React.Component{
     state={}
     handleSubmit =(event) =>{
         event.preventDefault();
@@ -23,18 +23,18 @@ class UpdateTreatment extends React.Component{
             
         };
 
-        axios.post("doctor/update-treatment-history", data).then(
+        axios.put("doctor/update-test-result", data).then(
             res =>{
                 console.log(res);
                 
-                toast.success("Treatment History Updated ",{autoClose:4000,position:toast.POSITION.TOP_CENTER});
+                toast.success("Test Result Updated ",{autoClose:4000,position:toast.POSITION.TOP_CENTER});
                 this.setState({
                     updated: true
                 });
             }
         ).catch(
             err => {
-                toast.error("Something went wrong....Please Try Again",{autoClose:4000,position:toast.POSITION.TOP_CENTER});
+                toast.error("Something went wrong....,Please Try Again",{autoClose:4000,position:toast.POSITION.TOP_CENTER});
                 console.log(err);
             }
         )
@@ -56,7 +56,7 @@ class UpdateTreatment extends React.Component{
                     <div className="col" id="b2">
                         <div className="wrapper bg-white">
                             
-                            <div className="h4 text-muted text-center pt-2">Update Treatment History</div>
+                            <div className="h4 text-muted text-center pt-2">Update Test Result</div>
                              <form className="pt-3" onSubmit={this.handleSubmit} >
                                 <div className="form-group py-2">
                                     <div className="input-field"><input type="text" placeholder="Symptoms" required className="" onChange = {e =>this.symptoms = e.target.value }/> </div>
@@ -129,4 +129,4 @@ class UpdateTreatment extends React.Component{
 	}
 }
 
-export default UpdateTreatment;
+export default UpdateTestResult;
