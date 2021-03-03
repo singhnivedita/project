@@ -22,10 +22,12 @@ import com.project.dmcapp.dto.UpdateTreatmentDTO;
 import com.project.dmcapp.exception.DoctorAppointmentNotFoundException;
 import com.project.dmcapp.exception.TestResultNotFoundException;
 import com.project.dmcapp.model.BookAppointment;
+import com.project.dmcapp.model.DiagnosticService;
 import com.project.dmcapp.model.Doctor;
 import com.project.dmcapp.model.Msg;
 import com.project.dmcapp.model.TestResult;
 import com.project.dmcapp.model.UpdateTreatment;
+import com.project.dmcapp.repo.DoctorRepo;
 import com.project.dmcapp.service.DoctorService;
 
 
@@ -39,6 +41,15 @@ public class DoctorController {
 	@Autowired
 	DoctorService doctorService;
 	
+	@Autowired
+	DoctorRepo doctorRepo;
+	
+	//get all doctor
+	@GetMapping("/all-doctors")
+	public ResponseEntity<List<Doctor>> getallDoctor(){
+		
+		return new ResponseEntity<>(doctorRepo.findAll(), HttpStatus.OK);
+	}
 	//Docotr Registration
 	
 			@PostMapping("/registration")
@@ -69,6 +80,17 @@ public class DoctorController {
 			return new ResponseEntity<>(patientAppointmentDetails, HttpStatus.OK);
 		}
 		
+		//view treatment history of patient under particular doctor
+		@GetMapping("/treatment-history/{id}")
+		public ResponseEntity<List<UpdateTreatment>> getallpatientHistory(@PathVariable("id") int docId) {
+			List<UpdateTreatment> treatmentHistory = doctorService.treatmentHistory(docId);
+			
+			if(treatmentHistory == null)
+				throw new DoctorAppointmentNotFoundException();
+			
+			return new ResponseEntity<>(treatmentHistory, HttpStatus.OK);
+		}
+		
 		//doctor can update test results of the patient 
 			@PutMapping("/update-test-result")
 			public ResponseEntity<Msg> updateTestResult(@RequestBody TestResultDTO testResultdto) {
@@ -94,7 +116,7 @@ public class DoctorController {
 		}
 			
 		
-		//get all appointments based on doctor id ----> needs to write this before approving the appointments
+
 			
 			
 			

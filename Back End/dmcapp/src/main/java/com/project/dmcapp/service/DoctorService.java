@@ -149,5 +149,10 @@ public class DoctorService {
 		public List<BookAppointment> getallpatientId(int doctorId){
 			return bookAppointmentRepo.getallpatientId(doctorId);
 		}
+
+		public List<UpdateTreatment> treatmentHistory(int docId) {
+			// TODO Auto-generated method stub
+			return updateTreatmentRepo.findByDocId(docId);
+		}
 		
 }

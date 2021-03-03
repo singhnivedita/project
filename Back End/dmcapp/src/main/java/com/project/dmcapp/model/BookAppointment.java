@@ -50,7 +50,7 @@ public class BookAppointment {
 	//change all primitive type to wrapper
 	//foreign keys
 	
-	@JsonIgnore
+	
 	@ManyToOne
 	@JoinColumn(name = "patientId", referencedColumnName = "patientId")
 	private Patient patientId;

@@ -17,6 +17,8 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -57,6 +59,7 @@ public class Patient {
 	@JoinColumn(name = "roleId", referencedColumnName = "roleId")
 	private Role role;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="patientId")
 	private List<BookAppointment> appointments = new ArrayList<>();
 }

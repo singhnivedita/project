@@ -7,7 +7,9 @@ import 'react-toastify/dist/ReactToastify.css';
 toast.configure();
 
 class BookAppointments extends React.Component{
-    state={}
+    state={
+        doc:[]
+    }
     handleSubmit =(event) =>{
         event.preventDefault();
         const data ={
@@ -15,12 +17,12 @@ class BookAppointments extends React.Component{
             time : this.time,
             remark : this.remark,
             patientId:this.state.userId, //needs to get from local storage
-            docId : this.password,
+            docId : this.docId,
             dob: this.dob,
-            dgserviceId:this.gender,
+            dgserviceId:this.serviceId,
             
         };
-
+        
         axios.post("patient/booking", data).then(
             res =>{
                 console.log(res);
@@ -38,10 +40,27 @@ class BookAppointments extends React.Component{
         )
         console.log(data);
     }
-
-    setGender(event) {
-        console.log(event.target.value);
-      }
+    componentWillMount(){
+        
+        axios.get('doctor/all-doctors').then(
+            response =>{
+                    
+                    const doc=response.data.docId
+                    this.setState({doc})
+                    console.log(doc);
+    
+            }
+        )
+    }
+    // bindDropDowns() {
+    //     var clientName = document.getElementById('clientName').value
+ 
+    //     for(var i=0; i < this.state.doc.length; i++) {
+    //      var clientName = this.state.doc[i].clientName;
+    //      console.log("Some"+clientName)
+    //     }
+    // }
+    
 	render(){
         if(this.state.booked){
             return <Redirect to={'/patientHome'} />;
@@ -57,23 +76,29 @@ class BookAppointments extends React.Component{
                             <div className="h4 text-muted text-center pt-2">Book Appointment</div>
                              <form className="pt-3" onSubmit={this.handleSubmit} >
                                 <div className="form-group py-2">
-                                    <div className="input-field"><input type="text" placeholder="First Name" required className="" onChange = {e =>this.firstName = e.target.value }/> </div>
+                                    <div className="input-field"><input type="text" placeholder="Issues/ Problems" required className="" onChange = {e =>this.remark = e.target.value }/> </div>
                                 </div>
                                 <div className="form-group py-2">
-                                    <div className="input-field"><input type="text" placeholder="Last Name" required className="" onChange = {e =>this.LastName = e.target.value }/> </div>
+                                    <div className="input-field"><input type="date" placeholder="Date of Appointment" required className="" onChange = {e =>this.date = e.target.value }/> </div>
                                 </div>
                                 
                                 <div className="form-group py-1 pb-2">
-                                    <div className="input-field"><input type="text" placeholder="Enter your Password" required className="" onChange = {e =>this.password = e.target.value }/> </div>
+                                    <div className="input-field"><input type="time" placeholder="Time of Appointment" required className="" onChange = {e =>this.time = e.target.value }/> </div>
                                 </div>
                                 
 
-                                {/* <div className="form-group py-1 pb-2" onChange={this.setGender.bind(this)}>
-                                    <input type="radio" value="MALE" name="gender"/> Male
-                                    <input type="radio" value="FEMALE" name="gender"/> Female
+                                {/* <div>
+                                    <select className="custom-select" id="clientName" onSelect="bindDropDowns()">
+                                    
+                                        {this.state.doc.map((obj) => 
+                                        <option key={obj.clientName}>{obj.clientName}</option>
+                                        )};
+                                    </select>
                                 </div> */}
 
-                                <div className="form-group py-1 pb-2" onChange={e => this.gender = e.target.value }>
+                                    
+
+                                {/* <div className="form-group py-1 pb-2" onChange={e => this.gender = e.target.value }>
                                     <span className="input-field"> Select Gender : 
                                         <select>
                                             <option selected disabled>Gender</option>
@@ -83,11 +108,11 @@ class BookAppointments extends React.Component{
                                             
                                         </select>
                                     </span>    
-                                </div>
+                                </div> */}
 
 
 
-                                <div className="form-group py-1 pb-2">
+                                {/* <div className="form-group py-1 pb-2">
                                     <div className="input-field"><input type="date"  required className="" name="dob"onChange = {e =>this.dob = e.target.value }/> </div>
                                 </div>
                                 <div className="form-group py-1 pb-2">
@@ -102,7 +127,7 @@ class BookAppointments extends React.Component{
                                 </div>    
                                 <div className="form-group py-1 pb-2">
                                     <div className="input-field"><input type="text" placeholder="Enter your Address "   required className="" name="address"onChange = {e =>this.address = e.target.value }/> </div>
-                                </div>
+                                </div> */}
 
 
 
@@ -111,9 +136,9 @@ class BookAppointments extends React.Component{
 
 
                                 <div className="d-flex align-items-start">
-                                    <div className="ml-auto"> <a href="#" id="forgot">Forgot Password?</a> </div>
-                                </div> <button className="btn btn-block text-center my-3">Register</button>
-                                <div className="text-center pt-3 text-muted">Already Registered? <Link to={"/doctorLogin"}>Login Here</Link></div>
+                                    
+                                </div> <button className="btn btn-block text-center my-3">Book</button>
+                                
                             </form> 
                             
                         </div>
@@ -126,6 +151,16 @@ class BookAppointments extends React.Component{
 		);
 		
 	}
+}
+
+
+class RowCreator extends React.Component{
+    render(){
+        var obj = this.props.item;
+        return(
+            <option key={obj.clientName}>{obj.clientName}</option>
+        )
+   }
 }
 
 export default BookAppointments;

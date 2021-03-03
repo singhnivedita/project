@@ -44,7 +44,7 @@ class DoctorHome extends React.Component{
                         <small className="text-muted px-3">TEST REPORTS</small>
                         <ul className="list-bullet-no">
                             <li>
-                            <Link to={"/test-result-docotor/"+this.state.userId}>Test Result</Link></li>
+                            <Link to={"/test-result-doctor/"+this.state.userId}>Test Result</Link></li>
                             <li><Link to={"/treatment-history-doctor/"+this.state.userId}>Treatment History</Link></li>
                             <li><Link to={"/patient-record/"+this.state.userId}>Patient Record</Link></li>
                         </ul> {/*<small className="text-muted px-3">OTHERS</small>

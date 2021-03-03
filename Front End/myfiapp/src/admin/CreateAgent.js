@@ -121,9 +121,11 @@ class CreateAgent extends React.Component{
 
 
                                 <div className="d-flex align-items-start">
-                                    <div className="ml-auto"> <a href="#" id="forgot">Forgot Password?</a> </div>
+                                    
+                                    <div className="text-center pt-3 text-muted ml-auto">No more Agent?  <Link to={"/adminHome"}>Go Back</Link></div>
+
                                 </div> <button className="btn btn-block text-center my-3">Register</button>
-                                <div className="text-center pt-3 text-muted">Already Registered? <Link to={"/doctorLogin"}>Login Here</Link></div>
+                                {/* <div className="text-center pt-3 text-muted">Already Registered? <Link to={"/doctorLogin"}>Login Here</Link></div> */}
                             </form> 
                             
                         </div>
