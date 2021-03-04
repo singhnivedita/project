@@ -37,13 +37,15 @@ class TreatmentHistoryDoctor extends React.Component{
                             <table  id="tableWrap" className="table table-responsive">
                             <thead>
                             <tr>
-                            
+                                <th>Treatment Id</th>
+                                <th>Patient Id</th>
                                 <th>Name</th>
                                 
                                 <th>Symptoms</th>
                                 <th>Diagnosis</th>
-                                <th>Service Name</th>
                                 
+                                <th>Test Id</th>
+                                <th>Service Name</th>
                                 <th>Update Treatment</th>
                                 
                                 
@@ -73,16 +75,17 @@ class RowCreator extends React.Component{
          var booking = this.props.item;
          return(
              <tr>
-                 
+                 <td>{booking.treatmentId}</td>
+                 <td>{booking.patientId.patientId}</td>
                  <td>{booking.patientId.firstName+' '+booking.patientId.lastName}</td>
                  
                  
                  <td>{booking.symptoms}</td>
                  <td>{booking.diagnosis}</td>
-                 {/* <td>{booking.doctorId.firstName}</td> */}
+                 <td>{booking.testresultId.testId}</td>
                  <td>{booking.diagnosticServiceId.serviceName}</td>
                  
-                 <td><Link to={"/update-treatment-doctor"}>Update </Link></td>
+                 <td><Link to={"/update-treatment-doctor/"+booking.testresultId.testId}>Update </Link></td>
 
              </tr>
          )

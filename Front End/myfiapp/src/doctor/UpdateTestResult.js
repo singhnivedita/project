@@ -7,19 +7,20 @@ import 'react-toastify/dist/ReactToastify.css';
 toast.configure();
 
 class UpdateTestResult extends React.Component{
-    state={}
+    state={
+        serviceList:[]
+    }
     handleSubmit =(event) =>{
         event.preventDefault();
         const data ={
-            symptoms: this.symptoms,
-            diet : this.diet,
-            diagnosis : this.diagnosis,
-            recommendation:this.recommendation,
-            prescription : this.prescription,
-            patientId: this.patientId,
-            docId: this.docId,
-            serviceId: this.serviceId,
-            testresultId: this.testresultId
+            testId: this.props.match.params.testId,
+            testName : this.name,
+            testResult : this.result,
+            
+            diagnosticServiceId:{serviceId:this.state.serviceId},
+           // patientId: this.props.match.params.testId ,//how to get this patient value corresponding to tests?
+            patientId:{patientId:this.pId}
+           
             
         };
 
@@ -41,90 +42,97 @@ class UpdateTestResult extends React.Component{
         console.log(data);
     }
 
-    setGender(event) {
-        console.log(event.target.value);
-      }
+    
+
+
+      handleChanged = (event) => {
+        const { name, value } = event.target;
+
+        switch(name) {
+            
+            case "serviceId":
+                this.setState({
+                    serviceId: value
+                });
+                break;
+        }
+    }
+
+    
+    componentWillMount(){
+
+        const userId = localStorage.getItem('userId');
+        this.setState({userId})
+
+        axios.get('/patient/diagnostic-service').then(
+            response =>{
+                    
+                    const serviceList=response.data
+                    this.setState({
+                        serviceList: serviceList
+                    });
+                    console.log(serviceList);
+    
+            }
+        )
+     }
+     renderServices = () => {
+        return (
+            this.state.serviceList.map((company) => {
+                return (
+                    <option key={company.serviceId} value={company.serviceId}>{company.serviceName}</option>
+                );
+            })
+        );
+    }
+    
 	render(){
         if(this.state.updated){
-            return <Redirect to={'/doctorHome'} />;
+            return <Redirect to={'/test-result-doctor/'+this.state.userId} />;
         }
 		return(
-		<div>
-			<div className="container-fluid">
-                <div className="row">
-                    <div className="col" id="bg1"></div>
-                    <div className="col" id="b2">
-                        <div className="wrapper bg-white">
+            <div>
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col" id="bg1"></div>
+                        <div className="col" id="b2">
+                            <div className="wrapper bg-white">
                             
-                            <div className="h4 text-muted text-center pt-2">Update Test Result</div>
-                             <form className="pt-3" onSubmit={this.handleSubmit} >
-                                <div className="form-group py-2">
-                                    <div className="input-field"><input type="text" placeholder="Symptoms" required className="" onChange = {e =>this.symptoms = e.target.value }/> </div>
-                                </div>
-                                <div className="form-group py-2">
-                                    <div className="input-field"><input type="text" placeholder="Diet" required className="" onChange = {e =>this.diet = e.target.value }/> </div>
-                                </div>
+                                <div className="h4 text-muted text-center pt-2">Update Test Result</div>
+                                 <form className="pt-3" onSubmit={this.handleSubmit} >
+                                    <div className="form-group py-2">
+                                        <div className="input-field"><input type="text" defaultValue={"Test Id"+this.props.match.params.testId || ''} disabled placeholder="centreId" required className="" onChange = {e =>this.centreId = e.target.value }/> </div>
+                                    </div>
+                                    <div className="form-group py-2">
+                                        <div className="input-field"><input type="number"   placeholder="Patient Id" required className="" onChange = {e =>this.pId = e.target.value }/> </div>
+                                    </div>
+                                    <div className="form-group py-2">
+                                        <div className="input-field"><input type="text" placeholder="Test Name" required className="" onChange = {e =>this.name = e.target.value }/> </div>
+                                    </div>
+                                    
+                                    <div className="form-group py-1 pb-2">
+                                        <div className="input-field"><input type="text" placeholder="Test Result" required className="" onChange = {e =>this.result = e.target.value }/> </div>
+                                    </div>
+                                   
+                                    <select id="serviceId" name="serviceId" className="form-control input-field" defaultValue="Select Service" onChange={(event) => this.handleChanged(event)}>
+                                        <option value="choose..">Select Service</option>
+                                        {this.renderServices()}
+                                    </select>
+    
+                                    <div className="d-flex align-items-start">
+                                    <div className="text-center pt-3 ml-auto">Already Updated? <Link to={'/test-result-doctor/'+this.state.userId}> Go Back</Link></div>
+                                    </div> <button className="btn btn-block text-center my-3">Update</button>
+                                    <div className="text-center pt-3 text-muted">Already Updated? <Link to={'/test-result-doctor/'+this.state.userId}> Go Back</Link></div>
+                                </form> 
                                 
-                                <div className="form-group py-1 pb-2">
-                                    <div className="input-field"><input type="text" placeholder="Diagnosis" required className="" onChange = {e =>this.diagnosis = e.target.value }/> </div>
-                                </div>
-                                
-
-                                
-                                {/* <div className="form-group py-1 pb-2" onChange={e => this.gender = e.target.value }>
-                                    <span className="input-field"> Select Gender : 
-                                        <select>
-                                            <option selected disabled>Gender</option>
-                                            <option value="Other">Others</option>
-                                            <option value="Female">Female</option>
-                                            <option value="Male">Male</option>
-                                            
-                                        </select>
-                                    </span>    
-                                </div> */}
-
-
-
-                                <div className="form-group py-1 pb-2">
-                                    <div className="input-field"><input type="text"  required className="" placeholder="Recommendation"onChange = {e =>this.recommendation = e.target.value }/> </div>
-                                </div>
-                                <div className="form-group py-1 pb-2">
-                                    <div className="input-field"><input type="text" placeholder="Prescription "   required className="" onChange = {e =>this.prescription = e.target.value }/> </div>
-                                </div>
-
-                                <div className="form-group py-2">
-                                    <div className="input-field"><input type="number" placeholder="Patient Id" required className="" onChange = {e =>this.patientId = e.target.value }/> </div>
-                                </div>
-                                <div className="form-group py-2">
-                                    <div className="input-field"><input type="number" placeholder="Service Id" required className="" onChange = {e =>this.serviceId = e.target.value }/> </div>
-                                </div>    
-                                <div className="form-group py-1 pb-2">
-                                    <div className="input-field"><input type="number" placeholder="Test Result Id "   required className="" onChange = {e =>this.testresultId = e.target.value }/> </div>
-                                </div>
-                                <div className="form-group py-1 pb-2">
-                                    <div className="input-field"><input type="number" placeholder="Doctor Id "   required className=""onChange = {e =>this.docId = e.target.value }/> </div>
-                                </div>
-
-
-
-
-
-
-
-                                <div className="d-flex align-items-start">
-                                <div className="text-center pt-3 ml-auto">Already Updated? <Link to={"/doctorHome"}> Go Back</Link></div>
-                                </div> <button className="btn btn-block text-center my-3">Update</button>
-                                <div className="text-center pt-3 text-muted">Already Updated? <Link to={"/doctorHome"}> Go Back</Link></div>
-                            </form> 
-                            
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-		</div>
-
-			
-		);
+    
+                
+            );
 		
 	}
 }

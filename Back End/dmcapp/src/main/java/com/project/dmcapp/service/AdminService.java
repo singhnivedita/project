@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.project.dmcapp.dto.AuthRequestUser;
 import com.project.dmcapp.dto.AuthResponseUser;
+import com.project.dmcapp.dto.UpdateCommissionDTO;
 import com.project.dmcapp.exception.UnauthorisedException;
 import com.project.dmcapp.model.Admin;
 import com.project.dmcapp.model.DiagnosticCentre;
@@ -109,17 +110,19 @@ public class AdminService {
     }
 	
 	//update commission table
-	public boolean modifyCommissionTable(int serviceId,UpdateCommission updateCommission) {
-		
-		UpdateCommission updateCommissionold = updateCommissionRepo.findCommissionByService(serviceId);
-		
-		if(updateCommissionold == null)
-			return false;
-		
-		
-		updateCommissionRepo.save(updateCommission);
-		return true;
-	}
+    public boolean modifyCommissionTable(int serviceId,UpdateCommissionDTO updateCommissiondto) {
+       
+        UpdateCommission updateCommissionold = updateCommissionRepo.findCommissionByService(serviceId);
+       
+        if(updateCommissionold == null)
+            return false;
+        UpdateCommission updateCommission = new UpdateCommission();
+        updateCommission.setCommissionId(updateCommissionold.getCommissionId());
+        updateCommission.setBaselineValue(updateCommissiondto.getBaselineValue());
+        updateCommission.setDiagnosticServiceId(updateCommissionold.getDiagnosticServiceId());
+        updateCommissionRepo.save(updateCommission);
+        return true;
+    }
 	
 	
 	

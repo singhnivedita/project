@@ -1,6 +1,7 @@
 package com.project.dmcapp.controller;
 
 import java.time.LocalDateTime;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.dmcapp.dto.AuthRequestUser;
 import com.project.dmcapp.dto.AuthResponseUser;
+import com.project.dmcapp.dto.UpdateCommissionDTO;
 import com.project.dmcapp.exception.CommissionforServiceNotFoundException;
 
 import com.project.dmcapp.exception.ServiceNotFoundException;
@@ -37,6 +39,9 @@ import com.project.dmcapp.repo.RoleRepo;
 import com.project.dmcapp.repo.TestResultRepo;
 import com.project.dmcapp.repo.UpdateCommissionRepo;
 import com.project.dmcapp.service.AdminService;
+
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
 @CrossOrigin
 @RestController
 @RequestMapping("/admin")
@@ -141,8 +146,9 @@ public class AdminController {
 	
 	//update commission table
 	@PutMapping("update-commission/{serviceId}")
-	public ResponseEntity<Msg> modifyCommissionTable(@PathVariable("serviceId") int serviceId,@RequestBody UpdateCommission updateCommission) {
-		boolean updateStatus = adminService.modifyCommissionTable(serviceId,updateCommission );
+	public ResponseEntity<Msg> modifyCommissionTable(@PathVariable("serviceId") int serviceId, @RequestBody UpdateCommissionDTO updateCommissiondto) {
+		boolean updateStatus = adminService.modifyCommissionTable(serviceId,updateCommissiondto);
+		
 	
 		if(updateStatus == false)
 			throw new CommissionforServiceNotFoundException();

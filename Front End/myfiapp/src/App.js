@@ -90,8 +90,8 @@ class App extends React.Component {
           <Route exact path="/appointment-booking/" component={ BookAppointments  } />
           <Route exact path="/patient-record/:doctorId" component={ PatientRecord  } />
           <Route exact path="/test-result-doctor/:doctorId" component={ TestResultDoctor  } />
-          <Route exact path="/update-treatment-doctor/" component={ UpdateTreatment  } />
-          <Route exact path="/update-testresult-doctor/" component={ UpdateTestResult  } />
+          <Route exact path="/update-treatment-doctor/:testId" component={ UpdateTreatment  } />
+          <Route exact path="/update-testresult-doctor/:testId" component={ UpdateTestResult  } />
           <Route exact path="/add-services" component={ AddService  } />
           <Route exact path="/view-centre" component={ DiagnosticCentre } />
           <Route exact path="/update-centre/:centreId" component={ UpdateServiceCentre } />

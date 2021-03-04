@@ -19,6 +19,9 @@ class ViewAllServiceCommission extends React.Component{
         axios.get('/admin/view-commission').then(res=> {
             const tests = res.data;
             this.setState({tests})
+            // localStorage.setItem('commissionId', tests.commissionId);
+            // const commissionId = localStorage.getItem("commissionId");
+            // console.log(commissionId)
 
         });
     }

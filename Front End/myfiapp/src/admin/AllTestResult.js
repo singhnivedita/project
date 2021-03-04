@@ -43,11 +43,11 @@ class AllTestResult extends React.Component{
                             <tr>
                                 <th>Test Id</th>
                                 <th>Patient Id</th>
-                                {/* <th>Patient Name</th> */}
+                                <th>Patient Name</th>
                                 <th>Test Name</th>
                                 <th>Test Result</th>
                                 <th>Service</th>
-                                <th>Update</th>
+                                {/* <th>Update</th> */}
                                 
                                 
                             </tr>
@@ -79,11 +79,11 @@ class RowCreator extends React.Component{
                  <td>{test.testId}</td>
                  <td>{test.patientId.patientId}</td>
                  
-                 {/* <td>{test.patientId.firstName+' '+patientId.lastName}</td> */}
+                 <td>{test.patientId.firstName}</td>
                  <td>{test.testName}</td>
                  <td>{test.testResult}</td>
                  <td>{test.diagnosticServiceId.serviceName}</td>
-                 <td><Link to={'/update-test-result-admin/'+test.testId}>Update</Link></td>
+                 {/* <td><Link to={'/update-test-result-admin/'+test.testId}>Update</Link></td> */}
                  
 
              </tr>

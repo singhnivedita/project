@@ -107,7 +107,7 @@ class UpdateServiceCentre extends React.Component{
     }
 	render(){
         if(this.state.updated){
-            return <Redirect to={'/adminHome'} />;
+            return <Redirect to={'/view-centre'} />;
         }
         
 		return(

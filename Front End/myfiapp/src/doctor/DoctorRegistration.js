@@ -8,7 +8,7 @@ toast.configure();
 
 class DoctorRegistration extends React.Component{
     state={
-        serviceList:[]
+        roleList:[]
     }
     handleSubmit =(event) =>{
         event.preventDefault();
@@ -23,7 +23,7 @@ class DoctorRegistration extends React.Component{
             contactNumber:this.contactNumber,
             password: this.password,
             address: this.password,
-            roleId:this.state.diagnosticServiceId
+            role:{roleId:this.state.roleID}
         };
 
         axios.post("doctor/registration", data).then(
@@ -47,11 +47,13 @@ class DoctorRegistration extends React.Component{
     handleChanged = (event) => {
         const { name, value } = event.target;
 
+        console.log("calling hadnle changed")
+        console.log(event.target.value)
         switch(name) {
             
-            case "diagnosticServiceId":
+            case "roleID":
                 this.setState({
-                    diagnosticServiceId: value
+                    roleID: value
                 });
                 break;
         }
@@ -63,11 +65,11 @@ class DoctorRegistration extends React.Component{
         axios.get('/admin/roles/1').then(
             response =>{
                     
-                    const serviceList=response.data
+                    const roleList=response.data
                     this.setState({
-                        serviceList: serviceList
+                        roleList: roleList
                     });
-                    console.log(serviceList);
+                    console.log(roleList);
     
             }
         )
@@ -79,7 +81,7 @@ class DoctorRegistration extends React.Component{
 
     renderServices = () => {
         return (
-            this.state.serviceList.map((company) => {
+            this.state.roleList.map((company) => {
                 return (
                     <option key={company.roleId} value={company.roleId}>{company.roleName}</option>
                 );
@@ -101,8 +103,8 @@ class DoctorRegistration extends React.Component{
                             <div className="h4 text-muted text-center pt-2">Doctor Registration</div>
                              <form className="pt-3" onSubmit={this.handleSubmit} >
 
-                                <select id="diagnosticServiceId" name="diagnosticServiceId" className="form-control input-field" defaultValue="Select Service" onChange={(event) => this.handleChanged(event)}>
-                                    
+                                <select id="roleID" name="roleID" className="form-control input-field" defaultValue="Select Service" onChange={(event) => this.handleChanged(event)}>
+                                    <option value="select....">Select Doctor</option>
                                     {this.renderServices()}
                                 </select>
                                 <div className="form-group py-2">

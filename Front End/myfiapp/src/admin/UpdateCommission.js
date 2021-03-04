@@ -15,7 +15,7 @@ class UpdateCommissionBaseline extends React.Component{
         event.preventDefault();
         const data ={
             
-            
+            commissionId:this.commissionId,
             diagnosticServiceId:{serviceId:this.props.match.params.serviceId},
             baselineValue : this.baseLine
             
@@ -96,11 +96,13 @@ class UpdateCommissionBaseline extends React.Component{
                     <div className="col" id="b2">
                         <div className="wrapper bg-white">
                         
-                            <div className="h4 text-muted text-center pt-2">Update TCommission</div>
+                            <div className="h4 text-muted text-center pt-2">Update Service Commission</div>
                              <form className="pt-3" onSubmit={this.handleSubmit} >
-                                
-                             <select id="diagnosticServiceId" name="diagnosticServiceId" className="form-control input-field" defaultValue="Select Service" onChange={(event) => this.handleChanged(event)}>
-                                    
+                             <div className="form-group py-1 pb-2">
+                                    <div className="input-field"><input type="number" placeholder="Commission Id(You can got it from previous page)" required className="" onChange = {e =>this.commissionId = e.target.value }/> </div>
+                                </div>
+                             <select id="diagnosticServiceId" name="diagnosticServiceId" required className="form-control input-field" defaultValue="Select Service" onChange={(event) => this.handleChanged(event)}>
+                                    <option value="Select....">Select Service</option>
                                     {this.renderServices()}
                                 </select>
                                 <br></br>

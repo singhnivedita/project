@@ -38,6 +38,8 @@ class TestResultDoctor extends React.Component{
                                 <th>Test Id</th>
                                 <th>Test Name</th>
                                 <th>Test Result</th>
+                                <th>Patient Id</th>
+                                <th>Patient Name</th>
                                 <th>Service</th>
                                 <th>Update Test Result</th>
                                 
@@ -70,8 +72,10 @@ class RowCreator extends React.Component{
                  <td>{test.testresultId.testId}</td>
                  <td>{test.testresultId.testName}</td>
                  <td>{test.testresultId.testResult}</td>
+                 <td>{test.patientId.patientId}</td>
+                 <td>{test.patientId.firstName+' '+test.patientId.lastName}</td>
                  <td>{test.testresultId.diagnosticServiceId.serviceName}</td>
-                 <td><Link to={"/update-testresult-doctor/"}>Update</Link></td>
+                 <td><Link to={"/update-testresult-doctor/"+test.testresultId.testId}>Update</Link></td>
                  
 
              </tr>

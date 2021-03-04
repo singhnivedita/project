@@ -12,7 +12,7 @@ public interface UpdateCommissionRepo extends JpaRepository <UpdateCommission, I
 	
 //	@Query("SELECT u FROM User u WHERE u.status = 1")
 //	public int updateCommission(int serviceId,int commValue);
-	@Query("SELECT u FROM UpdateCommission u WHERE u.diagnosticServiceId =?1")
+	@Query("SELECT u FROM UpdateCommission u WHERE u.diagnosticServiceId.serviceId =?1")
 	public UpdateCommission findCommissionByService(int serviceId);
 	
 	

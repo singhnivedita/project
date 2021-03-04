@@ -27,7 +27,7 @@ class CreateAgent extends React.Component{
             contactNumber:this.contactNumber,
             password: this.password,
             
-            roleId:"4"
+            role:{roleId:this.state.diagnosticServiceId}
         };
 
         axios.post("/admin/create-agent", data).then(
@@ -106,7 +106,7 @@ class CreateAgent extends React.Component{
                              <form className="pt-3" onSubmit={this.handleSubmit} >
 
                              <select id="diagnosticServiceId" name="diagnosticServiceId" className="form-control input-field" defaultValue="Select Service" onChange={(event) => this.handleChanged(event)}>
-                                    
+                             <option value="select....">Select Role</option>
                                     {this.renderServices()}
                             </select>
                              <div className="form-group py-2">

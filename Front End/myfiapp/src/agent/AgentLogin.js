@@ -57,7 +57,7 @@ class Agent extends React.Component{
                         <div className="h4 text-muted text-center pt-2">Agent Login</div>
                         <form className="pt-3" onSubmit = {this.handleSubmit}>
                             <div className="form-group py-2">
-                                <div className="input-field"><input type="text" placeholder="Username/Email" required className="" onChange = {e =>this.email = e.target.value }/> </div>
+                                <div className="input-field"><input type="text" placeholder="UserId/Email" required className="" onChange = {e =>this.email = e.target.value }/> </div>
                             </div>
                             <div className="form-group py-1 pb-2">
                                 <div className="input-field"><input type="text" placeholder="Enter your Password" required className="" onChange = {e =>this.password = e.target.value }/> </div>

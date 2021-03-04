@@ -21,7 +21,7 @@ class Registration extends React.Component{
             contactNumber:this.contactNumber,
             password: this.password,
             address: this.address,
-            role:"3" 
+            role:{roleId:this.state.diagnosticServiceId}
         };
 
         axios.post("patient/register", data).then(
@@ -100,7 +100,7 @@ class Registration extends React.Component{
                              <form className="pt-3" onSubmit={this.handleSubmit} >
 
                              <select id="diagnosticServiceId" name="diagnosticServiceId" className="form-control input-field" defaultValue="Select Service" onChange={(event) => this.handleChanged(event)}>
-                                    
+                             <option value="select....">Select Role</option>
                                     {this.renderServices()}
                              </select>
 
@@ -122,9 +122,9 @@ class Registration extends React.Component{
                                 </div> */}
 
                                 <div className="form-group py-1 pb-2" onChange={e => this.gender = e.target.value }>
-                                    <span className="input-field"> Select Gender : 
-                                        <select>
-                                            <option selected disabled>Gender</option>
+                                    <span className="">  
+                                        <select className="form-control input-field">
+                                            <option selected disabled>Select Gender</option>
                                             <option value="Other">Others</option>
                                             <option value="Female">Female</option>
                                             <option value="Male">Male</option>
