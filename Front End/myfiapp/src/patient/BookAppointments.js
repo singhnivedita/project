@@ -32,7 +32,7 @@ class BookAppointments extends React.Component{
             res =>{
                 console.log(res);
                 
-                toast.success("Booking Successful, wait fro approval",{autoClose:7000,position:toast.POSITION.TOP_CENTER});
+                toast.success("Booking Successful, wait for approval",{autoClose:7000,position:toast.POSITION.TOP_CENTER});
                 this.setState({
                     booked: true
                 });

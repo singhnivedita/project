@@ -26,7 +26,7 @@ class DiagnosticService extends React.Component{
                     <PatientHome/>
                      <div id="tableDiv">
                         <h2 align='center'> Diagnostic Services</h2>
-                        <table id="tableWrap" className="table table-responsive" >
+                        <table id="tableWrap" className="table " >
                             <thead>
                             <tr>
                                 <th>Id</th>

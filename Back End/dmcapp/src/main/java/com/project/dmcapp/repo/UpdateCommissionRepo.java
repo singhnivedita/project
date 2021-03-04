@@ -17,7 +17,7 @@ public interface UpdateCommissionRepo extends JpaRepository <UpdateCommission, I
 	
 	
 	@Query(value="SELECT SUM(baselineValue) from commission_table where diagnosticServiceId IN (select  dgserviceId from request_table where agentId=?1)", nativeQuery=true)
-	public int findCommissionValue(int agId);
+	public Integer findCommissionValue(Integer agId);
 
 	@Query("select u from UpdateCommission u where u.commissionId=?1")
 	public List<UpdateCommission> findCommById(int commId);

@@ -38,7 +38,7 @@ class AppointmentRequests extends React.Component{
                             <thead>
                             <tr>
                                 <th>Request Id</th>
-                                <th>Name</th>
+                                <th>Pat Name</th>
                                 <th>Date</th>
                                 <th>Time</th>
                                 <th>Remark</th>

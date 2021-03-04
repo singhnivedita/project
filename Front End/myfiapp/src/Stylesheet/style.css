@@ -12,6 +12,7 @@
 .nav-item.active .nav-link,
 .nav-item:hover .nav-link {
   transform: scale(1.05);
+  color:black;
   
 }
 
@@ -96,7 +97,8 @@ a {
 
 a:hover {
   text-decoration: none;
-  color: white;
+  color: red;
+  transform: scale(1.05);
 }
 
 .btn.btn-block {

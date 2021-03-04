@@ -80,7 +80,7 @@ public class AgentController {
 		
 		
 		@GetMapping("/commission/{id}")
-		public int getCommission(@PathVariable("id") int aId) {
+		public int getCommission(@PathVariable("id") Integer aId) {
 			
 			return updateCommissionRepo.findCommissionValue(aId);
 			

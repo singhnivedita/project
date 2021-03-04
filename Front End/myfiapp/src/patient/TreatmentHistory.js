@@ -80,12 +80,12 @@ class RowCreator extends React.Component{
                  <td>{treatment.treatmentId}</td>
                  <td>{treatment.symptoms}</td>
                  <td>{treatment.diagnosis}</td>
-                 <td>{treatment.precription}</td>
+                 <td>{treatment.prescription}</td>
                  
                  
                  <td>{treatment.recommendation}</td>
                  <td>{treatment.diet}</td>
-                 <td>{treatment.doctorId.firstaName}</td>
+                 <td>{treatment.doctorId.firstName+' '+treatment.doctorId.lastName}</td>
                  <td>{treatment.testresultId.testName}</td>
                  <td>{treatment.diagnosticServiceId .serviceName}</td>
                  
