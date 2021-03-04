@@ -29,6 +29,7 @@ import com.project.dmcapp.model.DiagnosticService;
 import com.project.dmcapp.model.Msg;
 import com.project.dmcapp.model.ReviewQuestion;
 import com.project.dmcapp.model.Role;
+import com.project.dmcapp.model.TechnicalIssue;
 import com.project.dmcapp.model.TestResult;
 import com.project.dmcapp.model.UpdateCommission;
 import com.project.dmcapp.repo.AgentRepo;
@@ -36,6 +37,7 @@ import com.project.dmcapp.repo.DiagnosticCentreRepo;
 import com.project.dmcapp.repo.DiagnosticServiceRepo;
 import com.project.dmcapp.repo.ReviewQuestionRepo;
 import com.project.dmcapp.repo.RoleRepo;
+import com.project.dmcapp.repo.TechnicaIssueRepo;
 import com.project.dmcapp.repo.TestResultRepo;
 import com.project.dmcapp.repo.UpdateCommissionRepo;
 import com.project.dmcapp.service.AdminService;
@@ -73,6 +75,14 @@ public class AdminController {
 	@Autowired
 	RoleRepo roleRepo;
 	
+	
+	
+	
+	
+	
+	@Autowired
+	TechnicaIssueRepo technicalIssueRepo;
+	
 	//Admin Login
 		@PostMapping("/login")
 		public ResponseEntity<AuthResponseUser> adminLogin(@RequestBody AuthRequestUser user) {
@@ -103,6 +113,11 @@ public class AdminController {
 		@GetMapping("/all-agent")
 		public ResponseEntity<List<Agent>> getAllAgents(){
 			return new ResponseEntity<>(agentRepo.findAll(), HttpStatus.OK);
+		}
+		//get all agents
+		@GetMapping("/view-issue")
+		public ResponseEntity<List<TechnicalIssue>> getAllIssues(){
+			return new ResponseEntity<>(technicalIssueRepo.findAll(), HttpStatus.OK);
 		}
 		
 		//view diagnostic centre according to centre id

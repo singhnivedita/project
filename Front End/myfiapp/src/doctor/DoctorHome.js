@@ -36,22 +36,18 @@ class DoctorHome extends React.Component{
                         <ul  className="list-bullet-no">
                             <li className="active"><Link to={"/doctorHome"}><i className="fa fa-home"></i>Doctor Dashboard</Link></li>
                             
-                        </ul> <small className="text-muted px-3">APPOINTMENT </small>
+                        </ul> 
                         <ul className="list-bullet-no">
                             <li><Link to={"/appointment-request/"+this.state.userId}>Appointment Request</Link></li>
-                            
-                        </ul> 
-                        <small className="text-muted px-3">TEST REPORTS</small>
-                        <ul className="list-bullet-no">
-                            <li>
-                            <Link to={"/test-result-doctor/"+this.state.userId}>Test Result</Link></li>
+                            <li><Link to={"/test-result-doctor/"+this.state.userId}>Test Result</Link></li>
                             <li><Link to={"/treatment-history-doctor/"+this.state.userId}>Treatment History</Link></li>
                             <li><Link to={"/patient-record/"+this.state.userId}>Patient Record</Link></li>
-                        </ul> {/*<small className="text-muted px-3">OTHERS</small>
+                        </ul> 
+                        <small className="text-muted px-3">OTHERS</small>
                         
                         <ul>
-                            <li><a href="#"><i className="fa fa-external-link-alt"></i>Help</a></li>
-                        </ul> */}
+                            <li><Link to={"/issue-reporting-doctor"}><i class="fa fa-exclamation-triangle"></i> Report Technical Issue</Link></li>
+                        </ul>
                     </div>
                 </div>
             

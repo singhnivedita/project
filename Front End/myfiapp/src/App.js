@@ -47,6 +47,10 @@ import UpdateCommissionBaseline from './admin/UpdateCommission';
 import ViewCommissionAgent from './agent/ViewCommissionAgent';
 import ViewAgent from './admin/ViewAllAgent';
 import ViewReviewQuestion from './admin/ViewReviewQuestion';
+import TechnicalIssueReportingPatient from './patient/TechnicalIssueReporting';
+import ViewTechnicalIssues from './admin/ViewTechnicalIssues';
+import TechnicalIssueReportingDoctor from './doctor/TechnicalIssueReporting';
+import TechnicalIssueReportingAgent from './agent/TechnicalIssueReporting';
 
 class App extends React.Component {
   state ={};
@@ -89,6 +93,12 @@ class App extends React.Component {
           <Route exact path="/view-commission-agent/:agentId" component={ ViewCommissionAgent  } />
           <Route exact path="/view-agent" component={ ViewAgent  } />
           <Route exact path="/view-review-question" component={ ViewReviewQuestion  } />
+          <Route exact path="/report-issue-patient" component={ TechnicalIssueReportingPatient  } />
+          <Route exact path="/view-technical-issue-admin" component={ ViewTechnicalIssues  } />
+          <Route exact path="/issue-reporting-doctor" component={ TechnicalIssueReportingDoctor  } />
+          <Route exact path="/issue-reporting-patient" component={ TechnicalIssueReportingPatient  } />
+          <Route exact path="/issue-reporting-agent" component={ TechnicalIssueReportingAgent  } />
+
           
 
           <Route exact path="/appointment-booking/" component={ BookAppointments  } />

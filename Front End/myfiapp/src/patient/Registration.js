@@ -157,43 +157,7 @@ class Registration extends React.Component{
                                 </div> <button className="btn btn-block text-center my-3">Register</button>
                                 <div className="text-center pt-3 text-muted">Already Registered? <Link to={"/"}>Login Here</Link></div>
                             </form> 
-                            {/* <form action="#non" method="post" className="fcorn-register container">
-                                <p className="register-info">PATIENT REGISTRATION FORM</p>
-                                <div>
-                                    
-                                    
-                                
-                                    <p className="col-md-6 role-wrap"/>
-                                        <select>
-                                            <option value="0" selected disabled>Gender</option>
-                                            <option value="1">Others</option>
-                                            <option value="2">Female</option>
-                                            <option value="2">Male</option>
-                                            
-                                        </select>
-                                
-                                </div> 
-                                <div className="row">
-                                    <p className="col-md-6"><input type="text" placeholder="First Name" required/></p>
-                                    <p className="col-md-6"><input type="text" placeholder="Last Name" required/></p>
-                                </div>
-                                
-                                <p><input type="password" placeholder="Password" required/>
-                                    <span className="extern-type">Atleast 8 characters long.</span>
-                                </p>
-                                <p>Date Of Birth<input type="date"/></p> 
-                                <p><input type="text" placeholder="Contact NUmber" required/></p>
-                                <p><input type="address" placeholder="Address" required/></p>
                             
-                                
-
-                                
-
-                                    <div className="row" id="formButton">
-                                        <p className="register-toggle"> </p>
-                                        <p className="register-submit"><input type="submit" value="Register"/></p>
-                                    </div>
-                            </form> */}
                         </div>
                     </div>
                 </div>

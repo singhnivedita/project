@@ -123,10 +123,10 @@ a:hover {
 
 .sidebar {
   position: fixed;
-  width: 300px;
+  width: 270px;
   height: 100%;
   background: #000000e0;
-  padding: 20px 0;
+  padding: 4px 0;
 }
 
 .text-muted {

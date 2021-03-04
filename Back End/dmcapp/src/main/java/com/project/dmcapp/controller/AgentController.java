@@ -22,6 +22,9 @@ import com.project.dmcapp.exception.BookingNotFoundException;
 import com.project.dmcapp.model.BookAppointment;
 import com.project.dmcapp.model.DiagnosticService;
 import com.project.dmcapp.model.Msg;
+import com.project.dmcapp.model.ReviewQuestion;
+import com.project.dmcapp.model.TechnicalIssue;
+import com.project.dmcapp.repo.TechnicaIssueRepo;
 import com.project.dmcapp.repo.UpdateCommissionRepo;
 import com.project.dmcapp.service.AgentService;
 @CrossOrigin
@@ -36,6 +39,8 @@ public class AgentController {
 	
 	@Autowired
 	UpdateCommissionRepo updateCommissionRepo;
+	@Autowired
+	TechnicaIssueRepo technicalIssueRepo;
 	
 	//Agent Login
 		@PostMapping("/login")
@@ -45,6 +50,13 @@ public class AgentController {
 		}
 	
 	
+		
+		@PostMapping("/report-issue")
+		public ResponseEntity<Msg> addReviewQuestion(@RequestBody TechnicalIssue technicalIssue) {
+			
+			technicalIssueRepo.save(technicalIssue);
+			return ResponseEntity.ok().body(new Msg("Technical Issue reported successfully.", HttpStatus.ACCEPTED));
+		}
 	
 	//view diagnostic services
 		@GetMapping("/diagnostic-service")
@@ -64,6 +76,12 @@ public class AgentController {
 		
 		//view commission
 		
+		@GetMapping("/commission/{id}")
+		public int getCommission(@PathVariable("id") Integer aId) {
+			
+			return updateCommissionRepo.findCommissionValue(aId);
+			
+		}
 		
 		//appointment status booked by agent
 		
@@ -79,11 +97,6 @@ public class AgentController {
 		}
 		
 		
-		@GetMapping("/commission/{id}")
-		public int getCommission(@PathVariable("id") Integer aId) {
-			
-			return updateCommissionRepo.findCommissionValue(aId);
-			
-		}
+		
 		
 }
