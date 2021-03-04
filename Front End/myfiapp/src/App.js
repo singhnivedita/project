@@ -45,6 +45,8 @@ import AddReviewQuestions from './admin/ReviewQuestionarie';
 import ViewAllServiceCommission from './admin/ViewAllServiceCommission';
 import UpdateCommissionBaseline from './admin/UpdateCommission';
 import ViewCommissionAgent from './agent/ViewCommissionAgent';
+import ViewAgent from './admin/ViewAllAgent';
+import ViewReviewQuestion from './admin/ViewReviewQuestion';
 
 class App extends React.Component {
   state ={};
@@ -85,6 +87,8 @@ class App extends React.Component {
           <Route exact path="/view-all-commission-admin" component={ ViewAllServiceCommission  } />
           <Route exact path="/update-service-baseline/:serviceId" component={ UpdateCommissionBaseline  } />
           <Route exact path="/view-commission-agent/:agentId" component={ ViewCommissionAgent  } />
+          <Route exact path="/view-agent" component={ ViewAgent  } />
+          <Route exact path="/view-review-question" component={ ViewReviewQuestion  } />
           
 
           <Route exact path="/appointment-booking/" component={ BookAppointments  } />

@@ -86,7 +86,7 @@ class UpdateCommissionBaseline extends React.Component{
     }
 	render(){
         if(this.state.updated){
-            return <Redirect to={'/adminHome'} />;
+            return <Redirect to={'/view-all-commission-admin'} />;
         }
 		return(
 		<div>
@@ -99,7 +99,7 @@ class UpdateCommissionBaseline extends React.Component{
                             <div className="h4 text-muted text-center pt-2">Update Service Commission</div>
                              <form className="pt-3" onSubmit={this.handleSubmit} >
                              <div className="form-group py-1 pb-2">
-                                    <div className="input-field"><input type="number" placeholder="Commission Id(You can got it from previous page)" required className="" onChange = {e =>this.commissionId = e.target.value }/> </div>
+                                    <div className="input-field"><input type="number" placeholder="Commission Id (You can got it from previous page)" required className="" onChange = {e =>this.commissionId = e.target.value }/> </div>
                                 </div>
                              <select id="diagnosticServiceId" name="diagnosticServiceId" required className="form-control input-field" defaultValue="Select Service" onChange={(event) => this.handleChanged(event)}>
                                     <option value="Select....">Select Service</option>
@@ -113,9 +113,9 @@ class UpdateCommissionBaseline extends React.Component{
                                 
 
                                 <div className="d-flex align-items-start">
-                                <div className="text-center pt-3 ml-auto">Already Updated? <Link to={"/adminHome"}> Go Back</Link></div>
+                                <div className="text-center pt-3 ml-auto">Already Updated? <Link to={"/view-all-commission-admin"}> Go Back</Link></div>
                                 </div> <button className="btn btn-block text-center my-3">Update</button>
-                                <div className="text-center pt-3 text-muted">Already Updated? <Link to={"/adminHome"}> Go Back</Link></div>
+                                <div className="text-center pt-3 text-muted">Already Updated? <Link to={"/view-all-commission-admin"}> Go Back</Link></div>
                             </form> 
                             
                         </div>

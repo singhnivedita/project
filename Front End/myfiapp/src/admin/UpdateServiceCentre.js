@@ -19,10 +19,10 @@ class UpdateServiceCentre extends React.Component{
             brief : this.brief,
             address : this.address,
             city:this.city,
-            state : this.state,
+            state : this.states,
             email: this.email,
             website: this.website,
-            serviceId: this.serviceId,
+            //serviceId: this.serviceId,
             contactno: this.contactno,
             zip:this.zip,
             serviceId:this.state.serviceId
@@ -141,7 +141,7 @@ class UpdateServiceCentre extends React.Component{
                                     <div className="input-field"><input type="text"  required className="" defaultValue={this.state.centreList.city || ''} placeholder="city"onChange = {e =>this.city = e.target.value }/> </div>
                                 </div>
                                 <div className="form-group py-1 pb-2">
-                                    <div className="input-field"><input type="text" placeholder="state "   required className="" defaultValue={this.state.centreList.state || ''} onChange = {e =>this.state = e.target.value }/> </div>
+                                    <div className="input-field"><input type="text" placeholder="state "   required className="" defaultValue={this.state.centreList.state || ''} onChange = {e =>this.states = e.target.value }/> </div>
                                 </div>
 
                                 <div className="form-group py-2">
@@ -169,9 +169,9 @@ class UpdateServiceCentre extends React.Component{
 
 
                                 <div className="d-flex align-items-start">
-                                <div className="text-center pt-3 ml-auto">Already Updated? <Link to={"/adminHome"}> Go Back</Link></div>
+                                <div className="text-center pt-3 ml-auto">Already Updated? <Link to={"/view-centre"}> Go Back</Link></div>
                                 </div> <button className="btn btn-block text-center my-3">Update</button>
-                                <div className="text-center pt-3 text-muted">Already Updated? <Link to={"/adminHome"}> Go Back</Link></div>
+                                <div className="text-center pt-3 text-muted">Already Updated? <Link to={"/view-centre"}> Go Back</Link></div>
                             </form> 
                             
                         </div>

@@ -58,8 +58,7 @@ public class AdminController {
 	@Autowired
 	TestResultRepo testResultRepo;
 	
-	
-	
+		
 	@Autowired
 	ReviewQuestionRepo reviewQuestionRepo;
 	
@@ -67,8 +66,7 @@ public class AdminController {
 	@Autowired
 	UpdateCommissionRepo updateCommissionRepo;
 	
-	
-	
+		
 	@Autowired
 	DiagnosticServiceRepo diagnosticServiceRepo;
 	
@@ -89,12 +87,24 @@ public class AdminController {
 			
 			return new ResponseEntity<>(diagnosticCentreRepo.findAll(), HttpStatus.OK);
 		}
-		//get all aacordig to test id
+		//get all test
 		@GetMapping("/all-test")
 		public ResponseEntity<List<TestResult>> getAllTestResults(){
 			
 			return new ResponseEntity<>(testResultRepo.findAll(), HttpStatus.OK);
 		}
+		
+		//get all agents
+		@GetMapping("/all-questions")
+		public ResponseEntity<List<ReviewQuestion>> getAllQuestions(){
+			return new ResponseEntity<>(reviewQuestionRepo.findAll(), HttpStatus.OK);
+			}
+		//get all agents
+		@GetMapping("/all-agent")
+		public ResponseEntity<List<Agent>> getAllAgents(){
+			return new ResponseEntity<>(agentRepo.findAll(), HttpStatus.OK);
+		}
+		
 		//view diagnostic centre according to centre id
 		@GetMapping("/diagnostik-centre/{id}")
 		public ResponseEntity<List<DiagnosticCentre>> getCentreById(@PathVariable("id") int cId){

@@ -115,7 +115,7 @@ class AddService extends React.Component{
                     <div className="col" id="b2">
                         <div className="wrapper bg-white">
                             
-                            <div className="h4 text-muted text-center pt-2">Add Services</div>
+                            <div className="h4 text-muted text-center pt-2">Add Services to Centre</div>
                              <form className="pt-3" onSubmit={this.handleSubmit} >
                                
 
@@ -132,7 +132,7 @@ class AddService extends React.Component{
                                 
 
                                 <select id="centreId" name="centreId" className="form-control input-field" defaultValue="Select Centre" onChange={(event) => this.handleChanged(event)}>
-                                    <option value="choose..">Select Service</option>
+                                    <option value="choose..">Select Centre</option>
                                     {this.renderCentres()}
                                 </select>
                                 <br></br>

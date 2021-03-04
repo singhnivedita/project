@@ -28,15 +28,15 @@ class AdminHome extends React.Component{
                         
                         
                             
-                            <li><Link to={"/create-agent"}>Create Agent</Link></li>
+                            <li><Link to={"/view-agent"}>View Agent</Link></li>
                         
                         
                             <li><Link to={"/view-test-admin"}>View Test Result</Link></li>
                             <li><Link to={"/view-all-commission-admin"}>Commission</Link></li>
                          
                          
-                            <li><Link to={"/add-review-question"}>Create Review Questionarie</Link></li>
-                            <li><Link to={"/#"}><i className="fa fa-credit-card"></i> Generate Report</Link></li>
+                            <li><Link to={"/view-review-question"}>Review Questionarie</Link></li>
+                            <li><Link to={"#"}><i className="fa fa-credit-card"></i> Generate Report</Link></li>
                             </ul> 
                          {/*<small className="text-muted px-3">OTHERS</small>
                         

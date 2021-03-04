@@ -38,7 +38,7 @@ class AddReviewQuestions  extends React.Component{
     
 	render(){
         if(this.state.updated){
-            return <Redirect to={'/adminHome'} />;
+            return <Redirect to={'/view-review-question'} />;
         }
 		return(
 		<div>
@@ -55,9 +55,9 @@ class AddReviewQuestions  extends React.Component{
                                 </div>
                                
                                 <div className="d-flex align-items-start">
-                                <div className="text-center pt-3 ml-auto">Already Added? <Link to={"/adminHome"}> Go Back</Link></div>
+                                <div className="text-center pt-3 ml-auto">Already Added? <Link to={"/view-review-question"}> Go Back</Link></div>
                                 </div> <button className="btn btn-block text-center my-3">Add</button>
-                                <div className="text-center pt-3 text-muted">Already Added? <Link to={"/adminHome"}> Go Back</Link></div>
+                                <div className="text-center pt-3 text-muted">Already Added? <Link to={"/view-review-question"}> Go Back</Link></div>
                             </form> 
                             
                         </div>

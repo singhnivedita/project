@@ -125,16 +125,10 @@ class CreateAgent extends React.Component{
                                     <div className="input-field"><input type="text" placeholder="Enter your Password" required className="" onChange = {e =>this.password = e.target.value }/> </div>
                                 </div>
                                 
-
-                                {/* <div className="form-group py-1 pb-2" onChange={this.setGender.bind(this)}>
-                                    <input type="radio" value="MALE" name="gender"/> Male
-                                    <input type="radio" value="FEMALE" name="gender"/> Female
-                                </div> */}
-
                                 <div className="form-group py-1 pb-2" onChange={e => this.gender = e.target.value }>
-                                    <span className="input-field"> Select Gender : 
-                                        <select>
-                                            <option selected disabled>Gender</option>
+                                    <span >
+                                        <select className="input-field form-control">
+                                            <option selected disabled> Select Gender</option>
                                             <option value="Other">Others</option>
                                             <option value="Female">Female</option>
                                             <option value="Male">Male</option>
@@ -170,7 +164,7 @@ class CreateAgent extends React.Component{
 
                                 <div className="d-flex align-items-start">
                                     
-                                    <div className="text-center pt-3 text-muted ml-auto">No more Agent?  <Link to={"/adminHome"}>Go Back</Link></div>
+                                    <div className="text-center pt-3 text-muted ml-auto">No more Agent?  <Link to={"/view-agent"}>Go Back</Link></div>
 
                                 </div> <button className="btn btn-block text-center my-3">Register</button>
                                 {/* <div className="text-center pt-3 text-muted">Already Registered? <Link to={"/doctorLogin"}>Login Here</Link></div> */}
