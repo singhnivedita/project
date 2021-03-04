@@ -24,7 +24,7 @@ class BookAppointmentAgent extends React.Component{
             doctorId :{ docId:this.state.docId},
             
             diagnosticService : {serviceId:this.state.dgserviceId},
-            agentId:{agentId:this.state.userId}//getting from local storage
+            agentId:{agentPk:this.state.userId}//getting from local storage
             
             
         };
@@ -163,7 +163,7 @@ class BookAppointmentAgent extends React.Component{
                               
 
                                 <div className="d-flex align-items-start">
-                                <div className="text-center pt-3 ml-auto">Feeling well? <Link to={"/patientHome"}> Go Back</Link></div>
+                                <div className="text-center pt-3 ml-auto">Feeling well? <Link to={"/agentHome"}> Go Back</Link></div>
                                 </div> <button className="btn btn-block text-center my-3">Book</button>
                                 
                             </form> 

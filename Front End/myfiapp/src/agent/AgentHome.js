@@ -40,12 +40,12 @@ class AgentHome extends React.Component{
                         </ul> <small className="text-muted px-3">APPOINTMENT</small>
                         <ul className="list-bullet-no">
                             <li><Link to={'/booking-agent'}>Book Appointment</Link></li>
-                            <li><Link to={'/booking-agent'}>Book Appointment</Link></li>
+                            <li><Link to={'/appointment-status-agent/'+this.state.userId}>Book Appointment Status</Link></li>
                             
                         </ul> <small className="text-muted px-3">Commission</small>
                         <ul className="list-bullet-no">
                             
-                            <li><Link to={'view-commission-agent/'+this.state.userId}>View Commission</Link></li>
+                            <li><Link to={'/view-commission-agent/'+this.state.userId}>View Commission</Link></li>
                            
                             
                         </ul>

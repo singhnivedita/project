@@ -74,6 +74,7 @@ class App extends React.Component {
           <Route exact path="/diagnosticService" component={ DiagnosticService  } />
           <Route exact path="/diagnostic-service-agent" component={ DiagnosticServiceAgent } />
           <Route exact path="/appointment-status/:patientId" component={ AppointmentStatus  } />
+          <Route exact path="/appointment-status-agent/:agentId" component={ AppointmentStatusAgent  } />
           <Route exact path="/treatment-history/:patientId" component={TreatmentHistory  } />
           <Route exact path="/test-result/:patientId" component={ TestResult  } />
           <Route exact path="/appointment-request/:doctorId" component={ AppointmentRequests  } />

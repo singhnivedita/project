@@ -37,6 +37,7 @@ class AppointmentStatusAgent extends React.Component{
                             <thead>
                             <tr>
                                 <th>Request Id</th>
+                                <th>Patient Name</th>
                                 <th>Date</th>
                                 <th>Time</th>
                                 <th>Remark</th>
@@ -73,6 +74,7 @@ class RowCreator extends React.Component{
          return(
              <tr>
                  <td>{booking.requestId}</td>
+                 <td>{booking.patientId.firstName+' '+booking.patientId.lastName}</td>
                  <td>{booking.date}</td>
                  <td>{booking.time}</td>
                  <td>{booking.remark}</td>
