@@ -60,7 +60,7 @@ class Patient extends React.Component{
                                 <div className="input-field"><input type="text" placeholder="UserId/Email" required className="" onChange = {e =>this.email = e.target.value }/> </div>
                             </div>
                             <div className="form-group py-1 pb-2">
-                                <div className="input-field"><input type="text" placeholder="Enter your Password" required className="" onChange = {e =>this.password = e.target.value }/> </div>
+                                <div className="input-field"><input type="password" placeholder="Enter your Password" required className="" onChange = {e =>this.password = e.target.value }/> </div>
                             </div>
                             <div className="d-flex align-items-start">
                                 <div className="ml-auto "> <a href="#" id="forgot" style={{color: "red"}}>Forgot Password?</a> </div>

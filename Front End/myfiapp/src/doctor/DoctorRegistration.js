@@ -104,7 +104,7 @@ class DoctorRegistration extends React.Component{
                              <form className="pt-3" onSubmit={this.handleSubmit} >
 
                                 <select id="roleID" name="roleID" className="form-control input-field" defaultValue="Select Service" onChange={(event) => this.handleChanged(event)}>
-                                    <option value="select....">Select Doctor</option>
+                                    <option value="select....">Select Doctor(Required)</option>
                                     {this.renderServices()}
                                 </select>
                                 <div className="form-group py-2">
@@ -115,7 +115,7 @@ class DoctorRegistration extends React.Component{
                                 </div>
                                 
                                 <div className="form-group py-1 pb-2">
-                                    <div className="input-field"><input type="text" placeholder="Enter your Password" required className="" onChange = {e =>this.password = e.target.value }/> </div>
+                                    <div className="input-field"><input type="password" placeholder="Enter your Password" required className="" onChange = {e =>this.password = e.target.value }/> </div>
                                 </div>
                                 
 

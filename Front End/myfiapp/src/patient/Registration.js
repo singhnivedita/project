@@ -100,7 +100,7 @@ class Registration extends React.Component{
                              <form className="pt-3" onSubmit={this.handleSubmit} >
 
                              <select id="diagnosticServiceId" name="diagnosticServiceId" className="form-control input-field" defaultValue="Select Service" onChange={(event) => this.handleChanged(event)}>
-                             <option value="select....">Select Role</option>
+                             <option value="select....">Select Role(Required)</option>
                                     {this.renderServices()}
                              </select>
 
@@ -112,7 +112,7 @@ class Registration extends React.Component{
                                 </div>
                                 
                                 <div className="form-group py-1 pb-2">
-                                    <div className="input-field"><input type="text" placeholder="Enter your Password" required className="" onChange = {e =>this.password = e.target.value }/> </div>
+                                    <div className="input-field"><input type="password" placeholder="Enter your Password" required className="" onChange = {e =>this.password = e.target.value }/> </div>
                                 </div>
                                 
 
