@@ -18,8 +18,9 @@ class UpdateTestResultAdmin extends React.Component{
             testName : this.name,
             testResult : this.result,
             
-            diagnosticServiceId:{diagnosticServiceId:this.state.serviceId},
-            patientId: this.props.match.params.testId //how to get this patient value corresponding to tests?
+            diagnosticServiceId:{serviceId:this.state.serviceId},
+           // patientId: this.props.match.params.testId ,//how to get this patient value corresponding to tests?
+            patientId:{patientId:this.pId}
            
             
         };
@@ -102,7 +103,7 @@ class UpdateTestResultAdmin extends React.Component{
                                     <div className="input-field"><input type="text" defaultValue={"Test Id"+this.props.match.params.testId || ''} disabled placeholder="centreId" required className="" onChange = {e =>this.centreId = e.target.value }/> </div>
                                 </div>
                                 <div className="form-group py-2">
-                                    <div className="input-field"><input type="text" defaultValue={"Patient Id"+this.props.match.params.testId || ''} disabled placeholder="Patient Id" required className="" onChange = {e =>this.patientId = e.target.value }/> </div>
+                                    <div className="input-field"><input type="number"   placeholder="Patient Id" required className="" onChange = {e =>this.pId = e.target.value }/> </div>
                                 </div>
                                 <div className="form-group py-2">
                                     <div className="input-field"><input type="text" placeholder="Test Name" required className="" onChange = {e =>this.name = e.target.value }/> </div>

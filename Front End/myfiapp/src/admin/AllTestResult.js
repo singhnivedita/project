@@ -20,6 +20,12 @@ class AllTestResult extends React.Component{
             const tests = res.data;
             this.setState({tests})
 
+            //localStorage.setItem('patientId', res.data.patientId.patientId);
+
+            //const patientId = localStorage.getItem('patientId');
+        //this.setState({userId})
+        //console.log(patientId)
+
         });
     }
     
@@ -36,6 +42,8 @@ class AllTestResult extends React.Component{
                             <thead>
                             <tr>
                                 <th>Test Id</th>
+                                <th>Patient Id</th>
+                                {/* <th>Patient Name</th> */}
                                 <th>Test Name</th>
                                 <th>Test Result</th>
                                 <th>Service</th>
@@ -65,9 +73,13 @@ class AllTestResult extends React.Component{
 class RowCreator extends React.Component{
     render(){
          var test = this.props.item;
+         //localStorage.setItem('patientId', res.data.patientId.patientId);
          return(
              <tr>
                  <td>{test.testId}</td>
+                 <td>{test.patientId.patientId}</td>
+                 
+                 {/* <td>{test.patientId.firstName+' '+patientId.lastName}</td> */}
                  <td>{test.testName}</td>
                  <td>{test.testResult}</td>
                  <td>{test.diagnosticServiceId.serviceName}</td>
