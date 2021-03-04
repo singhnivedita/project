@@ -42,7 +42,7 @@ public class TestResult {
 	//FK
 	
 	//foreign key of patient(id) table to specify tests of particular patient
-	@JsonIgnore
+	//@JsonIgnore
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "patientId", referencedColumnName = "patientId")
