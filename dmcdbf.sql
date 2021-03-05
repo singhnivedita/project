@@ -10,7 +10,6 @@ VALUES
 (2, "Admin"),
 (3, "Patient"),
 (4, "Agent");
-SELECT * from role_table;
 
 desc admin_table;
 select * from admin_table;
@@ -70,10 +69,10 @@ insert into request_table  (date, time, remark, status, patientId, docId, dgserv
 #centre_table
 desc centre_table;
 select * from centre_table;
-insert into centre_table  (centreId, brief, address, city, state, email, website, contactno, zip) values (1, 'Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue.', '5 Leroy Trail', 'Washington', 'District of Columbia', 'isamms0@spotify.com', 'xinhuanet.com', '9533734567', '20430');
-insert into centre_table  (centreId, brief, address, city, state, email, website, contactno, zip) values (2, 'Nulla tempus.', '92368 Annamark Lane', 'Buffalo', 'New York', 'bruddock1@goodreads.com', 'shinystat.com', '6249412345', '14269');
-insert into centre_table  (centreId, brief, address, city, state, email, website, contactno, zip) values (3, 'Etiam pretium iaculis justo.', '8399 Kenwood Drive', 'Jersey City', 'New Jersey', 'smcnirlin2@dailymail.co.uk', 'ezinearticles.com', '2541612345', '07305');
-insert into centre_table  (centreId, brief, address, city, state, email, website, contactno, zip) values (4, 'Etiam pretium iaculis justo.', '99328 Mandrake Trail', 'San Jose', 'California', 'jokroy3@rakuten.co.jp', 'xing.com', '2870812345', '95155');
+insert into centre_table  (centreId, brief, address, city, state, email, website, contactno, zip, serviceId) values (1, 'Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue.', '5 Leroy Trail', 'Washington', 'District of Columbia', 'isamms0@spotify.com', 'xinhuanet.com', '9533734567', '20430', 1);
+insert into centre_table  (centreId, brief, address, city, state, email, website, contactno, zip, serviceId) values (2, 'Nulla tempus.', '92368 Annamark Lane', 'Buffalo', 'New York', 'bruddock1@goodreads.com', 'shinystat.com', '6249412345', '14269', 2);
+insert into centre_table  (centreId, brief, address, city, state, email, website, contactno, zip, serviceId) values (3, 'Etiam pretium iaculis justo.', '8399 Kenwood Drive', 'Jersey City', 'New Jersey', 'smcnirlin2@dailymail.co.uk', 'ezinearticles.com', '2541612345', '07305', 3);
+insert into centre_table  (centreId, brief, address, city, state, email, website, contactno, zip, serviceId) values (4, 'Etiam pretium iaculis justo.', '99328 Mandrake Trail', 'San Jose', 'California', 'jokroy3@rakuten.co.jp', 'xing.com', '2870812345', '95155', 4);
 
 
 
