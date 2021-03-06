@@ -39,7 +39,7 @@ class AppointmentStatus extends React.Component{
                                 <th>Request Id</th>
                                 <th>Date</th>
                                 <th>Time</th>
-                                <th>Remark</th>
+                                <th>Issues</th>
                                 <th>Doctor Name</th>
                                 <th>Service Name</th>
                                 <th>Status</th>

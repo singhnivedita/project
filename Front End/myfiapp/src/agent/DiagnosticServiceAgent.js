@@ -3,8 +3,8 @@ import React from 'react';
 
 
 import axios from 'axios';
-import { Link, Redirect } from 'react-router-dom';
-import PatientHome from '../patient/PatientHome';
+
+
 import AgentHome from './AgentHome';
 
 

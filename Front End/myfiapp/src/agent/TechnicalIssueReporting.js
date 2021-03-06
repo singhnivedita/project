@@ -13,7 +13,7 @@ class TechnicalIssueReportingAgent  extends React.Component{
     handleSubmit =(event) =>{
         event.preventDefault();
         const data ={
-            issueId: 4,
+            issueId: 7,
             yourId:this.state.userId,
             issues:this.issues,
             description:this.description,

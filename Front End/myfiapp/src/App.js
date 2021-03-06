@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import './Stylesheet/style.css';
 
@@ -12,8 +12,8 @@ import Patient from './patient/PatientLogin';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Registration from './patient/Registration';
 import Home from './home/Home';
-import Navbar from './home/Navbar';
-import axios from 'axios';
+// import Navbar from './home/Navbar';
+// import axios from 'axios';
 import PatientHome from './patient/PatientHome';
 import AgentHome from './agent/AgentHome';
 import Agent from './agent/AgentLogin';

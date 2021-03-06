@@ -3,7 +3,7 @@ import React from 'react';
 
 
 // import axios from 'axios';
-import { Link, Redirect } from 'react-router-dom';
+import { Link  } from 'react-router-dom';
 
 
 class DoctorHome extends React.Component{
@@ -13,18 +13,7 @@ class DoctorHome extends React.Component{
         const userId = localStorage.getItem('userId');
         this.setState({userId})
         console.log("userid in home page is "+userId);
-    //     axios.get("menuapp/menu-items").then(
-    //         res =>{
-    //             this.setState({
-    //                 patientData = res.data
-    //             })
-    //         }
-    //     ).catch(
-    //         err => {
-    //             console.log(err);
-    //         }
-    //     )
-    //     console.log(data);
+    
     }
 	render(){
        

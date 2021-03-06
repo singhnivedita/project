@@ -13,7 +13,7 @@ class TechnicalIssueReportingDoctor  extends React.Component{
     handleSubmit =(event) =>{
         event.preventDefault();
         const data ={
-            issueId: 4,
+            issueId: 6,
             yourId:this.state.userId,
             issues:this.issues,
             description:this.description,

@@ -11,7 +11,7 @@ class AddReviewQuestions  extends React.Component{
     handleSubmit =(event) =>{
         event.preventDefault();
         const data ={
-            question_id: 4,
+            question_id: 5,
             question:this.question
             
             
